@@ -1,4 +1,4 @@
-setwd("/Users/jo8521kj/Desktop/R/Shiny/")
+
 ####################################################
 'SHINY'
 ####################################################
@@ -240,7 +240,7 @@ r_colors <- rgb(t(col2rgb(colors()) / 255))
 names(r_colors) <- colors()
 
 #Set up the translation by selecting the language file
-i18n <- Translator$new(translation_json_path="/Users/jo8521kj/Desktop/R/Shiny/test.JSON")
+i18n <- Translator$new(translation_json_path="./test.JSON")
 i18n$set_translation_language('United Kingdom') #chose initial language to load
 
 # Define the fields we want to save from the form
@@ -1299,12 +1299,12 @@ shinyApp(
     )
     
     # render uni logo
-    output$uniLogo <- renderImage({list(src = "/Users/jo8521kj/Desktop/R/Shiny/logo2.png",
+    output$uniLogo <- renderImage({list(src = "./logo2.png",
                                         contentType = "image/png",alt = "logo", height = 120)}, deleteFile = FALSE)
 
 
     # render uni logo
-    output$allLogo <- renderImage({list(src = "/Users/jo8521kj/Desktop/R/Shiny/logo1.png",
+    output$allLogo <- renderImage({list(src = "./logo1.png",
                                     contentType = "image/png",alt = "logo", height = 200)}, deleteFile = FALSE)
 }
 )
