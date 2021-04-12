@@ -15,7 +15,7 @@ library(shinyTime)
 library(shinyWidgets)
 library(leaflet)
 library(plotly)
-?shiny()
+#?shiny()
 
 
 ####################################################
