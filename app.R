@@ -14,8 +14,8 @@ library(shinyTime)
 library(shinyWidgets)
 library(leaflet)
 library(plotly)
-library(shinydashboard) #new april
-library(shinyjs) #new april
+library(shinydashboard) #added
+library(shinyjs) #added
 
 ####################################################
 
