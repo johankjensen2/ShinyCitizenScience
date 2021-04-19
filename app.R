@@ -14,8 +14,8 @@ library(shinyTime)
 library(shinyWidgets)
 library(leaflet)
 library(plotly)
-library(shinydashboard) #new april
-library(shinyjs) #new april
+library(shinydashboard)
+library(shinyjs)
 
 ####################################################
 
@@ -58,7 +58,15 @@ plot_func1_habitat <- function() {
       theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
             text = element_text(size=20, family= "Times"), axis.text.x = element_text(size = 20, angle = 45, 
                                                                                       hjust = 1, color = "grey1")) + 
-      theme(axis.ticks.length=unit(.25, "cm"))
+      theme(axis.ticks.length=unit(.25, "cm"))  +
+              theme(
+                panel.background = element_rect(fill = "transparent"), # bg of the panel
+                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+                panel.grid.major = element_blank(), # get rid of major grid
+                panel.grid.minor = element_blank(), # get rid of minor grid
+                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+              )
   }
 }
 
@@ -76,7 +84,7 @@ plot_func2_yard <- function() {
       geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
       theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
-      scale_y_continuous(limits = c(0,50), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
+      scale_y_continuous(limits = c(0,25), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
       labs(y="Species richness (number of woody species) \n", x="School grounds size (m2)", title = "") +
       geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
       theme(legend.position = "none",
@@ -84,7 +92,15 @@ plot_func2_yard <- function() {
             text = element_text(size=20, family= "Times"), 
             axis.text.x = element_text(size = 20, angle = 45,
                                        hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm"))
+      theme(axis.ticks.length=unit(.25, "cm")) +
+              theme(
+                panel.background = element_rect(fill = "transparent"), # bg of the panel
+                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+                panel.grid.major = element_blank(), # get rid of major grid
+                panel.grid.minor = element_blank(), # get rid of minor grid
+                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+              )
   }
 }
 
@@ -115,13 +131,21 @@ plot_func3_birds <- function() {
       theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), 
                                                              type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), type = "continuous")) +
-      scale_y_continuous(limits = c(0,150), expand = c(0,0)) +  scale_x_continuous(limits = c(0,50), expand = c(0,0)) +
+      scale_y_continuous(limits = c(0,80), expand = c(0,0)) +  scale_x_continuous(limits = c(0,25), expand = c(0,0)) +
       labs(y="Total number of birds observed \n", x="Number of tree and shrub species", title = "") +
       geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
       theme(legend.position = "none", plot.title = element_text(hjust = 0.5), 
             text = element_text(size=20, family= "Times"), 
             axis.text.x = element_text(size = 16, angle = 45,
-                                       hjust = 1, color = "grey1")) + theme(axis.ticks.length=unit(.25, "cm"))
+                                       hjust = 1, color = "grey1")) + theme(axis.ticks.length=unit(.25, "cm")) +
+                                                                              theme(
+                                                                                panel.background = element_rect(fill = "transparent"), # bg of the panel
+                                                                                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+                                                                                panel.grid.major = element_blank(), # get rid of major grid
+                                                                                panel.grid.minor = element_blank(), # get rid of minor grid
+                                                                                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+                                                                                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+                                                                              )
   }
 }
 
@@ -189,13 +213,21 @@ plot_func5_invertebrates <- function() {
                                            type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
                                             type = "continuous")) +
-      scale_y_continuous(limits = c(0,25), expand = c(0,0)) + theme_classic() +
+      scale_y_continuous(limits = c(0,15), expand = c(0,0)) + theme_classic() +
       labs(y="Mean number of minibeasts per 1x1 square \n", x="", title = "") +
       theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
             text = element_text(size=20, family= "Times"), 
             axis.text.x = element_text(size = 20, angle = 45,
                                        hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm"))
+      theme(axis.ticks.length=unit(.25, "cm")) +
+              theme(
+                panel.background = element_rect(fill = "transparent"), # bg of the panel
+                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+                panel.grid.major = element_blank(), # get rid of major grid
+                panel.grid.minor = element_blank(), # get rid of minor grid
+                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+              )
     
   }
 }
@@ -214,7 +246,15 @@ plotFuncTemp <- function() {
             text = element_text(size=20, family= "Times"), 
             axis.text.x = element_text(size = 20, angle = 45,
                                        hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm"))
+      theme(axis.ticks.length=unit(.25, "cm")+
+              theme(
+                panel.background = element_rect(fill = "transparent"), # bg of the panel
+                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+                panel.grid.major = element_blank(), # get rid of major grid
+                panel.grid.minor = element_blank(), # get rid of minor grid
+                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+              ))
   }
 }
 
@@ -239,7 +279,7 @@ r_colors <- rgb(t(col2rgb(colors()) / 255))
 names(r_colors) <- colors()
 
 #Set up the translation by selecting the language file
-i18n <- Translator$new(translation_json_path="./test.JSON")
+i18n <- Translator$new(translation_json_path="./test.JSON") 
 i18n$set_translation_language('United Kingdom') #chose initial language to load
 
 # Define the fields we want to save from the form
@@ -269,11 +309,11 @@ fields <- c("School", "selected_language", "lat", "long",
 ####################################################
 # APP
 ####################################################
+usei18n(i18n) # add to sort out translation bug of tab names
 ui <- dashboardPage(
-  
   dashboardHeader(title = "Natural Nations"),
   dashboardSidebar(
-    sidebarMenu(menuItem(i18n$t('School information'), icon = icon('school'), tabName = 'school'),
+    sidebarMenu(menuItem(i18n$t("School information"), icon = icon('school'), tabName = 'school'),
                 menuItem(i18n$t('Habitat (Part A)'), icon = icon('tree'), tabName = 'habitat'),
                 menuItem(i18n$t('Birds (Part B)'), icon = icon('crow'), tabName = 'birds'),
                 menuItem(i18n$t('Pollinators (Part C)'), icon = icon('seedling'), tabName = 'pollinators'),
@@ -286,6 +326,10 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "school", align = "center",
+              
+              imageOutput("natNatLogo", height = 100), # natnat logo
+              HTML("<br/>", "<br/>", "<br/>"), # white space
+            
               ## Language and region selector - translates text (eng default if no translation is available)
               shiny.i18n::usei18n(i18n),
               tags$div(
@@ -389,7 +433,12 @@ ui <- dashboardPage(
               
               HTML("<br/>"), #whitespace
               
-              actionButton("showWeather", i18n$t("Show weather data"))
+              actionButton("showWeather", i18n$t("Show weather data")),
+              
+              HTML("<br/>", "<br/>", "<br/>") # white space
+              
+             # imageOutput("footerLogo", height = 100) # footer logo
+              
       ),
       
       ##########################################
@@ -506,7 +555,7 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>"), #whitespace
               
-              plotOutput("yard_1"), #graph 2 - species depending on yard size
+              plotOutput("yard_1", width = 780, height = 420), #graph 2 - species depending on yard size
               
               HTML("<br/>", "<br/>"), #whitespace
               
@@ -531,7 +580,7 @@ ui <- dashboardPage(
               
               #turdus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Eurasian blackbird (Turdus merula):"))),
+                column(3, align="left", HTML("<br/>"), strong(i18n$t("Eurasian blackbird (Turdus merula)"))),
                 
                 column(5, align="left",
                        numericInput("turdus_no", label = i18n$t("Number:"), value = 0, width = "50%")),
@@ -542,7 +591,7 @@ ui <- dashboardPage(
               
               #Fringilla
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Common chaffinch (Fringilla coelebs):"))),
+                column(3, align="left", HTML("<br/>"), strong(i18n$t("Common chaffinch (Fringilla coelebs)"))),
                 
                 column(5, align="left",
                        numericInput("fringilla_no", label = i18n$t(""), value = 0, width = "50%")),
@@ -553,7 +602,7 @@ ui <- dashboardPage(
               
               #Parus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Great tit (Parus major):"))),
+                column(3, align="left", HTML("<br/>"), strong(i18n$t("Great tit (Parus major)"))),
                 
                 column(5, align="left",
                        numericInput("parus_no", label = i18n$t(""), value = 0, width = "50%")),
@@ -564,7 +613,7 @@ ui <- dashboardPage(
               
               #Cyanistes
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Blue tit (Cyanistes caeruleus):"))),
+                column(3, align="left", HTML("<br/>"), strong(i18n$t("Blue tit (Cyanistes caeruleus)"))),
                 
                 column(5, align="left",
                        numericInput("cyanistes_no", label = i18n$t(""), value = 0, width = "50%")),
@@ -1087,19 +1136,26 @@ ui <- dashboardPage(
       #######################################
       
       tabItem(tabName = "submit", align = "center",
+              
+              titlePanel(i18n$t("Submit data")),
+              
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
+              
               strong(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to [...] so your data can be included in the research project and added to the website. Thank you for your participation.")),
               
               HTML("<br/>", "<br/>"),
               #download data button
-              downloadButton('downloadData', 'Download'),
+              downloadButton('downloadData', i18n$t('Download'), width ="110%"),
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
               
               
               
-              HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
-              imageOutput("allLogo", height = 100) # banner logo)
+              HTML("<br/>", "<br/>", "<br/>", "<br/>","<br/>", "<br/>", "<br/>", "<br/>"), # white space
+              imageOutput("allLogo", height = 100), # banner logo)
+              HTML("<br/>", "<br/>", "<br/>", "<br/>", "<br/>"),
+              imageOutput("nbisLogo", height = 100) # banner logo)
               
               #######################################
       ) 
@@ -1116,9 +1172,10 @@ server <- function(input, output, session) {
     data
   })
   
-  # When country is selected, this will feed into shiny.i18n for translation
+  # When country is selected, this will feed into shiny.i18n for translatio
   observeEvent(input$countrySelect, {
     update_lang(session, input$selected_language)
+    
   })
   
   # When the Submit button is clicked, save the form data BEES
@@ -1238,7 +1295,7 @@ server <- function(input, output, session) {
     plot_func1_habitat()
     
     
-  })
+  }, bg="transparent")
   
   
   # render correlation tree species ~ yard
@@ -1249,7 +1306,7 @@ server <- function(input, output, session) {
     plot_func2_yard()
     
     
-  })
+  }, bg="transparent")
   
   output$birds_1 <- renderPlot({
     
@@ -1258,7 +1315,7 @@ server <- function(input, output, session) {
     plot_func3_birds()
     
     
-  })
+  }, bg="transparent")
   
   output$pollinators_1 <- renderPlotly({
     
@@ -1276,7 +1333,7 @@ server <- function(input, output, session) {
     plot_func5_invertebrates()
     
     
-  })
+  }, bg="transparent")
   
   # render barplot of temperature
   output$temp <- renderPlot({
@@ -1286,7 +1343,7 @@ server <- function(input, output, session) {
     plotFuncTemp()
     
     
-  })
+  }, bg="transparent")
   # Download button
   
   output$downloadData <- downloadHandler(
@@ -1296,14 +1353,23 @@ server <- function(input, output, session) {
     }
   )
   
-  # render uni logo
-  output$uniLogo <- renderImage({list(src = "./logo2.png",
+  # render natnat logo
+  output$natNatLogo <- renderImage({list(src = "./logo2.png",
                                       contentType = "image/png",alt = "logo", height = 120)}, deleteFile = FALSE)
   
+  # render footer logo
+  output$footerLogo <- renderImage({list(src = "./footer.png",
+                                         contentType = "image/png",alt = "logo", height = 120)}, deleteFile = FALSE)
   
-  # render uni logo
+  
+  
+  # render logo
   output$allLogo <- renderImage({list(src = "./logo1.png",
                                       contentType = "image/png",alt = "logo", height = 200)}, deleteFile = FALSE)
+  
+  output$nbisLogo <- renderImage({list(src = "./nbisLogo.png",
+                                      contentType = "image/png",alt = "logo", height = 120)}, deleteFile = FALSE)
+  
   
   runjs({'
         var el2 = document.querySelector(".skin-blue");

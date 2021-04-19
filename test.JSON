@@ -120,13 +120,299 @@
     {"United Kingdom": "Bumblebees",
     "Sverige (Sweden)": "Humlor"},
     
-        {"United Kingdom": "Habitat (Part A)",
-    "Sverige (Sweden)": "Habitat (Del A)"},
-    
-     {"United Kingdom": "School information",
-    "Sverige (Sweden)": "Information om skolan"}
+{"United Kingdom": "Habitat (Part A)",
+"Sverige (Sweden)": "Habitat (Del A)"},
+
+{"United Kingdom": "School information",
+"Sverige (Sweden)": "Information om skolan"},
+
+{"United Kingdom": "How windy was it during the survey? (Use slider below)",
+"Sverige (Sweden)": "Hur mycket blåste det under inventeringen? (Använd skjutreglaget)"},
+
+{"United Kingdom": "Habitat survey",
+"Sverige (Sweden)": "Habitat-inventeringen"},
+
+{"United Kingdom": "Below you can enter the data from the habitat survey (Part A):",
+"Sverige (Sweden)": "Nedan kan du lägga in data från habitat-inventeringen (Del A)"},
+
+{"United Kingdom": "How many participants are in your survey group?",
+"Sverige (Sweden)": "Hur många deltagare samlade in data?"},
+
+{"United Kingdom": "What is the average age of the participants?",
+"Sverige (Sweden)": "Vad är genomsnittsåldern på deltagarna?"},
+
+{"United Kingdom": "(Optional) How large is your school grounds (m2)?",
+"Sverige (Sweden)": "(Frivilligt) Hur stor är er skolgård (m2)?"},
+
+{"United Kingdom": "What is the dominant habitat in your school grounds (select one):",
+"Sverige (Sweden)": "Vad är det dominanta habitatet på er skolgård (välj en):"},
+
+{"United Kingdom": "What of the following habitats did you find on your school grounds? (Multiple choice)",
+"Sverige (Sweden)": "Vilka av följande habitat hittade ni på er skolgård? (Flervalsfråga)"},
+
+{"United Kingdom": "Plant beds or flowerpots",
+"Sverige (Sweden)": "Blomsterbäddar och krukor"},
+
+{"United Kingdom": "Tall grass, wildflowers",
+"Sverige (Sweden)": "Högt gräs, vildblomster"},
+
+{"United Kingdom": "Trees and bushes",
+"Sverige (Sweden)": "Träd och buskar"},
+
+{"United Kingdom": "Bare ground (soil, sand, gravel, etc.)",
+"Sverige (Sweden)": "Barmark (jord, sand, grus, etc.)"},
+
+{"United Kingdom": "Man-made homes: Bird homes",
+"Sverige (Sweden)": "Konstgjorda hem: Fåglar"},
+
+{"United Kingdom": "Man-made homes: Wild Bee homes",
+"Sverige (Sweden)": "Konstgjorda hem: Vildbin"},
+
+{"United Kingdom": "Man-made homes: Honeybee homes",
+"Sverige (Sweden)": "Konstgjorda hem: Honungsbin"},
+
+{"United Kingdom": "Man-made homes: Minibeast homes",
+"Sverige (Sweden)": "Konstgjorda hem: Småkryp"},
+
+{"United Kingdom": "Man-made homes: Other",
+"Sverige (Sweden)": "Konstgjorda hem: Annat"},
+
+{"United Kingdom": "Damp places",
+"Sverige (Sweden)": "Fuktiga platser"},
+
+{"United Kingdom": "Short grass",
+"Sverige (Sweden)": "Kort gräs"},
+
+{"United Kingdom": "Bare walls or fences",
+"Sverige (Sweden)": "Bara väggar eller staket"},
+
+{"United Kingdom": "Concrete or tarmac",
+"Sverige (Sweden)": "Asfalt eller betong"},
+
+{"United Kingdom": "Show habitat data",
+"Sverige (Sweden)": "Visa habitat-data"},
+
+{"United Kingdom": "Trees:",
+"Sverige (Sweden)": "Träd:"},
+
+{"United Kingdom": "Shrubs:",
+"Sverige (Sweden)": "Buskar:"},
+
+{"United Kingdom": "Total number of tree and shrub individuals:",
+"Sverige (Sweden)": "Totalt antal träd och buskar (individer):"},
+
+{"United Kingdom": "Total number of different tree and shrub species:",
+"Sverige (Sweden)": "Totalt antal olika träd- och buskarter"},
+
+{"United Kingdom": "Number of flowering species:",
+"Sverige (Sweden)": "Antal blommande arter"},
+
+{"United Kingdom": "Number of fruit bearing species:",
+"Sverige (Sweden)": "Antal fruktbärande arter"},
+
+{"United Kingdom": "Enter the three most common species and numbers below:",
+"Sverige (Sweden)": "Ange de tre vanligaste arterna och antal nedan:"},
+
+{"United Kingdom": "E.g.: oak (7), birch (4), Taxus baccata (2)",
+"Sverige (Sweden)": "T.ex.: ek (7), björk (4), idegran (2)"},
+
+{"United Kingdom": "Show tree and shrub data",
+"Sverige (Sweden)": "Visa träd- och buskdata"},
+
+{"United Kingdom": "How do you rate your experience with using this survey? (Use slider below)",
+"Sverige (Sweden)": "Hur skulle ni betygsätta er upplevelse av den här inventeringen? (Använd skjutreglaget nedan)"},
+
+{"United Kingdom": "Bird survey",
+"Sverige (Sweden)": "Fågelinventering"},
+
+{"United Kingdom": "Below you can enter the data from the survey of birds (Part B). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:",
+"Sverige (Sweden)": "Nedan kan du lägga in data från fågelinventeringen (Del B). Om ni räknade antalet individer ni såg per art, ange antalet nedan. Om ni inte har antalet, men vet att ni såg en art, kryssa i rutan:"},
+
+{"United Kingdom": "Number:",
+"Sverige (Sweden)": "Antal:"},
+
+{"United Kingdom": "Present:",
+"Sverige (Sweden)": "Närvarande"},
+
+{"United Kingdom": "Eurasian blackbird (Turdus merula)",
+"Sverige (Sweden)": "Koltrast (Turdus merula)"},
+
+{"United Kingdom": "Common chaffinch (Fringilla coelebs)",
+"Sverige (Sweden)": "Bofink (Fringilla coelebs)"},
+
+{"United Kingdom": "Great tit (Parus major)",
+"Sverige (Sweden)": "Talgoxe (Parus major)"},
+
+{"United Kingdom": "Blue tit (Cyanistes caeruleus)",
+"Sverige (Sweden)": "Blåmes (Cyanistes caeruleus)"},
+
+{"United Kingdom": "House sparrow (Passer domesticus)",
+"Sverige (Sweden)": "Gråsparv (Passer domesticus)"},
+
+{"United Kingdom": "White wagtail (Motacilla alba)",
+"Sverige (Sweden)": "Sädesärla (Motacilla alba)"},
+
+{"United Kingdom": "Common starling (Sturnus vulgaris)",
+"Sverige (Sweden)": "Stare (Sturnus vulgaris)"},
+
+{"United Kingdom": "Swift (Apus apus)",
+"Sverige (Sweden)": "Tornseglare (Apus apus)"},
+
+{"United Kingdom": "Collared dove (Streptopelia decaocto)",
+"Sverige (Sweden)": "Turkduva (Streptopelia decaocto)"},
+
+{"United Kingdom": "European robin (Erithacus rubecula)",
+"Sverige (Sweden)": "Rödhake (Erithacus rubecula)"},
+
+{"United Kingdom": "Wood pigeon (Columba palumbus)",
+"Sverige (Sweden)": "Ringduva (Columba palumbus)"},
+
+{"United Kingdom": "Redstart (Phoenicurus phoenicurus)",
+"Sverige (Sweden)": "Rödstjärt (Phoenicurus phoenicurus)"},
+
+{"United Kingdom": "Magpie (Pica pica)",
+"Sverige (Sweden)": "Skata (Pica pica)"},
+
+{"United Kingdom": "Eurasian blackcap (Sylvia articapilla)",
+"Sverige (Sweden)": "Svarthätta (Sylvia articapilla)"},
+
+{"United Kingdom": "Sardinian warbler (Sylvia melanocephala)",
+"Sverige (Sweden)": "Sammetshätta (Sylvia melanocephala)"},
+
+{"United Kingdom": "If you saw any aditional species, enter the three most common species and numbers below:",
+"Sverige (Sweden)": "Om ni såg några ytterligare arter, skriv de tre vanligaste arterna och deras antal nedan:"},
+
+{"United Kingdom": "E.g.: hooded crow (3), rook (4), common gull (2)",
+"Sverige (Sweden)": "T.ex.: Kråka (3), råka (4), fiskmås (2)"},
+
+{"United Kingdom": "Show bird data",
+"Sverige (Sweden)": "Visa fågel-data"},
+
+{"United Kingdom": "Below you can enter the data from the survey of pollinators and flowers in the 5x5m square (Part C):",
+"Sverige (Sweden)": "Nedan kan ni lägga in data från inventeringen av pollinatörer och blommor i 5x5m-rutan (Del C):"},
+
+{"United Kingdom": "Enter the area (m2) of the following habitat in your 5x5 survey plot:",
+"Sverige (Sweden)": "Ange arean (m2) av följande habitat i er 5x5m ruta:"},
+
+{"United Kingdom": "Enter the total number of individuals and species you saw for each pollinator group:",
+"Sverige (Sweden)": "Ange det totala antalet individer och arter ni såg per pollinatörgrupp"},
+
+{"United Kingdom": "Individuals:",
+"Sverige (Sweden)": "Individer:"},
+
+{"United Kingdom": "Species:",
+"Sverige (Sweden)": "Arter"},
+
+{"United Kingdom": "Honeybees",
+"Sverige (Sweden)": "Honungsbin"},
+
+{"United Kingdom": "Solitary bees",
+"Sverige (Sweden)": "Solitärbin"},
+
+{"United Kingdom": "Wasps",
+"Sverige (Sweden)": "Getingar"},
+
+{"United Kingdom": "Beetles",
+"Sverige (Sweden)": "Skalbaggar"},
+
+{"United Kingdom": "True bugs",
+"Sverige (Sweden)": "Skinnbaggar"},
+
+{"United Kingdom": "Butterflies",
+"Sverige (Sweden)": "Fjärilar"},
+
+{"United Kingdom": "Moths",
+"Sverige (Sweden)": "Nattfjärilar"},
+
+{"United Kingdom": "Hoverflies",
+"Sverige (Sweden)": "Blomflugor"},
+
+{"United Kingdom": "Other flies and mosquitos",
+"Sverige (Sweden)": "Andra flugor och mygg"},
+
+{"United Kingdom": "Rate your 5x5m survey plot on the floweriness-scale:",
+"Sverige (Sweden)": "Betygsätt er 5x5m ruta på blommighetsskalan"},
+
+{"United Kingdom": "How many different species of flowering plants did you find?",
+"Sverige (Sweden)": "Hur många olika arter av blommande växter hittade ni?"},
+
+{"United Kingdom": "(Optional) If you identified the species, write the three most common below",
+"Sverige (Sweden)": "(Frivilligt) Om ni identified arterna, skriv ner de tre vanligaste nedan"},
+
+{"United Kingdom": "E.g.: daisy, lavender, orchid",
+"Sverige (Sweden)": "T.ex.: prästkrage, lavendel, orkidé"},
 
 
+{"United Kingdom": "Minibeasts and Leaves Survey",
+"Sverige (Sweden)": "Småkryp- och bladinventering"},
+
+{"United Kingdom": "Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (Part D):",
+"Sverige (Sweden)": "Nedan kan ni lägga in data från inventeringen av småkryp och blad i 1x1m rutorna (Del D):"},
+
+{"United Kingdom": "How many 1x1m squares did you survey?",
+"Sverige (Sweden)": "Hur många 1x1m rutor inventerade ni?"},
+
+{"United Kingdom": "What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:",
+"Sverige (Sweden)": "Vilket var det dominanta habitatet för varje ruta? Annge antalet rutor med det här habitatet som det dominanta inom parantes:"},
+
+{"United Kingdom": "E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)",
+"Sverige (Sweden)": "T.ex.: Blombäddar eller krukor (1), högt gräss och vildblomster (2), kort gräs (1)"},
+
+{"United Kingdom": "Enter the total number of individuals and species you saw for each minibeast group:",
+"Sverige (Sweden)": "Ange det totala antalet individer och arter ni såg per småkrypsgrupp:"},
+
+{"United Kingdom": "Earthworms",
+"Sverige (Sweden)": "Daggmaskar"},
+
+{"United Kingdom": "Ants",
+"Sverige (Sweden)": "Myror"},
+
+{"United Kingdom": "Centipedes and millipedes",
+"Sverige (Sweden)": "Mångfotingar"},
+
+
+{"United Kingdom": "Woodlice",
+"Sverige (Sweden)": "Gråsuggor"},
+
+{"United Kingdom": "Spiders and harvestmen",
+"Sverige (Sweden)": "Spindlar och lockespindlar"},
+
+{"United Kingdom": "Insect larvae",
+"Sverige (Sweden)": "Insektslarver"},
+
+{"United Kingdom": "Snails and slugs",
+"Sverige (Sweden)": "Sniglar och snäckor"},
+
+
+{"United Kingdom": "Other minibeasts",
+"Sverige (Sweden)": "Övriga småkryp"},
+
+{"United Kingdom": "Show minibeast data",
+"Sverige (Sweden)": "Visa småkryps-data"},
+
+{"United Kingdom": "Rate the mean of your 1x1m survey plot on the vegetation cover-scale:",
+"Sverige (Sweden)": "Uppskatta den genomsnittliga vegetationstäckningen i era 1x1m rutor:"},
+
+{"United Kingdom": "How many different types of leaves do you find in all 1x1m squares?",
+"Sverige (Sweden)": "Hur många olika typer av blad hittade ni totalt i alla 1x1m rutorna?"},
+
+{"United Kingdom": "Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to [...] so your data can be included in the research project and added to the website. Thank you for your participation.",
+"Sverige (Sweden)": "Tack för att ha lagt in all data! Vänligen kontrollera att svaren är korrekta innan ni laddar ner datafilen. Skicka sedan filen till [...] så er data can inkluderas i forskningsprojektet och laddas upp så andra skolor kan se det. Tack för ert deltagande!"},
+
+{"United Kingdom": "Download",
+"Sverige (Sweden)": "Ladda ner"},
+
+{"United Kingdom": "Birds (Part B)",
+"Sverige (Sweden)": "Fåglar (Del B)"},
+
+{"United Kingdom": "Pollinators (Part C)",
+"Sverige (Sweden)": "Pollinatörer (Del C)"},
+
+{"United Kingdom": "Minibeasts (Part D)",
+"Sverige (Sweden)": "Småkryp (Del D)"},
+
+{"United Kingdom": "Submit data",
+"Sverige (Sweden)": "Ladda upp data"}
     ]
 }
 
