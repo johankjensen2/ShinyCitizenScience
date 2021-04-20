@@ -46,6 +46,7 @@ loadData <- function() {
 }
 
 
+
 plot_func1_habitat <- function() {
   if (length(responses$School) > length(previousResponses$School)) {
     plotDataHabitat <- responses %>%
@@ -234,21 +235,30 @@ plot_func5_invertebrates <- function() {
   }
 }
 
-plotFuncTemp <- function() {
-  if (exists("responses")) {
-    ggplot(responses, aes(x =reorder(School,-as.numeric(temp)), y=as.numeric(temp), 
+plot_func6_temperature <- function() {
+  if (length(responses$School) > length(previousResponses$School)) {
+    
+    plotDataTemperature <- data.frame()
+    for(row in 1:nrow(responses)){
+      temp3 <- (as.numeric(responses$temp[row]))
+      plotDataTemperature <- rbind(plotDataTemperature, temp3)
+    }
+    colnames(plotDataTemperature) <- c("temp")
+    plotDataTemperature$School <- as.character(responses$School)
+                                
+    ggplot(plotDataTemperature, aes(x =reorder(School,-as.numeric(temp)), y=as.numeric(temp), 
                           fill = School, color = School)) +
       geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
       theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
-      scale_y_continuous(limits = c(0,50), expand = c(0,0)) +
+      scale_y_continuous(limits = c(0,40), expand = c(0,0)) +
       labs(y="Temperature (°C)", x="", title = "") +
       theme(legend.position = "none",
             plot.title = element_text(hjust = 0.5),
             text = element_text(size=20, family= "Times"), 
             axis.text.x = element_text(size = 20, angle = 45,
                                        hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm")+
+      theme(axis.ticks.length=unit(.25, "cm")) +
               theme(
                 panel.background = element_rect(fill = "transparent"), # bg of the panel
                 plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
@@ -256,7 +266,7 @@ plotFuncTemp <- function() {
                 panel.grid.minor = element_blank(), # get rid of minor grid
                 legend.background = element_rect(fill = "transparent"), # get rid of legend bg
                 legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
-              ))
+              )
   }
 }
 
@@ -437,7 +447,11 @@ ui <- dashboardPage(
               
               actionButton("showWeather", i18n$t("Show weather data")),
               
-              HTML("<br/>", "<br/>", "<br/>") # white space
+              HTML("<br/>", "<br/>"), #whitespace
+              
+              plotOutput("temp", width = 780, height = 420), #graph 2 - species depending on yard size
+              
+              HTML("<br/>", "<br/>") #whitespace
               
              # imageOutput("footerLogo", height = 100) # footer logo
               
@@ -1342,7 +1356,7 @@ server <- function(input, output, session) {
     
     input$showWeather
     loadData()
-    plotFuncTemp()
+    plot_func6_temperature()
     
     
   }, bg="transparent")
