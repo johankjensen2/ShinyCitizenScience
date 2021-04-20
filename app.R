@@ -20,6 +20,8 @@ library(shinyjs) #added
 ####################################################
 
 #Save the data into the main data frame - if responses are updated w/ same school name, the row will be over-written
+previousResponses <- read.csv("./Data/test3.csv", sep = ';')
+responses <- read.csv("./Data/test3.csv", sep = ';')
 
 saveData <- function(data) {
   data <- as.data.frame(t(data))
@@ -45,7 +47,7 @@ loadData <- function() {
 
 
 plot_func1_habitat <- function() {
-  if (exists("responses")) {
+  if (length(responses$School) > length(previousResponses$School)) {
     plotDataHabitat <- responses %>%
       count(dominant_habitat)
     
@@ -71,7 +73,7 @@ plot_func1_habitat <- function() {
 }
 
 plot_func2_yard <- function() {
-  if (exists("responses")) {
+  if (length(responses$School) > length(previousResponses$School)) {
     School <- as.character(responses$School)
     yard <- as.numeric(responses$yard_size)
     WoodySpecies <- as.numeric(responses$trees_tot_species) + as.numeric(responses$shrubs_tot_species)
@@ -105,7 +107,7 @@ plot_func2_yard <- function() {
 }
 
 plot_func3_birds <- function() {
-  if (exists("responses")) {
+  if (length(responses$School) > length(previousResponses$School)) {
     
     plotDataBirds <- data.frame()
     for(row in 1:nrow(responses)){
@@ -150,18 +152,18 @@ plot_func3_birds <- function() {
 }
 
 plot_func4_pollinators <- function() {
-  if (exists("responses")) {
+  if (length(responses$School) > length(previousResponses$School)) {
     
-    plotDataPollinators <- t(data.frame(responses$`5x5_bombus_tot_individ`[length(responses$School)],
-                                        responses$`5x5_mellifera_tot_individ`[length(responses$School)],
-                                        responses$`5x5_apis_tot_individ`[length(responses$School)],
-                                        responses$`5x5_vespid_tot_individ`[length(responses$School)],
-                                        responses$`5x5_coleoptera_tot_individ`[length(responses$School)],
-                                        responses$`5x5_hemiptera_tot_individ`[length(responses$School)],
-                                        responses$`5x5_lepidoptera_tot_individ`[length(responses$School)],
-                                        responses$`5x5_moth_tot_individ`[length(responses$School)],
-                                        responses$`5x5_syrphidae_tot_individ`[length(responses$School)],
-                                        responses$`5x5_other_diptera_tot_individ`[length(responses$School)]))
+    plotDataPollinators <- t(data.frame(responses$bombus_tot_individ_5x5[length(responses$School)],
+                                        responses$mellifera_tot_individ_5x5[length(responses$School)],
+                                        responses$apis_tot_individ_5x5[length(responses$School)],
+                                        responses$vespid_tot_individ_5x5[length(responses$School)],
+                                        responses$coleoptera_tot_individ_5x5[length(responses$School)],
+                                        responses$hemiptera_tot_individ_5x5[length(responses$School)],
+                                        responses$lepidoptera_tot_individ_5x5[length(responses$School)],
+                                        responses$moth_tot_individ_5x5[length(responses$School)],
+                                        responses$syrphidae_tot_individ_5x5[length(responses$School)],
+                                        responses$other_diptera_tot_individ_5x5[length(responses$School)]))
     
     plotDataPollinators <- as.data.frame(plotDataPollinators)
     
@@ -189,15 +191,15 @@ plot_func4_pollinators <- function() {
 }
 
 plot_func5_invertebrates <- function() {
-  if (exists("responses")) {
+  if (length(responses$School) > length(previousResponses$School)) {
     
     plotDataInvertebrates <- data.frame()
     for(row in 1:nrow(responses)){
-      temp2 <- sum(as.numeric(c(responses$`1x1_annelida_tot_species`[row], responses$`1x1_hymenoptera_tot_species`[row], 
-                                responses$`1x1_myriapoda_tot_species`[row], responses$`1x1_isopoda_tot_species`[row],
-                                responses$`1x1_arachnid_tot_species`[row], responses$`1x1_coleoptera_tot_species`[row],
-                                responses$`1x1_hemiptera_tot_species`[row], responses$`1x1_caterpillar_tot_species`[row],
-                                responses$`1x1_gastropoda_tot_species`[row], responses$`1x1_other_diptera_tot_species`[row])))
+      temp2 <- sum(as.numeric(c(responses$annelida_tot_species_1x1[row], responses$hymenoptera_tot_species_1x1[row], 
+                                responses$myriapoda_tot_species_1x1[row], responses$isopoda_tot_species_1x1[row],
+                                responses$arachnid_tot_species_1x1[row], responses$coleoptera_tot_species_1x1[row],
+                                responses$hemiptera_tot_species_1x1[row], responses$caterpillar_tot_species_1x1[row],
+                                responses$gastropoda_tot_species_1x1[row], responses$other_diptera_tot_species_1x1[row])))
       plotDataInvertebrates <- rbind(plotDataInvertebrates, temp2)
     }
     colnames(plotDataInvertebrates) <- c("InvertebrateSum")
@@ -259,7 +261,7 @@ plotFuncTemp <- function() {
 }
 
 mapFunc <- function() {
-  if (exists("responses")) {
+  if (length(responses$School) > length(previousResponses$School)) {
     points <- cbind(as.numeric(responses$long), as.numeric(responses$lat))
     
     leaflet() %>%
@@ -293,18 +295,18 @@ fields <- c("School", "selected_language", "lat", "long",
             "phoenicurus_no","phoenicurus_pres","pica_no","pica_pres","sylvia_arti_no","sylvia_arti_pres","sylvia_melano_no",
             "sylvia_melano_pres","birdSpecies_freeText","feedback_birds","weather","temp","windLevel","date","time","area_5x5_planted",
             "area_5x5_damp","area_5x5_woody","area_5x5_shortGrass","area_5x5_ground","area_5x5_walls","area_5x5_anthro",
-            "area_5x5_hardSurface","5x5_bombus_tot_individ","5x5_bombus_tot_species","5x5_mellifera_tot_individ",
-            "5x5_mellifera_tot_species","5x5_apis_tot_individ","5x5_apis_tot_species","5x5_vespid_tot_individ",
-            "5x5_vespid_tot_species","5x5_coleoptera_tot_individ","5x5_coleoptera_tot_species","5x5_hemiptera_tot_individ",
-            "5x5_hemiptera_tot_species","5x5_lepidoptera_tot_individ","5x5_lepidoptera_tot_species","5x5_moth_tot_individ","5x5_moth_tot_species",
-            "5x5_syrphidae_tot_individ","5x5_syrphidae_tot_species","5x5_other_diptera_tot_individ","5x5_other_diptera_tot_species", 
-            "5x5_floweriness","5x5_flowers_tot_species","5x5_flower_species_freeText","feedback_pollinators","no_1x1_squares",
-            "habitat_1x1_freeText","1x1_annelida_tot_indiv","1x1_annelida_tot_species","1x1_hymenoptera_tot_individ",
-            "1x1_hymenoptera_tot_species","1x1_myriapoda_tot_individ","1x1_myriapoda_tot_species","1x1_isopoda_tot_individ",
-            "1x1_isopoda_tot_species","1x1_arachnid_tot_individ","1x1_arachnid_tot_species","1x1_coleoptera_tot_individ",
-            "1x1_coleoptera_tot_species","1x1_hemioptera_tot_individ","1x1_hemiptera_tot_species","1x1_caterpillar_tot_individ",
-            "1x1_caterpillar_tot_species","1x1_gastropoda_tot_individ","1x1_gastropoda_tot_species","1x1_other_tot_individ",
-            "1x1_other_diptera_tot_species","1x1_leaf_diversity","feedback_minibeasts")
+            "area_5x5_hardSurface","bombus_tot_individ_5x5","bombus_tot_species_5x5","mellifera_tot_individ_5x5",
+            "mellifera_tot_species_5x5","apis_tot_individ_5x5","apis_tot_species_5x5","vespid_tot_individ_5x5",
+            "vespid_tot_species_5x5","coleoptera_tot_individ_5x5","coleoptera_tot_species_5x5","hemiptera_tot_individ_5x5",
+            "hemiptera_tot_species_5x5","lepidoptera_tot_individ_5x5","lepidoptera_tot_species_5x5","moth_tot_individ_5x5","moth_tot_species_5x5",
+            "syrphidae_tot_individ_5x5","syrphidae_tot_species_5x5","other_diptera_tot_individ_5x5","other_diptera_tot_species_5x5", 
+            "floweriness_5x5","flowers_tot_species_5x5","flower_species_freeText_5x5","feedback_pollinators","no_1x1_squares",
+            "habitat_1x1_freeText","annelida_tot_indiv_1x1","annelida_tot_species_1x1","hymenoptera_tot_individ_1x1",
+            "hymenoptera_tot_species_1x1","myriapoda_tot_individ_1x1","myriapoda_tot_species_1x1","isopoda_tot_individ_1x1",
+            "isopoda_tot_species_1x1","arachnid_tot_individ_1x1","arachnid_tot_species_1x1","coleoptera_tot_individ_1x1",
+            "coleoptera_tot_species_1x1","hemioptera_tot_individ_1x1","hemiptera_tot_species_1x1","caterpillar_tot_individ_1x1",
+            "caterpillar_tot_species_1x1","gastropoda_tot_individ_1x1","gastropoda_tot_species_1x1","other_tot_individ_1x1",
+            "other_diptera_tot_species_1x1","leaf_diversity_1x1","feedback_minibeasts")
 
 ####################################################
 # APP
@@ -854,100 +856,100 @@ ui <- dashboardPage(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Bumblebees"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_bombus_tot_individ", label = i18n$t("Individuals:"), value = 0, width = "50%")),
+                       numericInput("bombus_tot_individ_5x5", label = i18n$t("Individuals:"), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_bombus_tot_species", label = i18n$t("Species:"), value = 0, width = "50%"))),
+                       numericInput("bombus_tot_species_5x5", label = i18n$t("Species:"), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Honeybees"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_mellifera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("mellifera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_mellifera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("mellifera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Solitary bees"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_apis_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("apis_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_apis_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("apis_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Wasps"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_vespid_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("vespid_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_vespid_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("vespid_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Beetles"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_coleoptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("coleoptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_coleoptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("coleoptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("True bugs"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_hemiptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("hemiptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_hemiptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("hemiptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Butterflies"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_lepidoptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("lepidoptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_lepidoptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("lepidoptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Moths"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_moth_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("moth_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_moth_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("moth_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Hoverflies"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_syrphidae_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("syrphidae_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_syrphidae_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("syrphidae_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Other flies and mosquitos"))),
                 
                 column(4, align="center",
-                       numericInput("5x5_other_diptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("other_diptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("5x5_other_diptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("other_diptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
@@ -960,7 +962,7 @@ ui <- dashboardPage(
               HTML("<br/>", "<br/>"), #whitespace
               
               #floweriness
-              sliderInput(inputId = "5x5_floweriness", label = i18n$t("Rate your 5x5m survey plot on the floweriness-scale:"),
+              sliderInput(inputId = "floweriness_5x5", label = i18n$t("Rate your 5x5m survey plot on the floweriness-scale:"),
                           1, 3, 1, ticks = F),       
               
               
@@ -969,10 +971,10 @@ ui <- dashboardPage(
               #flower species
               fluidRow(
                 column(6, align="center", 
-                       numericInput("5x5_flowers_tot_species", label = i18n$t("How many different species of flowering plants did you find?"), 
+                       numericInput("flowers_tot_species_5x5", label = i18n$t("How many different species of flowering plants did you find?"), 
                                     value = 0, width = "100%")),
                 
-                column(6, align="center", textInput("5x5_flower_species_freeText", i18n$t("(Optional) If you identified the species, write the three most common below"), 
+                column(6, align="center", textInput("flower_species_freeText_5x5", i18n$t("(Optional) If you identified the species, write the three most common below"), 
                                                     value = "E.g.: daisy, lavender, orchid", width = "100%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
@@ -1010,100 +1012,100 @@ ui <- dashboardPage(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Earthworms"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_annelida_tot_indiv", label = i18n$t("Individuals:"), value = 0, width = "50%")),
+                       numericInput("annelida_tot_indiv_1x1", label = i18n$t("Individuals:"), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_annelida_tot_species", label = i18n$t("Species:"), value = 0, width = "50%"))),
+                       numericInput("annelida_tot_species_1x1", label = i18n$t("Species:"), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Ants"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_hymenoptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("hymenoptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_hymenoptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("hymenoptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Centipedes and millipedes"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_myriapoda_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("myriapoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_myriapoda_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("myriapoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Woodlice"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_isopoda_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("isopoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_isopoda_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("isopoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Spiders and harvestmen"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_arachnid_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("arachnid_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_arachnid_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("arachnid_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Beetles"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_coleoptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("coleoptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_coleoptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("coleoptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("True bugs"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_hemioptera_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("hemioptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_hemiptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("hemiptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Insect larvae"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_caterpillar_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("caterpillar_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_caterpillar_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("caterpillar_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Snails and slugs"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_gastropoda_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("gastropoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_gastropoda_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("gastropoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               
               fluidRow(
                 column(3, align="left", HTML("<br/>"), strong(i18n$t("Other minibeasts"))),
                 
                 column(4, align="center",
-                       numericInput("1x1_other_tot_individ", label = i18n$t(""), value = 0, width = "50%")),
+                       numericInput("other_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
                 
                 column(4, align="center",
-                       numericInput("1x1_other_diptera_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                       numericInput("other_diptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
@@ -1119,11 +1121,11 @@ ui <- dashboardPage(
               #floweriness
               fluidRow(
                 column(6, align="center",
-                       sliderInput(inputId = "1x1_vegetation_cover", label = i18n$t("Rate the mean of your 1x1m survey plot on the vegetation cover-scale:"),
+                       sliderInput(inputId = "vegetation_cover_1x1", label = i18n$t("Rate the mean of your 1x1m survey plot on the vegetation cover-scale:"),
                                    1, 3, 1, ticks = F)),
                 
                 column(6, align="center",
-                       numericInput("1x1_leaf_diversity", label = i18n$t("How many different types of leaves do you find in all 1x1m squares?"), 
+                       numericInput("leaf_diversity_1x1", label = i18n$t("How many different types of leaves do you find in all 1x1m squares?"), 
                                     value = 0, width = "100%"))),
               
               
