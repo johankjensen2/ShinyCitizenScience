@@ -16,6 +16,7 @@ library(leaflet)
 library(plotly)
 library(shinydashboard) #added
 library(shinyjs) #added
+library(extrafont) #new April 29th
 
 ####################################################
 
@@ -49,15 +50,46 @@ loadData <- function() {
 
 plot_func1_habitat <- function() {
   if (length(responses$School) > length(previousResponses$School)) {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+      #manually translate swedish responses from selectInput 
+      responses$dominant_habitat[responses$dominant_habitat == "Blomsterbäddar och krukor"] <- 'Plant beds or flowerpots'
+      responses$dominant_habitat[responses$dominant_habitat == "Högt gräs, vildblomster"] <-  'Tall grass, wildflowers'
+      responses$dominant_habitat[responses$dominant_habitat == "Träd och buskar"] <- 'Trees and bushes'
+      responses$dominant_habitat[responses$dominant_habitat == "Barmark (jord, sand, grus, etc.)"] <- 'Bare ground (soil, sand, gravel, etc.)'
+      responses$dominant_habitat[responses$dominant_habitat == "Fuktiga platser"] <- 'Damp places'
+      responses$dominant_habitat[responses$dominant_habitat == "Kort gräs"] <-'Short grass'
+      responses$dominant_habitat[responses$dominant_habitat == "Bara väggar eller staket"] <-  'Bare walls or fences'
+      responses$dominant_habitat[responses$dominant_habitat == "Asfalt eller betong"] <-  'Concrete or tarmac'
+      responses$dominant_habitat[responses$dominant_habitat == "Konstgjorda hem"] <-  'Man-made homes'
+      
+      plotDataHabitat <- responses %>%
+        count(dominant_habitat)
+    }
+    else{
     plotDataHabitat <- responses %>%
       count(dominant_habitat)
+    }
     
-    ggplot(plotDataHabitat, aes(x = reorder(as.character(dominant_habitat),-as.numeric(n)), y=as.numeric(n), 
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+     
+       plotDataHabitatSwe <- plotDataHabitat #create a new df for translation of data names for plot
+      
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Plant beds or flowerpots'] <- "Blomsterbäddar och krukor"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Tall grass, wildflowers'] <- "Högt gräs, vildblomster"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Trees and bushes'] <- "Träd och buskar"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Bare ground (soil, sand, gravel, etc.)'] <- "Barmark (jord, sand, grus, etc.)"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Damp places'] <- "Fuktiga platser"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Short grass'] <- "Kort gräs"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Bare walls or fences'] <- "Bara väggar eller staket"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Concrete or tarmac'] <- "Asfalt eller betong"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Man-made homes'] <- "Konstgjorda hem"
+      
+    ggplot(plotDataHabitatSwe, aes(x = reorder(as.character(dominant_habitat),-as.numeric(n)), y=as.numeric(n), 
                                 fill = as.character(dominant_habitat), color = as.character(dominant_habitat))) +
       geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) + theme_classic() + 
       scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
-      scale_y_continuous(limits = c(0,5), expand = c(0,0)) + labs(y="Number of schools", x="", title = "") +
+      scale_y_continuous(limits = c(0,5), expand = c(0,0)) + labs(y="Antal skolor", x="", title = "") +
       theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
             text = element_text(size=20, family= "Times"), axis.text.x = element_text(size = 20, angle = 45, 
                                                                                       hjust = 1, color = "grey1")) + 
@@ -70,6 +102,27 @@ plot_func1_habitat <- function() {
                 legend.background = element_rect(fill = "transparent"), # get rid of legend bg
                 legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
               )
+    }
+    else{
+      ggplot(plotDataHabitat, aes(x = reorder(as.character(dominant_habitat),-as.numeric(n)), y=as.numeric(n), 
+                                  fill = as.character(dominant_habitat), color = as.character(dominant_habitat))) +
+        geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) + theme_classic() + 
+        scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
+        scale_y_continuous(limits = c(0,5), expand = c(0,0)) + labs(y="Number of schools", x="", title = "") +
+        theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
+              text = element_text(size=20, family= "Times"), axis.text.x = element_text(size = 20, angle = 45, 
+                                                                                        hjust = 1, color = "grey1")) + 
+        theme(axis.ticks.length=unit(.25, "cm"))  +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
   }
 }
 
@@ -81,29 +134,55 @@ plot_func2_yard <- function() {
     
     plotDataHabitatTrees <- data.frame(School,yard,WoodySpecies)
     
-    
-    ggplot(plotDataHabitatTrees, aes(x = as.numeric(yard), y=as.numeric(WoodySpecies), 
-                                     fill = School, color = School)) +
-      geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
-      theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
-      scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
-      scale_y_continuous(limits = c(0,25), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
-      labs(y="Species richness (number of woody species) \n", x="School grounds size (m2)", title = "") +
-      geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
-      theme(legend.position = "none",
-            plot.title = element_text(hjust = 0.5),
-            text = element_text(size=20, family= "Times"), 
-            axis.text.x = element_text(size = 20, angle = 45,
-                                       hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm")) +
-              theme(
-                panel.background = element_rect(fill = "transparent"), # bg of the panel
-                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
-                panel.grid.major = element_blank(), # get rid of major grid
-                panel.grid.minor = element_blank(), # get rid of minor grid
-                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
-                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
-              )
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+      ggplot(plotDataHabitatTrees, aes(x = as.numeric(yard), y=as.numeric(WoodySpecies), 
+                                       fill = School, color = School)) +
+        geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+        theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
+        scale_y_continuous(limits = c(0,25), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
+        labs(y="Artrikedom\n(antal träd- och buskarter) \n", x="Skolgårdens storlek (m2)", title = "") +
+        geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
+        theme(legend.position = "none",
+              plot.title = element_text(hjust = 0.5),
+              text = element_text(size=20, family= "Times"), 
+              axis.text.x = element_text(size = 20, angle = 45,
+                                         hjust = 1, color = "grey1")) +
+        theme(axis.ticks.length=unit(.25, "cm")) +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
+    else{
+      ggplot(plotDataHabitatTrees, aes(x = as.numeric(yard), y=as.numeric(WoodySpecies), 
+                                       fill = School, color = School)) +
+        geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+        theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
+        scale_y_continuous(limits = c(0,25), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
+        labs(y="Species richness\n(number of woody species) \n", x="School grounds size (m2)", title = "") +
+        geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
+        theme(legend.position = "none",
+              plot.title = element_text(hjust = 0.5),
+              text = element_text(size=20, family= "Times"), 
+              axis.text.x = element_text(size = 20, angle = 45,
+                                         hjust = 1, color = "grey1")) +
+        theme(axis.ticks.length=unit(.25, "cm")) +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
+
   }
 }
 
@@ -128,7 +207,29 @@ plot_func3_birds <- function() {
     plotDataBirds$WoodySpecies <- as.numeric(responses$trees_tot_species) + as.numeric(responses$shrubs_tot_species)
     colnames(plotDataBirds) <- c("BirdSum", "School", "WoodySpecies")
     
-    
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+      ggplot(plotDataBirds, aes(x = WoodySpecies, y=BirdSum, fill = School, color = School)) +
+        geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+        theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), 
+                                                               type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), type = "continuous")) +
+        scale_y_continuous(limits = c(0,80), expand = c(0,0)) +  scale_x_continuous(limits = c(0,25), expand = c(0,0)) +
+        labs(y="Totalt antal observerade fåglar \n", x="Antal träd- och buskarter", title = "") +
+        geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
+        theme(legend.position = "none", plot.title = element_text(hjust = 0.5), 
+              text = element_text(size=20, family= "Times"), 
+              axis.text.x = element_text(size = 16, angle = 45,
+                                         hjust = 1, color = "grey1")) + theme(axis.ticks.length=unit(.25, "cm")) +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
+    else{
     ggplot(plotDataBirds, aes(x = WoodySpecies, y=BirdSum, fill = School, color = School)) +
       geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
       theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), 
@@ -149,6 +250,7 @@ plot_func3_birds <- function() {
                                                                                 legend.background = element_rect(fill = "transparent"), # get rid of legend bg
                                                                                 legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
                                                                               )
+    }
   }
 }
 
@@ -174,20 +276,56 @@ plot_func4_pollinators <- function() {
     colnames(plotDataPollinators) <- c("Number", "ShowName")
     plotDataPollinators$Number <- as.numeric(plotDataPollinators$Number)
     
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+      
+      plotDataPollinatorsSwe <- plotDataPollinators #create a new df for translation of data names for plot
+      
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Bumblebees'] <- "Humlor"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Honeybees'] <- "Honungsbin"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Solitary bees'] <- "Solitärbin"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Wasps'] <- "Getingar"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Beetles'] <- "Skalbaggar"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'True bugs'] <- "Skinnbaggar"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Butterflies'] <- "Fjärilar"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Moths'] <- "Nattfjärilar"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Hoverflies'] <- "Blomflugor"
+      plotDataPollinatorsSwe$ShowName[plotDataPollinatorsSwe$ShowName == 'Other pollinators'] <- "Övriga pollinatörer"
+      
+      pieChartPoll <- plot_ly(plotDataPollinatorsSwe, labels = ~ShowName, values = ~Number, type = 'pie',
+                              textposition = 'inside',
+                              textinfo = 'label+percent',
+                              insidetextfont = list(color = '#FFFFFF'),
+                              hoverinfo = 'text',
+                              text = ~paste(Number, 'observerade individer'),
+                              marker = list(colors = colors,
+                                            line = list(color = '#FFFFFF', width = 1),showlegend = FALSE))
+      
+      pieChartPoll <- pieChartPoll %>% layout(title = 'De vanligast förekommande pollinatörerna på er skolgård:',
+                                              paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+                                              xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+                                              yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+      
+      pieChartPoll
+    }
     
-    pieChartPoll <- plot_ly(plotDataPollinators, labels = ~ShowName, values = ~Number, type = 'pie',
-                            textposition = 'inside',
-                            textinfo = 'label+percent',
-                            insidetextfont = list(color = '#FFFFFF'),
-                            hoverinfo = 'text',
-                            text = ~paste(Number, ' individuals observed'),
-                            marker = list(colors = colors,
-                                          line = list(color = '#FFFFFF', width = 1),showlegend = FALSE))
-    pieChartPoll <- pieChartPoll %>% layout(title = 'The most common pollinators by occurence on your school:',
-                                            xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-                                            yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-    
-    pieChartPoll
+    else{
+      pieChartPoll <- plot_ly(plotDataPollinators, labels = ~ShowName, values = ~Number, type = 'pie',
+                              textposition = 'inside',
+                              textinfo = 'label+percent',
+                              insidetextfont = list(color = '#FFFFFF'),
+                              hoverinfo = 'text',
+                              text = ~paste(Number, ' individuals observed'),
+                              marker = list(colors = colors,
+                                            line = list(color = '#FFFFFF', width = 1),showlegend = FALSE))
+      
+      pieChartPoll <- pieChartPoll %>% layout(title = 'The most common pollinators by occurence on your school:',
+                                              paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+                                              xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+                                              yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+      
+      pieChartPoll
+    }
+
   }
 }
 
@@ -208,29 +346,56 @@ plot_func5_invertebrates <- function() {
     plotDataInvertebrates$plotNo <- as.numeric(responses$no_1x1_squares)
     plotDataInvertebrates$invertebrateMeanPerSquare <- plotDataInvertebrates$InvertebrateSum/plotDataInvertebrates$plotNo
     
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+      ggplot(plotDataInvertebrates, aes(x = reorder(School,-invertebrateMeanPerSquare), y=invertebrateMeanPerSquare, 
+                                        fill = School, color = School)) +
+        geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
+        scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
+                                             type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
+                                              type = "continuous")) +
+        scale_y_continuous(limits = c(0,15), expand = c(0,0)) + theme_classic() +
+        labs(y="Antal småkryp \n per kvadratmeter \n", x="", title = "") +
+        theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
+              text = element_text(size=20, family= "Times"), 
+              axis.text.x = element_text(size = 20, angle = 45,
+                                         hjust = 1, color = "grey1")) +
+        theme(axis.ticks.length=unit(.25, "cm")) +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
     
-    ggplot(plotDataInvertebrates, aes(x = reorder(School,-invertebrateMeanPerSquare), y=invertebrateMeanPerSquare, 
-                                      fill = School, color = School)) +
-      geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
-      scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
-                                           type = "continuous")) +
-      scale_color_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
-                                            type = "continuous")) +
-      scale_y_continuous(limits = c(0,15), expand = c(0,0)) + theme_classic() +
-      labs(y="Mean number of minibeasts per 1x1 square \n", x="", title = "") +
-      theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
-            text = element_text(size=20, family= "Times"), 
-            axis.text.x = element_text(size = 20, angle = 45,
-                                       hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm")) +
-              theme(
-                panel.background = element_rect(fill = "transparent"), # bg of the panel
-                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
-                panel.grid.major = element_blank(), # get rid of major grid
-                panel.grid.minor = element_blank(), # get rid of minor grid
-                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
-                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
-              )
+    else{
+      ggplot(plotDataInvertebrates, aes(x = reorder(School,-invertebrateMeanPerSquare), y=invertebrateMeanPerSquare, 
+                                        fill = School, color = School)) +
+        geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
+        scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
+                                             type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
+                                              type = "continuous")) +
+        scale_y_continuous(limits = c(0,15), expand = c(0,0)) + theme_classic() +
+        labs(y="Mean number of minibeasts \n per 1x1 square \n", x="", title = "") +
+        theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
+              text = element_text(size=20, family= "Times"), 
+              axis.text.x = element_text(size = 20, angle = 45,
+                                         hjust = 1, color = "grey1")) +
+        theme(axis.ticks.length=unit(.25, "cm")) +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
+
     
   }
 }
@@ -245,7 +410,32 @@ plot_func6_temperature <- function() {
     }
     colnames(plotDataTemperature) <- c("temp")
     plotDataTemperature$School <- as.character(responses$School)
-                                
+    
+    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+      ggplot(plotDataTemperature, aes(x =reorder(School,-as.numeric(temp)), y=as.numeric(temp), 
+                                      fill = School, color = School)) +
+        geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
+        theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
+        scale_color_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
+        scale_y_continuous(limits = c(0,40), expand = c(0,0)) +
+        labs(y="Temperatur (°C)", x="", title = "") +
+        theme(legend.position = "none",
+              plot.title = element_text(hjust = 0.5),
+              text = element_text(size=20, family= "Times"), 
+              axis.text.x = element_text(size = 20, angle = 45,
+                                         hjust = 1, color = "grey1")) +
+        theme(axis.ticks.length=unit(.25, "cm")) +
+        theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
+          panel.grid.major = element_blank(), # get rid of major grid
+          panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
+        )
+    }
+    
+    else{                            
     ggplot(plotDataTemperature, aes(x =reorder(School,-as.numeric(temp)), y=as.numeric(temp), 
                           fill = School, color = School)) +
       geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
@@ -267,6 +457,7 @@ plot_func6_temperature <- function() {
                 legend.background = element_rect(fill = "transparent"), # get rid of legend bg
                 legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
               )
+    }
   }
 }
 
@@ -326,10 +517,10 @@ ui <- dashboardPage(
   dashboardHeader(title = "Natural Nations"),
   dashboardSidebar(
     sidebarMenu(menuItem(i18n$t("School information"), icon = icon('school'), tabName = 'school'),
-                menuItem(i18n$t('Habitat (Part A)'), icon = icon('tree'), tabName = 'habitat'),
-                menuItem(i18n$t('Birds (Part B)'), icon = icon('crow'), tabName = 'birds'),
-                menuItem(i18n$t('Pollinators (Part C)'), icon = icon('seedling'), tabName = 'pollinators'),
-                menuItem(i18n$t('Minibeasts (Part D)'), icon = icon('bug'), tabName = 'minibeasts'),
+                menuItem(i18n$t('Habitat (S1)'), icon = icon('tree'), tabName = 'habitat'),
+                menuItem(i18n$t('Birds (S2)'), icon = icon('crow'), tabName = 'birds'),
+                menuItem(i18n$t('Pollinators (S3)'), icon = icon('seedling'), tabName = 'pollinators'),
+                menuItem(i18n$t('Minibeasts (S4)'), icon = icon('bug'), tabName = 'minibeasts'),
                 menuItem(i18n$t('Submit data'), icon = icon('save'), tabName = 'submit'),
                 style = "position:fixed;")),
   
@@ -347,7 +538,7 @@ ui <- dashboardPage(
               tags$div(
                 selectInput(
                   inputId='selected_language',
-                  label=i18n$t('Select your region:'),
+                  label=i18n$t('Select language and region:'),
                   choices = list("","España (Spain)", "Malta", "Sverige (Sweden)", "United Kingdom")
                 )
               ),
@@ -362,7 +553,7 @@ ui <- dashboardPage(
               titlePanel(i18n$t("Welcome to the data entry prototype!")),
               
               #spaghetti line of instructions
-              i18n$t("Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to [email]. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!"),
+              i18n$t("Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!"),
               HTML("<br/>","<br/>","<br/>","<br/>","<br/>"), #whitespace
               
               ## school name
@@ -466,7 +657,7 @@ ui <- dashboardPage(
               h2(id="habitat-heading", i18n$t("Habitat survey")),
               tags$style(HTML("#habitat-heading{color: #2F5496;}")), #ID call for custom colour
               
-              i18n$t("Below you can enter the data from the habitat survey (Part A):"), #Instructions
+              i18n$t("Below you can enter the data from the habitat survey (S1):"), #Instructions
               HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               # Entry of age and number
@@ -481,7 +672,7 @@ ui <- dashboardPage(
               HTML("<br/>", "<br/>"), #whitespace
               
               #yard size
-              numericInput("yard_size", label = i18n$t("(Optional) How large is your school grounds (m2)?"), 
+              numericInput("yard_size", label = i18n$t("How large is your school grounds (m2)?"), 
                            value = 0, width = "40%"),
               
               HTML("<br/>", "<br/>"), #whitespace
@@ -588,7 +779,7 @@ ui <- dashboardPage(
               h2(id="bird-heading", i18n$t("Bird survey")),
               tags$style(HTML("#bird-heading{color: #ED7D31;}")), #ID call for custom colour
               
-              i18n$t("Below you can enter the data from the survey of birds (Part B). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:"), #Instructions
+              i18n$t("Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:"), #Instructions
               
               HTML("<br/>","<br/>"), #whitespace
               
@@ -810,10 +1001,10 @@ ui <- dashboardPage(
       ##########################################
       tabItem(tabName = "pollinators", align = "center",
               ## title text
-              h2(id="pollinator-heading", i18n$t("Pollinators and flowers in the 5x5m square")),
+              h2(id="pollinator-heading", i18n$t("Pollinators and flowers in the 5x5m survey site")),
               tags$style(HTML("#pollinator-heading{color: #7030A0;}")), #ID call for custom colour
               
-              i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m square (Part C):"), #Instructions
+              i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):"), #Instructions
               
               HTML("<br/>","<br/>"), #whitespace
               
@@ -1003,7 +1194,7 @@ ui <- dashboardPage(
               h2(id="minibeast-heading", i18n$t("Minibeasts and Leaves Survey")),
               tags$style(HTML("#minibeast-heading{color: #92d050;}")), #ID call for custom colour
               
-              i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (Part D):"), #Instructions
+              i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):"), #Instructions
               
               HTML("<br/>","<br/>"), #whitespace
               
@@ -1157,7 +1348,7 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
-              strong(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to [...] so your data can be included in the research project and added to the website. Thank you for your participation.")),
+              strong(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.")),
               
               HTML("<br/>", "<br/>"),
               #download data button
@@ -1194,6 +1385,27 @@ server <- function(input, output, session) {
     
   })
   
+  i18n_r <- reactive({ #extra function that reads in a new translated function
+    i18n
+  })
+  
+  observe({
+    updateSelectInput(session, "dominant_habitat", 
+                      label = i18n_r()$t('What is the dominant habitat in your school grounds (select one):'),
+                      choices = i18n_r()$t(c("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and bushes", "Bare ground",
+                                             "Man-made homes", "Damp places", "Short grass", "Bare walls or fences", "Concrete or tarmac")))
+    updateTextInput(session, "plantSpecies_freeText", i18n_r()$t("Enter the three most common species and numbers below:"), 
+              value = i18n_r()$t("E.g.: oak (7), birch (4), Taxus baccata (2)"))
+    updateTextInput(session, "birdSpecies_freeText", i18n_r()$t("If you saw any aditional species, enter the three most common species and numbers below:"), 
+                    value = i18n_r()$t("E.g.: hooded crow (3), rook (4), common gull (2)"))
+    updateTextInput(session, "flower_species_freeText_5x5", i18n_r()$t("(Optional) If you identified the species, write the three most common below"), 
+                    value = i18n_r()$t( "E.g.: daisy, lavender, orchid"))
+    updateTextInput(session, "habitat_1x1_freeText", i18n_r()$t("What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:"), 
+                    value = i18n_r()$t("E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)"))
+  })
+
+  
+
   # When the Submit button is clicked, save the form data BEES
   observeEvent(input$showMap, {
     saveData(formData())

@@ -2,7 +2,7 @@
 {
   "languages": ["United Kingdom", "Sverige (Sweden)"],
   "translation": [
-    {"United Kingdom": "Select your region:", "Sverige (Sweden)": "Välj din region:"},
+    {"United Kingdom": "Select language and region:", "Sverige (Sweden)": "Välj språk och region:"},
     
     {"United Kingdom": "Select", "Sverige (Sweden)": "Välj"},
     
@@ -28,10 +28,10 @@
     "Sverige (Sweden)": "Resultat:"},
     
     {"United Kingdom": 
-    "Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to [email]. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!",
+    "Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!",
     
     "Sverige (Sweden)":
-    "Här kan du lägga in data från er undersökning med hjälp av de interaktiva kontrollerna nedan. Du kommer direkt kunna se     hur era resultat ser ut i jämförelse med andra skolor. Var noggrann med att lägga in all data korrekt innan ni trycker      'Ladda ner' - skicka sedan filen till [e-post]. Du kan sedan utforska sidans funktioner genom att testa ändra värden och     se vad som händer. Tack för att ni bidrar till forskning!"},
+    "Här kan du lägga in data från er undersökning med hjälp av de interaktiva kontrollerna nedan. Du kommer direkt kunna se     hur era resultat ser ut i jämförelse med andra skolor. Var noggrann med att lägga in all data korrekt innan ni trycker      'Ladda ner' - skicka sedan filen till anna.persson [at] cec.lu.se. Du kan sedan utforska sidans funktioner genom att testa ändra värden och     se vad som händer. Tack för att ni bidrar till forskning!"},
     
      {"United Kingdom": "What was the temperature outside during the survey? (°C)",
     "Sverige (Sweden)": "Vilken temperatur var det utomhus under undersökningen?(°C)"},
@@ -53,11 +53,11 @@
     "Sverige (Sweden)": "Skriv in det totala antalet småkryp ni såg för varje kategori:"},
     
     
-    {"United Kingdom": "Pollinators and flowers in the 5x5m square",
-    "Sverige (Sweden)": "Pollinatörer och blommor i 5x5m rutan"},
+    {"United Kingdom": "Pollinators and flowers in the 5x5m survey site",
+    "Sverige (Sweden)": "Pollinatörer och blommor i 5x5m undersökningsytan"},
     
     {"United Kingdom": "Describe your 5x5m survey plot in terms of floweriness:",
-    "Sverige (Sweden)": "Beskriv 5x5m rutan i blommighet:"},
+    "Sverige (Sweden)": "Beskriv 5x5m undersökningsytan i blommighet:"},
     
     {"United Kingdom": "Enter the time when the surveying started (use the dials or enter the time directly):",
     "Sverige (Sweden)": "Ange tiden då inventeringen påbörjades (använd knapparna eller skriv in tiden direkt):"},
@@ -120,8 +120,8 @@
     {"United Kingdom": "Bumblebees",
     "Sverige (Sweden)": "Humlor"},
     
-{"United Kingdom": "Habitat (Part A)",
-"Sverige (Sweden)": "Habitat (Del A)"},
+{"United Kingdom": "Habitat (S1)",
+"Sverige (Sweden)": "Habitat (P1)"},
 
 {"United Kingdom": "School information",
 "Sverige (Sweden)": "Information om skolan"},
@@ -132,8 +132,8 @@
 {"United Kingdom": "Habitat survey",
 "Sverige (Sweden)": "Habitat-inventeringen"},
 
-{"United Kingdom": "Below you can enter the data from the habitat survey (Part A):",
-"Sverige (Sweden)": "Nedan kan du lägga in data från habitat-inventeringen (Del A)"},
+{"United Kingdom": "Below you can enter the data from the habitat survey (S1):",
+"Sverige (Sweden)": "Nedan kan du lägga in data från habitat-inventeringen (P1)"},
 
 {"United Kingdom": "How many participants are in your survey group?",
 "Sverige (Sweden)": "Hur många deltagare samlade in data?"},
@@ -141,8 +141,8 @@
 {"United Kingdom": "What is the average age of the participants?",
 "Sverige (Sweden)": "Vad är genomsnittsåldern på deltagarna?"},
 
-{"United Kingdom": "(Optional) How large is your school grounds (m2)?",
-"Sverige (Sweden)": "(Frivilligt) Hur stor är er skolgård (m2)?"},
+{"United Kingdom": "How large is your school grounds (m2)?",
+"Sverige (Sweden)": "Hur stor är er skolgård (m2)?"},
 
 {"United Kingdom": "What is the dominant habitat in your school grounds (select one):",
 "Sverige (Sweden)": "Vad är det dominanta habitatet på er skolgård (välj en):"},
@@ -161,6 +161,9 @@
 
 {"United Kingdom": "Bare ground (soil, sand, gravel, etc.)",
 "Sverige (Sweden)": "Barmark (jord, sand, grus, etc.)"},
+
+{"United Kingdom": "Man-made homes",
+"Sverige (Sweden)": "Konstgjorda hem"},
 
 {"United Kingdom": "Man-made homes: Bird homes",
 "Sverige (Sweden)": "Konstgjorda hem: Fåglar"},
@@ -225,8 +228,8 @@
 {"United Kingdom": "Bird survey",
 "Sverige (Sweden)": "Fågelinventering"},
 
-{"United Kingdom": "Below you can enter the data from the survey of birds (Part B). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:",
-"Sverige (Sweden)": "Nedan kan du lägga in data från fågelinventeringen (Del B). Om ni räknade antalet individer ni såg per art, ange antalet nedan. Om ni inte har antalet, men vet att ni såg en art, kryssa i rutan:"},
+{"United Kingdom": "Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:",
+"Sverige (Sweden)": "Nedan kan du lägga in data från fågelinventeringen (P2). Om ni räknade antalet individer ni såg per art, ange antalet nedan. Om ni inte har antalet, men vet att ni såg en art, kryssa i rutan:"},
 
 {"United Kingdom": "Number:",
 "Sverige (Sweden)": "Antal:"},
@@ -248,6 +251,9 @@
 
 {"United Kingdom": "House sparrow (Passer domesticus)",
 "Sverige (Sweden)": "Gråsparv (Passer domesticus)"},
+
+{"United Kingdom": "Tree sparrow (Passer montanus)",
+"Sverige (Sweden)": "Pilfink (Passer domesticus)"},
 
 {"United Kingdom": "White wagtail (Motacilla alba)",
 "Sverige (Sweden)": "Sädesärla (Motacilla alba)"},
@@ -288,8 +294,8 @@
 {"United Kingdom": "Show bird data",
 "Sverige (Sweden)": "Visa fågel-data"},
 
-{"United Kingdom": "Below you can enter the data from the survey of pollinators and flowers in the 5x5m square (Part C):",
-"Sverige (Sweden)": "Nedan kan ni lägga in data från inventeringen av pollinatörer och blommor i 5x5m-rutan (Del C):"},
+{"United Kingdom": "Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):",
+"Sverige (Sweden)": "Nedan kan ni lägga in data från inventeringen av pollinatörer och blommor i 5x5m undersökningsytan (P3):"},
 
 {"United Kingdom": "Enter the area (m2) of the following habitat in your 5x5 survey plot:",
 "Sverige (Sweden)": "Ange arean (m2) av följande habitat i er 5x5m ruta:"},
@@ -346,11 +352,11 @@
 {"United Kingdom": "Minibeasts and Leaves Survey",
 "Sverige (Sweden)": "Småkryp- och bladinventering"},
 
-{"United Kingdom": "Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (Part D):",
-"Sverige (Sweden)": "Nedan kan ni lägga in data från inventeringen av småkryp och blad i 1x1m rutorna (Del D):"},
+{"United Kingdom": "Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):",
+"Sverige (Sweden)": "Nedan kan ni lägga in data från inventeringen av småkryp och blad i kvadratmeter-rutorna (P4):"},
 
 {"United Kingdom": "How many 1x1m squares did you survey?",
-"Sverige (Sweden)": "Hur många 1x1m rutor inventerade ni?"},
+"Sverige (Sweden)": "Hur många kvadratmeter-rutor inventerade ni?"},
 
 {"United Kingdom": "What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:",
 "Sverige (Sweden)": "Vilket var det dominanta habitatet för varje ruta? Annge antalet rutor med det här habitatet som det dominanta inom parantes:"},
@@ -391,25 +397,25 @@
 "Sverige (Sweden)": "Visa småkryps-data"},
 
 {"United Kingdom": "Rate the mean of your 1x1m survey plot on the vegetation cover-scale:",
-"Sverige (Sweden)": "Uppskatta den genomsnittliga vegetationstäckningen i era 1x1m rutor:"},
+"Sverige (Sweden)": "Uppskatta den genomsnittliga vegetationstäckningen i era kvadratmeter-rutor:"},
 
 {"United Kingdom": "How many different types of leaves do you find in all 1x1m squares?",
-"Sverige (Sweden)": "Hur många olika typer av blad hittade ni totalt i alla 1x1m rutorna?"},
+"Sverige (Sweden)": "Hur många olika typer av blad hittade ni totalt i alla kvadratmeter-rutorna?"},
 
-{"United Kingdom": "Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to [...] so your data can be included in the research project and added to the website. Thank you for your participation.",
-"Sverige (Sweden)": "Tack för att ha lagt in all data! Vänligen kontrollera att svaren är korrekta innan ni laddar ner datafilen. Skicka sedan filen till [...] så er data can inkluderas i forskningsprojektet och laddas upp så andra skolor kan se det. Tack för ert deltagande!"},
+{"United Kingdom": "Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.",
+"Sverige (Sweden)": "Tack för att ha lagt in all data! Vänligen kontrollera att svaren är korrekta innan ni laddar ner datafilen. Skicka sedan filen till anna.persson [at] cec.lu.se så er data can inkluderas i forskningsprojektet och laddas upp så andra skolor kan se det. Tack för ert deltagande!"},
 
 {"United Kingdom": "Download",
 "Sverige (Sweden)": "Ladda ner"},
 
-{"United Kingdom": "Birds (Part B)",
-"Sverige (Sweden)": "Fåglar (Del B)"},
+{"United Kingdom": "Birds (S2)",
+"Sverige (Sweden)": "Fåglar (P2)"},
 
-{"United Kingdom": "Pollinators (Part C)",
-"Sverige (Sweden)": "Pollinatörer (Del C)"},
+{"United Kingdom": "Pollinators (S3)",
+"Sverige (Sweden)": "Pollinatörer (P3)"},
 
-{"United Kingdom": "Minibeasts (Part D)",
-"Sverige (Sweden)": "Småkryp (Del D)"},
+{"United Kingdom": "Minibeasts (S4)",
+"Sverige (Sweden)": "Småkryp (P4)"},
 
 {"United Kingdom": "Submit data",
 "Sverige (Sweden)": "Ladda upp data"}
