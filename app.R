@@ -16,7 +16,7 @@ library(leaflet)
 library(plotly)
 library(shinydashboard) #added
 library(shinyjs) #added
-library(extrafont) #new April 29th
+library(extrafont) #added
 
 ####################################################
 
