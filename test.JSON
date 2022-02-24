@@ -3,111 +3,111 @@
   "languages": ["United Kingdom", "Sverige (Sweden)"],
   "translation": [
     {"United Kingdom": "Select language and region:", "Sverige (Sweden)": "Välj språk och region:"},
-    
+
     {"United Kingdom": "Select", "Sverige (Sweden)": "Välj"},
-    
-    {"United Kingdom": "Welcome to the data entry prototype!", 
+
+    {"United Kingdom": "Welcome to the data entry prototype!",
     "Sverige (Sweden)": "Välkommen till datainmatnings-prototypen!"},
-    
-    {"United Kingdom": "Enter the name of your school:", 
+
+    {"United Kingdom": "Enter the name of your school:",
     "Sverige (Sweden)": "Ange er skolas namn:"},
-    
-    {"United Kingdom": "No. of bees", 
+
+    {"United Kingdom": "No. of bees",
     "Sverige (Sweden)": "Antal bin"},
-    
-    {"United Kingdom": "School yard size (m2)", 
+
+    {"United Kingdom": "School yard size (m2)",
     "Sverige (Sweden)": "Storlek av skolgård (m2)"},
-    
-    {"United Kingdom": "Percent greenspace", 
+
+    {"United Kingdom": "Percent greenspace",
     "Sverige (Sweden)": "Procent grönområde"},
-    
-    {"United Kingdom": "Submit", 
+
+    {"United Kingdom": "Submit",
     "Sverige (Sweden)": "Skicka"},
-    
+
      {"United Kingdom": "Results:",
     "Sverige (Sweden)": "Resultat:"},
-    
-    {"United Kingdom": 
+
+    {"United Kingdom":
     "Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!",
-    
+
     "Sverige (Sweden)":
     "Här kan du lägga in data från er undersökning med hjälp av de interaktiva kontrollerna nedan. Du kommer direkt kunna se     hur era resultat ser ut i jämförelse med andra skolor. Var noggrann med att lägga in all data korrekt innan ni trycker      'Ladda ner' - skicka sedan filen till anna.persson [at] cec.lu.se. Du kan sedan utforska sidans funktioner genom att testa ändra värden och     se vad som händer. Tack för att ni bidrar till forskning!"},
-    
+
      {"United Kingdom": "What was the temperature outside during the survey? (°C)",
     "Sverige (Sweden)": "Vilken temperatur var det utomhus under undersökningen?(°C)"},
-    
+
      {"United Kingdom": "What was the weather like during the survey? (Single choice)",
     "Sverige (Sweden)": "Hur var vädret under undersökningen? (Envalsfråga)"},
-    
+
     {"United Kingdom": "Weather and temperature:",
     "Sverige (Sweden)": "Väder och temperatur:"},
-    
+
     {"United Kingdom": "Show weather data",
     "Sverige (Sweden)": "Visa väderdata"},
-    
+
     {"United Kingdom": "Select the date when the surveying took place:",
     "Sverige (Sweden)": "Ange datum för när undersökningen genomfördes:"},
 
-    
+
      {"United Kingdom": "Enter the sum of all mini-beast you saw per catergory:",
     "Sverige (Sweden)": "Skriv in det totala antalet småkryp ni såg för varje kategori:"},
-    
-    
+
+
     {"United Kingdom": "Pollinators and flowers in the 5x5m survey site",
     "Sverige (Sweden)": "Pollinatörer och blommor i 5x5m undersökningsytan"},
-    
+
     {"United Kingdom": "Describe your 5x5m survey plot in terms of floweriness:",
     "Sverige (Sweden)": "Beskriv 5x5m undersökningsytan i blommighet:"},
-    
+
     {"United Kingdom": "Enter the time when the surveying started (use the dials or enter the time directly):",
     "Sverige (Sweden)": "Ange tiden då inventeringen påbörjades (använd knapparna eller skriv in tiden direkt):"},
-    
+
     {"United Kingdom": "Enter the sum of all pollinators you saw per catergory:",
     "Sverige (Sweden)": "Ange det totala antalet pollinatörer ni såg per kategori:"},
-    
+
     {"United Kingdom": "Show pollinator data",
     "Sverige (Sweden)": "Visa pollinatör-data"},
-    
+
     {"United Kingdom": "Enter the longitude and latitude of your school. You can find these by right-clicking on Google Maps.",
     "Sverige (Sweden)": "Ange longitud och latitud för er skola. Du hittar dessa genom att höger-klicka i Google Maps."},
-    
+
      {"United Kingdom": "Latitude:",
     "Sverige (Sweden)": "Latitud:"},
-    
+
     {"United Kingdom": "Longitude:",
     "Sverige (Sweden)": "Longitud:"},
-    
+
      {"United Kingdom": "Show map",
     "Sverige (Sweden)": "Visa karta"},
-    
+
     {"United Kingdom": "What of the following was present in your 5x5m survey plot? (Multiple choice)",
     "Sverige (Sweden)": "Vad av följande fanns i er 5x5m undersökningsruta? (Flervalsfråga)"},
-    
+
     {"United Kingdom": "Managed grass",
     "Sverige (Sweden)": "Skött gräsmark"},
-    
+
     {"United Kingdom": "Hard surfaces (e.g. asphalt, concrete)",
     "Sverige (Sweden)": "Hårda ytor (t.ex. asfalt, betong)"},
-    
+
     {"United Kingdom": "Exposed soil",
     "Sverige (Sweden)": "Bar jord"},
-    
+
     {"United Kingdom": "Sand",
     "Sverige (Sweden)": "Sand"},
-    
+
     {"United Kingdom": "Wild growing 'weeds'",
     "Sverige (Sweden)": "Vildväxande 'ogräs'"},
 
-    
+
     {"United Kingdom": "Planted flowers",
     "Sverige (Sweden)": "Planterade blommor"},
-    
+
     {"United Kingdom": "Bushes",
     "Sverige (Sweden)": "Buskar"},
-    
+
     {"United Kingdom": "Trees",
     "Sverige (Sweden)": "Träd"},
-    
+
      {"United Kingdom": "Few flowers",
     "Sverige (Sweden)": "Få blommor"},
 
@@ -116,10 +116,10 @@
 
      {"United Kingdom": "Many flowers",
     "Sverige (Sweden)": "Många blommor"},
-    
+
     {"United Kingdom": "Bumblebees",
     "Sverige (Sweden)": "Humlor"},
-    
+
 {"United Kingdom": "Habitat (S1)",
 "Sverige (Sweden)": "Habitat (P1)"},
 
@@ -418,7 +418,13 @@
 "Sverige (Sweden)": "Småkryp (P4)"},
 
 {"United Kingdom": "Submit data",
-"Sverige (Sweden)": "Ladda upp data"}
+"Sverige (Sweden)": "Ladda upp data"},
+
+{"United Kingdom": "About us",
+"Sverige (Sweden)": "Om oss"},
+
+{"United Kingdom": "Natural Nations is an international school grounds biodiversity project funded by Erasmus+ and led by Learning through Landscapes in partnership with Naturskolan i Lund, Lund University, Birdlife Malta and Sociedad Espanola de Ornitologia SEO (Birdlife Spain). To help schools improve their school grounds for wildlife, the Natural Nations project has developed survey methodology to record pollinating insects, minibeasts and leaves, bird populations and habitats and vegetation with supporting educational and cultural heritage resources.",
+"Sverige (Sweden)": "Natural Nations är ett internationellt projekt om skolgårdars biodiversitet, finansierat av Erasmus+. Projektet leds av Learning through Landscapes tillsammans med Naturskolan i Lund, Lunds universitet, Birdlife Malta och Birdlife Spain. Natural Nationsprojektet har utvecklat inventeringsprotokoll och metodik för att undersöka pollinerande insekter, småkryp, löv, fågelpopulationer och habitat samt vegetation tillsammans med pedagogiskt material och kulturarvsresurser."}
+
     ]
 }
-

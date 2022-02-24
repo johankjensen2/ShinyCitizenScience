@@ -522,6 +522,7 @@ ui <- dashboardPage(
                 menuItem(i18n$t('Pollinators (S3)'), icon = icon('seedling'), tabName = 'pollinators'),
                 menuItem(i18n$t('Minibeasts (S4)'), icon = icon('bug'), tabName = 'minibeasts'),
                 menuItem(i18n$t('Submit data'), icon = icon('save'), tabName = 'submit'),
+                menuItem(i18n$t('About us'), icon = icon('landmark'), tabName = 'about'),
                 style = "position:fixed;")),
   
   ####################################################
@@ -1340,7 +1341,9 @@ ui <- dashboardPage(
               sliderInput(inputId = "feedback_minibeasts", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
                           1, 5, 3, ticks = F)
       ),
-      #######################################
+      ##########################################
+      ######         SUBMIT DATA          ######
+      ##########################################
       
       tabItem(tabName = "submit", align = "center",
               
@@ -1350,21 +1353,42 @@ ui <- dashboardPage(
               
               strong(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.")),
               
-              HTML("<br/>", "<br/>"),
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               #download data button
-              downloadButton('downloadData', i18n$t('Download'), width ="110%"),
+              downloadButton('downloadData', i18n$t('Download'), height ="150%"),
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
               
+              tags$head(tags$style(
+                type="text/css",
+                "#LtL_banner_dwn img {max-width: 110%; width: 100%; height: auto;
+                            margin-left: -150px;
+                            margin-right: -150px;
+                            margin-bottom: -450px;
+                          }"
+              )),
               
-              
-              HTML("<br/>", "<br/>", "<br/>", "<br/>","<br/>", "<br/>", "<br/>", "<br/>"), # white space
-              imageOutput("allLogo", height = 100), # banner logo)
-              HTML("<br/>", "<br/>", "<br/>", "<br/>", "<br/>"),
-              imageOutput("nbisLogo", height = 100) # banner logo)
-              
-              #######################################
+                imageOutput("LtL_banner_dwn"),
+      ),
+      
+       ##########################################
+       ######          ABOUT US           ######
+       #########################################
+       tabItem(tabName = "about", align = "center",
+               
+               titlePanel(i18n$t("About us")),
+               
+               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
+               
+               strong(i18n$t("Natural Nations is an international school grounds biodiversity project funded by Erasmus+ and led by Learning through Landscapes in partnership with Naturskolan i Lund, Lund University, Birdlife Malta and Sociedad Espanola de Ornitologia SEO (Birdlife Spain). To help schools improve their school grounds for wildlife, the Natural Nations project has developed survey methodology to record pollinating insects, minibeasts and leaves, bird populations and habitats and vegetation with supporting educational and cultural heritage resources.")),
+               
+               
+               HTML("<br/>", "<br/>", "<br/>", "<br/>","<br/>", "<br/>", "<br/>", "<br/>"), # white space
+               imageOutput("allLogo", height = 100), # banner logo)
+               HTML("<br/>", "<br/>", "<br/>", "<br/>", "<br/>"),
+               imageOutput("nbisLogo", height = 100) # banner logo)
+       
       ) 
       
     ),
@@ -1597,6 +1621,9 @@ server <- function(input, output, session) {
   
   output$nbisLogo <- renderImage({list(src = "./nbisLogo.png",
                                       contentType = "image/png",alt = "logo", height = 120)}, deleteFile = FALSE)
+  
+  output$LtL_banner_dwn <- renderImage({list(src = "./LtLBanner_dwn.png",
+                                       contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
   
   
   runjs({'
