@@ -515,7 +515,7 @@ fields <- c("School", "selected_language", "lat", "long",
 usei18n(i18n) # add to sort out translation bug of tab names
 ui <- dashboardPage(
   dashboardHeader(title = "Natural Nations"),
-  dashboardSidebar(
+  dashboardSidebar(width = "180px",
     sidebarMenu(menuItem(i18n$t("School information"), icon = icon('school'), tabName = 'school'),
                 menuItem(i18n$t('Habitat (S1)'), icon = icon('tree'), tabName = 'habitat'),
                 menuItem(i18n$t('Birds (S2)'), icon = icon('crow'), tabName = 'birds'),
@@ -523,8 +523,21 @@ ui <- dashboardPage(
                 menuItem(i18n$t('Minibeasts (S4)'), icon = icon('bug'), tabName = 'minibeasts'),
                 menuItem(i18n$t('Submit data'), icon = icon('save'), tabName = 'submit'),
                 menuItem(i18n$t('About us'), icon = icon('landmark'), tabName = 'about'),
-                style = "position:fixed;")),
-  
+                style = "position:fixed;"),
+                tags$head(tags$style(HTML( #customize colors for sidebar
+        ".skin-blue .main-header .logo {background-color: #8ac062;}
+        .skin-blue .main-header .logo:hover {background-color: #70ab44;}
+        .skin-blue .main-header .navbar .sidebar-toggle:hover{background-color: #70ab44;}
+        .skin-blue .main-header .navbar {background-color: #8ac062;}
+        .skin-blue .sidebar-menu > li.active > a {border-left-color: #8ac062}
+        .skin-blue .sidebar-menu > li:hover > a {border-left-color: #64983d}
+        .skin-blue .main-sidebar {position: fixed;}
+        .main-header .navbar {margin-left: 180px}
+        .main-header .logo {width: 180px; font-size:22.5px}"
+        )))
+    ),
+              
+
   ####################################################
   
   dashboardBody(
@@ -654,12 +667,36 @@ ui <- dashboardPage(
       ##########################################
       
       tabItem(tabName = "habitat", align = "center",
-              ## title text
-              h2(id="habitat-heading", i18n$t("Habitat survey")),
-              tags$style(HTML("#habitat-heading{color: #2F5496;}")), #ID call for custom colour
               
-              i18n$t("Below you can enter the data from the habitat survey (S1):"), #Instructions
-              HTML("<br/>", "<br/>", "<br/>"), #whitespace
+              tags$head(tags$style(
+                type="text/css",
+                "#habitat_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-top: -30px;
+                          }"
+              )),
+              
+              imageOutput("habitat_header"),
+              
+              ## title text
+              fluidRow(
+                column(1, align="right",
+                       h1(id="S1", strong("S1")),
+                       tags$style(HTML("#S1{color: #ffffff; margin-top: -320px; font-size: 70px;
+                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
+                       
+                column(6, align="left",
+              h2(id="habitat-heading", i18n$t("School Grounds and Habitat Survey")),
+              tags$style(HTML("#habitat-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
+                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
+              
+                )),
+              
+              h2(id="habitat-subhead", i18n$t("Below you can enter the data from the habitat survey (S1):"), align = "left"),
+              tags$style(HTML("#habitat-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
+              
+              HTML("<br/>", "<br/>"), #whitespace
               
               # Entry of age and number
               fluidRow(
@@ -768,7 +805,18 @@ ui <- dashboardPage(
               HTML("<br/>", "<br/>"), #whitespace
               
               sliderInput(inputId = "feedback_habitat", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
-                          1, 5, 3, ticks = F)
+                          1, 5, 3, ticks = F),
+              
+              tags$head(tags$style(
+                type="text/css",
+                "#habitat_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-bottom: -410px;
+                          }"
+              )),
+              
+              imageOutput("habitat_footer"),
               
               ## OBS a graph could probably be good here!
               
@@ -777,13 +825,36 @@ ui <- dashboardPage(
       ######          BIRD SURVEY         ######
       ##########################################
       tabItem(tabName = "birds", align = "center",
-              h2(id="bird-heading", i18n$t("Bird survey")),
-              tags$style(HTML("#bird-heading{color: #ED7D31;}")), #ID call for custom colour
               
-              i18n$t("Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:"), #Instructions
+              tags$head(tags$style(
+                type="text/css",
+                "#bird_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-top: -30px;
+                          }"
+              )),
               
-              HTML("<br/>","<br/>"), #whitespace
+              imageOutput("bird_header"),
               
+              ## title text
+              fluidRow(
+                column(1, align="right",
+                       h1(id="S2", strong("S2")),
+                       tags$style(HTML("#S2{color: #ffffff; margin-top: -320px; font-size: 70px;
+                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
+                
+                column(6, align="left",
+                       h2(id="bird-heading", i18n$t("Bird Survey")),
+                       tags$style(HTML("#bird-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
+                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
+                )),
+              
+              h2(id="bird-subhead", i18n$t("Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:"), align = "left"),
+              tags$style(HTML("#bird-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
+              
+              
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               
               #turdus
@@ -994,20 +1065,54 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>"), #whitespace
               sliderInput(inputId = "feedback_birds", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
-                          1, 5, 3, ticks = F)
+                          1, 5, 3, ticks = F),
+              
+              tags$head(tags$style(
+                type="text/css",
+                "#bird_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-bottom: -410px;
+                          }"
+              )),
+              
+              imageOutput("bird_footer"),
               
       ),
       ##########################################
       ######        POLLINATORS 5x5       ######
       ##########################################
       tabItem(tabName = "pollinators", align = "center",
+              
+              tags$head(tags$style(
+                type="text/css",
+                "#plants_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-top: -30px;
+                          }"
+              )),
+              
+              imageOutput("plants_header"),
+              
               ## title text
-              h2(id="pollinator-heading", i18n$t("Pollinators and flowers in the 5x5m survey site")),
-              tags$style(HTML("#pollinator-heading{color: #7030A0;}")), #ID call for custom colour
+              fluidRow(
+                column(1, align="right",
+                       h1(id="S3", strong("S3")),
+                       tags$style(HTML("#S3{color: #ffffff; margin-top: -320px; font-size: 70px;
+                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
+                
+                column(6, align="left",
+                       h2(id="pollinator-heading", i18n$t("Pollinators and Flowering Plants Survey")),
+                       tags$style(HTML("#pollinator-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
+                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
+                       )),
               
-              i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):"), #Instructions
+              h2(id="plants-subhead", i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):"), align = "left"),
+              tags$style(HTML("#plants-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
               
-              HTML("<br/>","<br/>"), #whitespace
+              HTML("<br/>", "<br/>"), #whitespace
+              
               
               strong(i18n$t("Enter the area (m2) of the following habitat in your 5x5 survey plot:")),
               HTML("<br/>","<br/>"),
@@ -1185,19 +1290,53 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>"), #whitespace
               sliderInput(inputId = "feedback_pollinators", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
-                          1, 5, 3, ticks = F)
+                          1, 5, 3, ticks = F),
+              
+              tags$head(tags$style(
+                type="text/css",
+                "#plants_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right:  0px;
+                            margin-bottom: -410px;
+                          }"
+              )),
+              
+              imageOutput("plants_footer"),
       ),
       ##########################################
       ######       INVERTEBRATES 1x1      ######
       ##########################################
       tabItem(tabName = "minibeasts",  align = "center",
+              
+              tags$head(tags$style(
+                type="text/css",
+                "#minibeast_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-top: -30px;
+                          }"
+              )),
+              
+              imageOutput("minibeast_header"),
+              
               ## title text
-              h2(id="minibeast-heading", i18n$t("Minibeasts and Leaves Survey")),
-              tags$style(HTML("#minibeast-heading{color: #92d050;}")), #ID call for custom colour
+              fluidRow(
+                column(1, align="right",
+                       h1(id="S4", strong("S4")),
+                       tags$style(HTML("#S4{color: #ffffff; margin-top: -320px; font-size: 70px;
+                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
+                
+                column(6, align="left",
+                       h2(id="minibeast-heading", i18n$t("Minibeasts and Leaves Survey")),
+                       tags$style(HTML("#minibeast-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
+                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
+                )),
               
-              i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):"), #Instructions
+              h2(id="minibeast-subhead", i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):"), align = "left"),
+              tags$style(HTML("#minibeast-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
               
-              HTML("<br/>","<br/>"), #whitespace
+              HTML("<br/>", "<br/>"), #whitespace
+              
               
               numericInput("no_1x1_squares", label = i18n$t("How many 1x1m squares did you survey?"), 
                            value = 1, width = "30%"),
@@ -1339,7 +1478,18 @@ ui <- dashboardPage(
               
               #feedback 
               sliderInput(inputId = "feedback_minibeasts", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
-                          1, 5, 3, ticks = F)
+                          1, 5, 3, ticks = F),
+              
+              tags$head(tags$style(
+                type="text/css",
+                "#minibeast_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-bottom: -410px;
+                          }"
+              )),
+              
+              imageOutput("minibeast_footer"),
       ),
       ##########################################
       ######         SUBMIT DATA          ######
@@ -1362,10 +1512,10 @@ ui <- dashboardPage(
               
               tags$head(tags$style(
                 type="text/css",
-                "#LtL_banner_dwn img {max-width: 110%; width: 100%; height: auto;
-                            margin-left: -150px;
-                            margin-right: -150px;
-                            margin-bottom: -450px;
+                "#LtL_banner_dwn img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px;
+                            margin-right: 0px;
+                            margin-bottom: -465px;
                           }"
               )),
               
@@ -1622,10 +1772,38 @@ server <- function(input, output, session) {
   output$nbisLogo <- renderImage({list(src = "./nbisLogo.png",
                                       contentType = "image/png",alt = "logo", height = 120)}, deleteFile = FALSE)
   
-  output$LtL_banner_dwn <- renderImage({list(src = "./LtLBanner_dwn.png",
+  # render banners
+  output$bird_footer <- renderImage({list(src = "./banners/bird_footer.png",
+                                             contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$habitat_footer <- renderImage({list(src = "./banners/habitat_footer.png",
+                                          contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$minibeast_footer <- renderImage({list(src = "./banners/minibeast_footer.png",
+                                             contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$plants_footer <- renderImage({list(src = "./banners/plants_footer.png",
+                                             contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$LtL_banner_dwn <- renderImage({list(src = "./banners/LtLBanner_dwn.png",
                                        contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
   
   
+  
+  output$bird_header <- renderImage({list(src = "./banners/bird_header.png",
+                                          contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$habitat_header <- renderImage({list(src = "./banners/habitat_header.png",
+                                             contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$minibeast_header <- renderImage({list(src = "./banners/minibeast_header.png",
+                                               contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  output$plants_header <- renderImage({list(src = "./banners/plants_header.png",
+                                            contentType = "image/png",alt = "banner", height = 200)}, deleteFile = FALSE)
+  
+  
+
   runjs({'
         var el2 = document.querySelector(".skin-blue");
     el2.className = "skin-blue sidebar-mini";
@@ -1640,7 +1818,7 @@ server <- function(input, output, session) {
     if (title.style.visibility == "hidden") {
     title.style.visibility = "visible";
     } else {
-    title.style.visibility = "hidden";
+    title.style.visibility = "hidden";}
     }
     '}))
   

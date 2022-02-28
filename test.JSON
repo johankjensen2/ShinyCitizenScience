@@ -53,7 +53,7 @@
     "Sverige (Sweden)": "Skriv in det totala antalet småkryp ni såg för varje kategori:"},
 
 
-    {"United Kingdom": "Pollinators and flowers in the 5x5m survey site",
+    {"United Kingdom": "Pollinators and Flowering Plants Survey",
     "Sverige (Sweden)": "Pollinatörer och blommor i 5x5m undersökningsytan"},
 
     {"United Kingdom": "Describe your 5x5m survey plot in terms of floweriness:",
@@ -129,7 +129,7 @@
 {"United Kingdom": "How windy was it during the survey? (Use slider below)",
 "Sverige (Sweden)": "Hur mycket blåste det under inventeringen? (Använd skjutreglaget)"},
 
-{"United Kingdom": "Habitat survey",
+{"United Kingdom": "School Grounds and Habitat Survey",
 "Sverige (Sweden)": "Habitat-inventeringen"},
 
 {"United Kingdom": "Below you can enter the data from the habitat survey (S1):",
@@ -225,7 +225,7 @@
 {"United Kingdom": "How do you rate your experience with using this survey? (Use slider below)",
 "Sverige (Sweden)": "Hur skulle ni betygsätta er upplevelse av den här inventeringen? (Använd skjutreglaget nedan)"},
 
-{"United Kingdom": "Bird survey",
+{"United Kingdom": "Bird Survey",
 "Sverige (Sweden)": "Fågelinventering"},
 
 {"United Kingdom": "Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:",
@@ -424,7 +424,10 @@
 "Sverige (Sweden)": "Om oss"},
 
 {"United Kingdom": "Natural Nations is an international school grounds biodiversity project funded by Erasmus+ and led by Learning through Landscapes in partnership with Naturskolan i Lund, Lund University, Birdlife Malta and Sociedad Espanola de Ornitologia SEO (Birdlife Spain). To help schools improve their school grounds for wildlife, the Natural Nations project has developed survey methodology to record pollinating insects, minibeasts and leaves, bird populations and habitats and vegetation with supporting educational and cultural heritage resources.",
-"Sverige (Sweden)": "Natural Nations är ett internationellt projekt om skolgårdars biodiversitet, finansierat av Erasmus+. Projektet leds av Learning through Landscapes tillsammans med Naturskolan i Lund, Lunds universitet, Birdlife Malta och Birdlife Spain. Natural Nationsprojektet har utvecklat inventeringsprotokoll och metodik för att undersöka pollinerande insekter, småkryp, löv, fågelpopulationer och habitat samt vegetation tillsammans med pedagogiskt material och kulturarvsresurser."}
+"Sverige (Sweden)": "Natural Nations är ett internationellt projekt om skolgårdars biodiversitet, finansierat av Erasmus+. Projektet leds av Learning through Landscapes tillsammans med Naturskolan i Lund, Lunds universitet, Birdlife Malta och Birdlife Spain. Natural Nationsprojektet har utvecklat inventeringsprotokoll och metodik för att undersöka pollinerande insekter, småkryp, löv, fågelpopulationer och habitat samt vegetation tillsammans med pedagogiskt material och kulturarvsresurser."},
+
+{"United Kingdom": "S1",
+"Sverige (Sweden)": "P1"}
 
     ]
 }
