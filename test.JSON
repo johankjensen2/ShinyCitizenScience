@@ -126,8 +126,8 @@
 {"United Kingdom": "School information",
 "Sverige (Sweden)": "Information om skolan"},
 
-{"United Kingdom": "How windy was it during the survey? (Use slider below)",
-"Sverige (Sweden)": "Hur mycket blåste det under inventeringen? (Använd skjutreglaget)"},
+{"United Kingdom": "How windy was it during the survey? (From leaves not moving to moving much)",
+"Sverige (Sweden)": "Hur mycket blåste det under inventeringen? (Från löv rör sig lite till mycket)"},
 
 {"United Kingdom": "School Grounds and Habitat Survey",
 "Sverige (Sweden)": "Habitat-inventeringen"},
@@ -228,8 +228,11 @@
 {"United Kingdom": "Bird Survey",
 "Sverige (Sweden)": "Fågelinventering"},
 
-{"United Kingdom": "Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:",
-"Sverige (Sweden)": "Nedan kan du lägga in data från fågelinventeringen (P2). Om ni räknade antalet individer ni såg per art, ange antalet nedan. Om ni inte har antalet, men vet att ni såg en art, kryssa i rutan:"},
+{"United Kingdom": "Below you can enter the data from the survey of birds (S2).",
+"Sverige (Sweden)": "Nedan kan du lägga in data från fågelinventeringen (P2)."},
+
+{"United Kingdom": "Enter the birds you saw. If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:",
+"Sverige (Sweden)": "Ange fåglarna ni såg. Om ni räknade antalet individer ni såg per art, ange antalet nedan. Om ni inte har antalet, men vet att ni såg en art, kryssa i rutan:"},
 
 {"United Kingdom": "Number:",
 "Sverige (Sweden)": "Antal:"},
@@ -427,7 +430,13 @@
 "Sverige (Sweden)": "Natural Nations är ett internationellt projekt om skolgårdars biodiversitet, finansierat av Erasmus+. Projektet leds av Learning through Landscapes tillsammans med Naturskolan i Lund, Lunds universitet, Birdlife Malta och Birdlife Spain. Natural Nationsprojektet har utvecklat inventeringsprotokoll och metodik för att undersöka pollinerande insekter, småkryp, löv, fågelpopulationer och habitat samt vegetation tillsammans med pedagogiskt material och kulturarvsresurser."},
 
 {"United Kingdom": "S1",
-"Sverige (Sweden)": "P1"}
+"Sverige (Sweden)": "P1"},
+
+{"United Kingdom": "Enter the data for the plants:",
+"Sverige (Sweden)": "Lägg in data för växterna:"},
+
+{"United Kingdom": "Participants and time:",
+"Sverige (Sweden)": "Deltagare och tid:"}
 
     ]
 }

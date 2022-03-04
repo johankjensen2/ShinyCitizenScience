@@ -2,7 +2,6 @@
 'SHINY'
 ####################################################
 
-#install.packages("shiny")
 library(shiny)
 library(plyr)
 library(dplyr)
@@ -21,8 +20,8 @@ library(extrafont) #added
 ####################################################
 
 #Save the data into the main data frame - if responses are updated w/ same school name, the row will be over-written
-previousResponses <- read.csv("./Data/test3.csv", sep = ';')
-responses <- read.csv("./Data/test3.csv", sep = ';')
+previousResponses <- read.csv("./Data/public_data.csv", sep = ';')
+responses <- read.csv("./Data/public_data.csv", sep = ';')
 
 saveData <- function(data) {
   data <- as.data.frame(t(data))
@@ -400,66 +399,6 @@ plot_func5_invertebrates <- function() {
   }
 }
 
-plot_func6_temperature <- function() {
-  if (length(responses$School) > length(previousResponses$School)) {
-    
-    plotDataTemperature <- data.frame()
-    for(row in 1:nrow(responses)){
-      temp3 <- (as.numeric(responses$temp[row]))
-      plotDataTemperature <- rbind(plotDataTemperature, temp3)
-    }
-    colnames(plotDataTemperature) <- c("temp")
-    plotDataTemperature$School <- as.character(responses$School)
-    
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
-      ggplot(plotDataTemperature, aes(x =reorder(School,-as.numeric(temp)), y=as.numeric(temp), 
-                                      fill = School, color = School)) +
-        geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
-        theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
-        scale_color_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
-        scale_y_continuous(limits = c(0,40), expand = c(0,0)) +
-        labs(y="Temperatur (°C)", x="", title = "") +
-        theme(legend.position = "none",
-              plot.title = element_text(hjust = 0.5),
-              text = element_text(size=20, family= "Times"), 
-              axis.text.x = element_text(size = 20, angle = 45,
-                                         hjust = 1, color = "grey1")) +
-        theme(axis.ticks.length=unit(.25, "cm")) +
-        theme(
-          panel.background = element_rect(fill = "transparent"), # bg of the panel
-          plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
-          panel.grid.major = element_blank(), # get rid of major grid
-          panel.grid.minor = element_blank(), # get rid of minor grid
-          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
-          legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
-        )
-    }
-    
-    else{                            
-    ggplot(plotDataTemperature, aes(x =reorder(School,-as.numeric(temp)), y=as.numeric(temp), 
-                          fill = School, color = School)) +
-      geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
-      theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
-      scale_color_manual(values=wes_palette("Moonrise3", length(responses$School), type = "continuous")) +
-      scale_y_continuous(limits = c(0,40), expand = c(0,0)) +
-      labs(y="Temperature (°C)", x="", title = "") +
-      theme(legend.position = "none",
-            plot.title = element_text(hjust = 0.5),
-            text = element_text(size=20, family= "Times"), 
-            axis.text.x = element_text(size = 20, angle = 45,
-                                       hjust = 1, color = "grey1")) +
-      theme(axis.ticks.length=unit(.25, "cm")) +
-              theme(
-                panel.background = element_rect(fill = "transparent"), # bg of the panel
-                plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
-                panel.grid.major = element_blank(), # get rid of major grid
-                panel.grid.minor = element_blank(), # get rid of minor grid
-                legend.background = element_rect(fill = "transparent"), # get rid of legend bg
-                legend.box.background = element_rect(fill = "transparent") # get rid of legend panel bg
-              )
-    }
-  }
-}
 
 mapFunc <- function() {
   if (length(responses$School) > length(previousResponses$School)) {
@@ -487,21 +426,25 @@ i18n$set_translation_language('United Kingdom') #chose initial language to load
 
 # Define the fields we want to save from the form
 fields <- c("School", "selected_language", "lat", "long",
-            "no_partic_habitat","age_partic_habitat", "yard_size","habitat_comp",'dominant_habitat',"trees_tot_indiv",
+            "no_partic_habitat","age_partic_habitat", "date_habitat", "time_habitat", "yard_size","habitat_comp",
+            'dominant_habitat',"trees_tot_indiv",
             "shrubs_tot_indiv","trees_tot_species","shrubs_tot_species","trees_tot_flower","shrubs_tot_flower",
-            "trees_tot_fruit","shrubs_tot_fruit","plantSpecies_freeText","feedback_habitat","turdus_no","turdus_pres",
+            "trees_tot_fruit","shrubs_tot_fruit","plantSpecies_freeText","feedback_habitat","no_partic_bird", "age_partic_bird",
+            "date_bird", "time_bird", "windLevel_bird", "temp_bird", "weather_bird","turdus_no","turdus_pres",
             "fringilla_no", "fringilla_pres","parus_no","parus_pres","cyanistes_no","cyanistes_pres","passer_dom_no",
             "passer_dom_pres","passer_mont_no","passer_mont_pres","motacilla_no","motacilla_pres","sturnus_no","sturnus_pres",
             "apus_no","apus_pres","streptopelia_no","streptopelia_pres","erithacus_no","erithacus_pres","columba_no","columba_pres",
             "phoenicurus_no","phoenicurus_pres","pica_no","pica_pres","sylvia_arti_no","sylvia_arti_pres","sylvia_melano_no",
-            "sylvia_melano_pres","birdSpecies_freeText","feedback_birds","weather","temp","windLevel","date","time","area_5x5_planted",
-            "area_5x5_damp","area_5x5_woody","area_5x5_shortGrass","area_5x5_ground","area_5x5_walls","area_5x5_anthro",
+            "sylvia_melano_pres","birdSpecies_freeText","feedback_birds","no_partic_pollinators", "age_partic_pollinators",
+            "date_pollinators", "time_pollinators", "windLevel_pollinators", "temp_pollinators", "weather_pollinators",
+            "area_5x5_planted","area_5x5_damp","area_5x5_woody","area_5x5_shortGrass","area_5x5_ground","area_5x5_walls","area_5x5_anthro",
             "area_5x5_hardSurface","bombus_tot_individ_5x5","bombus_tot_species_5x5","mellifera_tot_individ_5x5",
             "mellifera_tot_species_5x5","apis_tot_individ_5x5","apis_tot_species_5x5","vespid_tot_individ_5x5",
             "vespid_tot_species_5x5","coleoptera_tot_individ_5x5","coleoptera_tot_species_5x5","hemiptera_tot_individ_5x5",
             "hemiptera_tot_species_5x5","lepidoptera_tot_individ_5x5","lepidoptera_tot_species_5x5","moth_tot_individ_5x5","moth_tot_species_5x5",
             "syrphidae_tot_individ_5x5","syrphidae_tot_species_5x5","other_diptera_tot_individ_5x5","other_diptera_tot_species_5x5", 
-            "floweriness_5x5","flowers_tot_species_5x5","flower_species_freeText_5x5","feedback_pollinators","no_1x1_squares",
+            "floweriness_5x5","flowers_tot_species_5x5","flower_species_freeText_5x5","feedback_pollinators", "no_partic_minibeast", "age_partic_minibeast",
+            "date_minibeast", "time_minibeast", "windLevel_minibeast", "temp_minibeast", "weather_minibeast", "no_1x1_squares",
             "habitat_1x1_freeText","annelida_tot_indiv_1x1","annelida_tot_species_1x1","hymenoptera_tot_individ_1x1",
             "hymenoptera_tot_species_1x1","myriapoda_tot_individ_1x1","myriapoda_tot_species_1x1","isopoda_tot_individ_1x1",
             "isopoda_tot_species_1x1","arachnid_tot_individ_1x1","arachnid_tot_species_1x1","coleoptera_tot_individ_1x1",
@@ -515,7 +458,7 @@ fields <- c("School", "selected_language", "lat", "long",
 usei18n(i18n) # add to sort out translation bug of tab names
 ui <- dashboardPage(
   dashboardHeader(title = "Natural Nations"),
-  dashboardSidebar(width = "180px",
+  dashboardSidebar(width = "190px",
     sidebarMenu(menuItem(i18n$t("School information"), icon = icon('school'), tabName = 'school'),
                 menuItem(i18n$t('Habitat (S1)'), icon = icon('tree'), tabName = 'habitat'),
                 menuItem(i18n$t('Birds (S2)'), icon = icon('crow'), tabName = 'birds'),
@@ -525,15 +468,47 @@ ui <- dashboardPage(
                 menuItem(i18n$t('About us'), icon = icon('landmark'), tabName = 'about'),
                 style = "position:fixed;"),
                 tags$head(tags$style(HTML( #customize colors for sidebar
-        ".skin-blue .main-header .logo {background-color: #8ac062;}
+        "/*SIDE BAR STYLE*/
+        .skin-blue .main-header .logo {background-color: #8ac062;}
         .skin-blue .main-header .logo:hover {background-color: #70ab44;}
         .skin-blue .main-header .navbar .sidebar-toggle:hover{background-color: #70ab44;}
         .skin-blue .main-header .navbar {background-color: #8ac062;}
         .skin-blue .sidebar-menu > li.active > a {border-left-color: #8ac062}
         .skin-blue .sidebar-menu > li:hover > a {border-left-color: #64983d}
         .skin-blue .main-sidebar {position: fixed;}
-        .main-header .navbar {margin-left: 180px}
-        .main-header .logo {width: 180px; font-size:22.5px}"
+        .main-header .navbar {margin-left: 190px}
+        .main-header .logo {width: 187px; font-size:22.5px}
+        
+        /*FONT SIZE AND TEXT*/
+        h1{color: #ffffff; margin-top: -320px; font-size: 70px; text-shadow: 0.5px 0.5px 0.5px #aaa; font-weight: 700}
+        h2{color: #ffffff; margin-top: -320px; font-size: 50px; text-shadow: 0.3px 0.3px 0.3px #aaa;}
+        h5{font-size: 24px; margin-top: -100px}
+        h3{font-size: 22px;}
+        h4{font-size: 16px; font-weight: 700;}
+        
+        label{font-size: 16px; font-weight: 700;}
+        [type = 'number'] {font-size: 16px; text-align: center;}
+        [type = 'text'] {font-size: 16px;}
+        
+        /*BANNERS FORMAT*/
+        #habitat_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-top: -30px;}
+        #bird_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-top: -30px;}
+        #plants_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-top: -30px;}
+        #minibeast_header img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-top: -30px;}
+        #habitat_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-bottom: -410px;}
+        #bird_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-bottom: -410px;}
+        #plants_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right:  0px; margin-bottom: -410px;}
+        #minibeast_footer img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-bottom: -410px;}
+        #LtL_banner_dwn img {max-width: 110%; width: 104%; height: auto;
+                            margin-left: -30px; margin-right: 0px; margin-bottom: -465px;}"
         )))
     ),
               
@@ -541,6 +516,41 @@ ui <- dashboardPage(
   ####################################################
   
   dashboardBody(
+    #set custom lay-out for check-boxes etc
+    setSliderColor(c(rep("#3c6986", 12)), 1:12),
+    ## weather check box with icons
+    tags$style(".fa-sun {color:#E87722; font-size:28px;}
+                .fa-cloud-rain {color:#228fe8; font-size:28px;}
+                .fa-cloud {color:#8e99ad; font-size:24px;}
+                .fa-cloud-sun {color:#CECECE; font-size:24px;}"), #change colour and size of weather icons
+    #tags$style(HTML(".fa{font-size: 24px;}")),
+    tags$style("
+      .btn-accent_blue {background-color: #4c85a9;}
+      .btn-accent_blue:hover {background-color: #447798;}
+      .btn-accent_blue.active {background-color: #3c6986;}
+      
+      .checkbox {
+        line-height: 30px;
+        margin-bottom: 15px; /*set the margin, so boxes don't overlap*/}
+        
+      input[type='checkbox']{ /* style for checkboxes */
+        width: 25px; 
+        height: 25px; 
+        line-height: 25px;
+        accent-color: #2c4d63;}
+        
+      .radio {
+        line-height: 30px;
+        margin-bottom: 8px; /*set the margin, so boxes don't overlap*/}
+        
+      input[type='radio']{ /* style for checkboxes */
+        width: 18px; 
+        height: 18px; 
+        line-height: 18px;
+        accent-color: #2c4d63;}
+        span {margin-left: 4px;  /*set the margin, so boxes don't overlap labels*/}"
+               ),
+    
     tabItems(
       tabItem(tabName = "school", align = "center",
               
@@ -564,10 +574,13 @@ ui <- dashboardPage(
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
               ## title text
-              titlePanel(i18n$t("Welcome to the data entry prototype!")),
+              h3(i18n$t("Welcome to the data entry prototype!")),
               
               #spaghetti line of instructions
-              i18n$t("Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!"),
+              fluidRow(
+              column(2),
+              column(8, align = "center",
+                     h4(i18n$t("Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!")))),
               HTML("<br/>","<br/>","<br/>","<br/>","<br/>"), #whitespace
               
               ## school name
@@ -595,70 +608,12 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
-              leafletOutput("mymap", width = 780, height = 420),
+              leafletOutput("mymap", width = 920, height = 480),
               
               HTML("<br/>", "<br/>", "<br/>"), # white space
-              
-              # WEATHER DATA
-              
-              ## weather check box with icons
-              tags$style(".fa-sun {color:#E87722}"), #change colour and size of weather icons
-              tags$style(".fa-cloud-rain {color:#228fe8}"),
-              tags$style(".fa-cloud {color:#8e99ad}"),
-              tags$style(".fa-cloud-sun {color:#CECECE}"),
-              #tags$style(HTML(".fa{font-size: 24px;}")),
-              
-              ## title text
-              
-              h3(id="weather-subHeading", i18n$t("Weather and temperature:")),
-              tags$style(HTML("#weather-subHeading{color: #000000;}")), #ID call for custom colour
-              
-              HTML("<br/>"), #whitespace
-              
-              fluidRow(
-                column(6, align="center",
-                       radioButtons("weather", i18n$t("What was the weather like during the survey? (Single choice)"),
-                                    choiceNames =
-                                      list(icon("sun"), icon("cloud-sun"), icon("cloud"), icon("cloud-rain")),
-                                    choiceValues = list("Sunny", "Sunny and cloudy", "Cloudy", "Rainy"))
-                ),
-                
-                column(6,
-                       sliderInput("temp", i18n$t("What was the temperature outside during the survey? (°C)"),
-                                   5, 40, 2, ticks = T)
-                )
-              ),
-              
-              
-              sliderTextInput(inputId = "windLevel", label = i18n$t("How windy was it during the survey? (Use slider below)"),
-                              choices = c("Leaves not moving", "Leaves moving slightly", "Leaves moving much")),
-              
-              HTML("<br/>","<br/>"), #whitespace
-              
-              ## Date and time
-              fluidRow(
-                column(6, align="center",
-                       dateInput("date", i18n$t("Select the date when the surveying took place:"))
-                ),
-                
-                column(6,
-                       timeInput("time", i18n$t("Enter the time when the surveying started (use the dials or enter the time directly):"),
-                                 value = Sys.time(), seconds = FALSE)
-                )
-              ),
-              
-              
-              HTML("<br/>"), #whitespace
-              
-              actionButton("showWeather", i18n$t("Show weather data")),
-              
-              HTML("<br/>", "<br/>"), #whitespace
-              
-              plotOutput("temp", width = 780, height = 420), #graph 2 - species depending on yard size
+
               
               HTML("<br/>", "<br/>") #whitespace
-              
-             # imageOutput("footerLogo", height = 100) # footer logo
               
       ),
       
@@ -668,56 +623,56 @@ ui <- dashboardPage(
       
       tabItem(tabName = "habitat", align = "center",
               
-              tags$head(tags$style(
-                type="text/css",
-                "#habitat_header img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-top: -30px;
-                          }"
-              )),
-              
               imageOutput("habitat_header"),
               
               ## title text
               fluidRow(
                 column(1, align="right",
-                       h1(id="S1", strong("S1")),
-                       tags$style(HTML("#S1{color: #ffffff; margin-top: -320px; font-size: 70px;
-                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
-                       
+                       h1(i18n$t("S1"))),
                 column(6, align="left",
-              h2(id="habitat-heading", i18n$t("School Grounds and Habitat Survey")),
-              tags$style(HTML("#habitat-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
-                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
+              h2(i18n$t("School Grounds and Habitat Survey")))),
               
-                )),
+              h5(i18n$t("Below you can enter the data from the habitat survey (S1):"), align = "left"),
               
-              h2(id="habitat-subhead", i18n$t("Below you can enter the data from the habitat survey (S1):"), align = "left"),
-              tags$style(HTML("#habitat-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
-              
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
               
               # Entry of age and number
               fluidRow(
-                column(6, align="center",
+                column(1),
+                column(5, align="center",
                        numericInput("no_partic_habitat", label = i18n$t("How many participants are in your survey group?"), 
                                     value = 0, width = "75%")),
                 
-                column(6, align="center",
-                       numericInput("age_partic_habitat", label = i18n$t("What is the average age of the participants?"), value = 0, width = "75%"))),
+                column(5, align="center",
+                       numericInput("age_partic_habitat", label = i18n$t("What is the average age of the participants?"),
+                                    value = 0, width = "75%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
+              
+              ## Date and time
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       dateInput("date_habitat", i18n$t("Select the date when the surveying took place:"), width = "75%")),
+                
+                column(5, align="center",
+                       timeInput("time_habitat", i18n$t("Enter the time when the surveying started (use the dials or enter the time directly):"),
+                                 value = Sys.time(), seconds = FALSE))),
+              
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               #yard size
+              fluidRow(column(2),
+                       column(8, align="center",
               numericInput("yard_size", label = i18n$t("How large is your school grounds (m2)?"), 
-                           value = 0, width = "40%"),
+                           value = 0, width = "50%"))),
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
               
               #habitat characteristics
               fluidRow(
-                column(6, align="center", tags$div(align = 'left', 
+                column(2),
+                column(4, align="center", tags$div(align = 'left', 
                                                    checkboxGroupInput("habitat_comp", i18n$t("What of the following habitats did you find on your school grounds? (Multiple choice)"),
                                                                       choiceNames =
                                                                         list(i18n$t("Plant beds or flowerpots"), i18n$t("Tall grass, wildflowers"), 
@@ -731,7 +686,7 @@ ui <- dashboardPage(
                                                                              "anthro_wildbee", "anthro_domestic_bee", "anthro_invertebrate", "anthro_other", "damp_place",
                                                                              "short_grass", "walls", "hard_surface")))),
                 
-                column(6, align="center",    
+                column(4, align="center",    
                        tags$div(selectInput(inputId='dominant_habitat', label=i18n$t('What is the dominant habitat in your school grounds (select one):'),
                                             choices = list("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and bushes", "Bare ground",
                                                            "Man-made homes", "Damp places", "Short grass", "Bare walls or fences", "Concrete or tarmac"))))),
@@ -749,49 +704,56 @@ ui <- dashboardPage(
               
               # Entry of trees and bushes
               fluidRow(
-                column(4, align="left", HTML("<br/>"), strong(i18n$t("Total number of tree and shrub individuals:"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Total number of tree and shrub individuals:"))),
                 
-                column(4, align="center",
-                       numericInput("trees_tot_indiv", label = i18n$t("Trees:"), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("trees_tot_indiv", label = i18n$t("Trees:"), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("shrubs_tot_indiv", label = i18n$t("Shrubs:"), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("shrubs_tot_indiv", label = i18n$t("Shrubs:"), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(4, align="left", HTML("<br/>"), strong(i18n$t("Total number of different tree and shrub species:"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Total number of different tree and shrub species:"))),
                 
-                column(4, align="center",
-                       numericInput("trees_tot_species", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("trees_tot_species", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("shrubs_tot_species", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("shrubs_tot_species", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(4, align="left", HTML("<br/>"), strong(i18n$t("Number of flowering species:"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Number of flowering species:"))),
                 
-                column(4, align="center",
-                       numericInput("trees_tot_flower", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("trees_tot_flower", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("shrubs_tot_flower", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("shrubs_tot_flower", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(4, align="left", HTML("<br/>"), strong(i18n$t("Number of fruit bearing species:"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Number of fruit bearing species:"))),
                 
-                column(4, align="center",
-                       numericInput("trees_tot_fruit", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("trees_tot_fruit", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("shrubs_tot_fruit", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("shrubs_tot_fruit", label = i18n$t(""), value = 0, width = "75%"))),
               
-              HTML("<br/>"), #whitespace,
+              HTML("<br/>", "<br/>"), #whitespace,
               
               #Free-text entry of specific species
+              fluidRow(
+                column(2),
+                column(8, align ="center",
               textInput("plantSpecies_freeText", i18n$t("Enter the three most common species and numbers below:"), 
-                        value = "E.g.: oak (7), birch (4), Taxus baccata (2)", width = "100%"),
+                        placeholder = "E.g.: oak (7), birch (4), Taxus baccata (2)", width = "100%"))),
               
               
               HTML("<br/>", "<br/>"), #whitespace
@@ -807,15 +769,7 @@ ui <- dashboardPage(
               sliderInput(inputId = "feedback_habitat", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
                           1, 5, 3, ticks = F),
               
-              tags$head(tags$style(
-                type="text/css",
-                "#habitat_footer img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-bottom: -410px;
-                          }"
-              )),
-              
+
               imageOutput("habitat_footer"),
               
               ## OBS a graph could probably be good here!
@@ -826,124 +780,173 @@ ui <- dashboardPage(
       ##########################################
       tabItem(tabName = "birds", align = "center",
               
-              tags$head(tags$style(
-                type="text/css",
-                "#bird_header img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-top: -30px;
-                          }"
-              )),
-              
               imageOutput("bird_header"),
               
               ## title text
               fluidRow(
                 column(1, align="right",
-                       h1(id="S2", strong("S2")),
-                       tags$style(HTML("#S2{color: #ffffff; margin-top: -320px; font-size: 70px;
-                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
-                
+                       h1(i18n$t("S2"))),
                 column(6, align="left",
-                       h2(id="bird-heading", i18n$t("Bird Survey")),
-                       tags$style(HTML("#bird-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
-                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
-                )),
+                       h2(i18n$t("Bird Survey")))),
               
-              h2(id="bird-subhead", i18n$t("Below you can enter the data from the survey of birds (S2). If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:"), align = "left"),
-              tags$style(HTML("#bird-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
-              
-              
+              h5(i18n$t("Below you can enter the data from the survey of birds (S2)."), align = "left"),
+
               HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
+              # Entry of age and number
+              h3(i18n$t("Participants and time:")),
+              
+              HTML("<br/>"), #whitespace
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       numericInput("no_partic_bird", label = i18n$t("How many participants are in your survey group?"), 
+                                    value = 0, width = "75%")),
+                
+                column(5, align="center",
+                       numericInput("age_partic_bird", label = i18n$t("What is the average age of the participants?"),
+                                    value = 0, width = "75%"))),
+              
+              HTML("<br/>", "<br/>"), #whitespace
+            
+              ## Date and time
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       dateInput("date_bird", i18n$t("Select the date when the surveying took place:"), width = "75%")),
+                
+                column(5, align="center",
+                       timeInput("time_bird", i18n$t("Enter the time when the surveying started (use the dials or enter the time directly):"),
+                                 value = Sys.time(), seconds = FALSE))),
+              
+              HTML("<br/>","<br/>"), #whitespace
+              
+              h3(i18n$t("Weather and temperature:")),
+              
+              HTML("<br/>"), #whitespace
+              
+              fluidRow(
+                column(6, align="center",
+                       radioGroupButtons(inputId = "windLevel_bird", label = i18n$t("How windy was it during the survey? (From leaves not moving to moving much)"),
+                         choices = c(`<i class='fa fa-wind' style='color:#ecf2f6; font-size: 12px;'></i>` = "Leaves not moving",
+                                     `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 16px;'></i>` = "Leaves moving slightly", 
+                                     `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 20px;'></i>` = "Leaves moving much"),
+                         justified = TRUE, status = "accent_blue", size = "lg", width = "50%")),
+                
+                column(6,
+                       sliderInput("temp_bird", i18n$t("What was the temperature outside during the survey? (°C)"),
+                                   5, 40, 5, ticks = T))),
+              
+              radioButtons("weather_bird", i18n$t("What was the weather like during the survey? (Single choice)"),
+                           choiceNames =
+                             list(icon("sun"), icon("cloud-sun"), icon("cloud"), icon("cloud-rain")),
+                           choiceValues = list("Sunny", "Sunny and cloudy", "Cloudy", "Rainy")),
+       
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
+              
+              #bird instructions
+              fluidPage(
+                column(2),
+                column(8, align = "center",
+              h3(i18n$t("Enter the birds you saw. If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:")))),
+             
+               HTML("<br/>"),
               
               #turdus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Eurasian blackbird (Turdus merula)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>","<br/>"), h4(i18n$t("Eurasian blackbird (Turdus merula)"))),
                 
-                column(5, align="left",
-                       numericInput("turdus_no", label = i18n$t("Number:"), value = 0, width = "50%")),
+                column(3, align="left",
+                       numericInput("turdus_no", label = h4(strong(i18n$t("Number:"))), value = 0, width = "50%")),
                 
-                column(2, align="center",
-                       checkboxGroupInput("turdus_pres", i18n$t("Present:"),
+                column(1, align="center",
+                       checkboxGroupInput("turdus_pres", h4(strong(i18n$t("Present:"))),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               #Fringilla
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Common chaffinch (Fringilla coelebs)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Common chaffinch (Fringilla coelebs)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("fringilla_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("fringilla_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               #Parus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Great tit (Parus major)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Great tit (Parus major)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("parus_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("parus_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               #Cyanistes
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Blue tit (Cyanistes caeruleus)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Blue tit (Cyanistes caeruleus)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("cyanistes_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("cyanistes_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               #Passer domesticus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("House sparrow (Passer domesticus)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("House sparrow (Passer domesticus)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("passer_dom_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("passer_dom_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               #Passer montanus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Tree sparrow (Passer montanus)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Tree sparrow (Passer montanus)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("passer_mont_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("passer_mont_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               
               #Motacilla alba
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("White wagtail (Motacilla alba)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("White wagtail (Motacilla alba)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("motacilla_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("motacilla_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               
               #Sturnus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Common starling (Sturnus vulgaris)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Common starling (Sturnus vulgaris)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("sturnus_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("sturnus_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
@@ -951,12 +954,13 @@ ui <- dashboardPage(
               
               #Apus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Swift (Apus apus)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Swift (Apus apus)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("apus_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("apus_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
@@ -964,24 +968,26 @@ ui <- dashboardPage(
               
               #Streptopelia
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Collared dove (Streptopelia decaocto)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Collared dove (Streptopelia decaocto)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("streptopelia_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("streptopelia_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               
               #Erithacus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("European robin (Erithacus rubecula)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("European robin (Erithacus rubecula)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("erithacus_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("erithacus_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
@@ -989,12 +995,13 @@ ui <- dashboardPage(
               
               #Columba
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Wood pigeon (Columba palumbus)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Wood pigeon (Columba palumbus)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("columba_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("columba_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
@@ -1002,12 +1009,13 @@ ui <- dashboardPage(
               
               #Phoenicurus
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Redstart (Phoenicurus phoenicurus)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Redstart (Phoenicurus phoenicurus)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("phoenicurus_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("phoenicurus_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
@@ -1015,12 +1023,13 @@ ui <- dashboardPage(
               
               #Pica
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Magpie (Pica pica)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Magpie (Pica pica)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("pica_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("pica_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
@@ -1028,53 +1037,52 @@ ui <- dashboardPage(
               
               #Sylvia arti
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Eurasian blackcap (Sylvia articapilla)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Eurasian blackcap (Sylvia articapilla)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("sylvia_arti_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("sylvia_arti_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
               
               #Sylvia melano
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Sardinian warbler (Sylvia melanocephala)"))),
+                column(1),
+                column(3, align="left", HTML("<br/>"), h4(i18n$t("Sardinian warbler (Sylvia melanocephala)"))),
                 
-                column(5, align="left",
+                column(3, align="left",
                        numericInput("sylvia_melano_no", label = i18n$t(""), value = 0, width = "50%")),
                 
-                column(2, align="center",
+                column(1, align="center",
                        checkboxGroupInput("sylvia_melano_pres", i18n$t(""),
                                           choiceNames = list(i18n$t("")), choiceValues = list("present")))),
               
-              HTML("<br/>"), #whitespace
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               #Free-text entry of specific species
-              textInput("birdSpecies_freeText", i18n$t("If you saw any aditional species, enter the three most common species and numbers below:"), 
-                        value = "E.g.: hooded crow (3), rook (4), common gull (2)", width = "100%"),
+              fluidRow(
+                column(2),
+                column(8, align="center",
+              textInput("birdSpecies_freeText", h4(i18n$t("If you saw any aditional species, enter the three most common species and numbers below:")), 
+                        placeholder = "E.g.: hooded crow (3), rook (4), common gull (2)", width = "100%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
-              actionButton("showBirds", i18n$t("Show bird data")), #map button
+              fluidRow(
+                column(2),
+                column(8, align="center",
+              actionButton("showBirds", i18n$t("Show bird data")))), #map button
               
               HTML("<br/>", "<br/>"), #whitespace
               
               plotOutput("birds_1", width = 780, height = 420),
               
               HTML("<br/>", "<br/>"), #whitespace
-              sliderInput(inputId = "feedback_birds", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
+              sliderInput(inputId = "feedback_birds", label = h4(i18n$t("How do you rate your experience with using this survey? (Use slider below)")),
                           1, 5, 3, ticks = F),
-              
-              tags$head(tags$style(
-                type="text/css",
-                "#bird_footer img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-bottom: -410px;
-                          }"
-              )),
               
               imageOutput("bird_footer"),
               
@@ -1084,74 +1092,112 @@ ui <- dashboardPage(
       ##########################################
       tabItem(tabName = "pollinators", align = "center",
               
-              tags$head(tags$style(
-                type="text/css",
-                "#plants_header img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-top: -30px;
-                          }"
-              )),
-              
               imageOutput("plants_header"),
-              
+  
               ## title text
               fluidRow(
                 column(1, align="right",
-                       h1(id="S3", strong("S3")),
-                       tags$style(HTML("#S3{color: #ffffff; margin-top: -320px; font-size: 70px;
-                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
-                
+                       h1(i18n$t("S3"))),
                 column(6, align="left",
-                       h2(id="pollinator-heading", i18n$t("Pollinators and Flowering Plants Survey")),
-                       tags$style(HTML("#pollinator-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
-                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
-                       )),
+                       h2(i18n$t("Pollinators and Flowering Plants Survey")))),
               
-              h2(id="plants-subhead", i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):"), align = "left"),
-              tags$style(HTML("#plants-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
+              h5(i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):"), align = "left"),
+              
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
+              
+              # Entry of age and number
+              h3(i18n$t("Participants and time:")),
+              
+              HTML("<br/>"), #whitespace
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       numericInput("no_partic_pollinators", label = i18n$t("How many participants are in your survey group?"), 
+                                    value = 0, width = "75%")),
+                
+                column(5, align="center",
+                       numericInput("age_partic_pollinators", label = i18n$t("What is the average age of the participants?"),
+                                    value = 0, width = "75%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
+              ## Date and time
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       dateInput("date_pollinators", i18n$t("Select the date when the surveying took place:"), width = "75%")),
+                
+                column(5, align="center",
+                       timeInput("time_pollinators", i18n$t("Enter the time when the surveying started (use the dials or enter the time directly):"),
+                                 value = Sys.time(), seconds = FALSE))),
               
-              strong(i18n$t("Enter the area (m2) of the following habitat in your 5x5 survey plot:")),
+              HTML("<br/>","<br/>"), #whitespace
+              
+              h3(i18n$t("Weather and temperature:")),
+              
+              HTML("<br/>"), #whitespace
+              
+              fluidRow(
+                column(6, align="center",
+                       radioGroupButtons(inputId = "windLevel_pollinators", label = i18n$t("How windy was it during the survey? (From leaves not moving to moving much)"),
+                                         choices = c(`<i class='fa fa-wind' style='color:#ecf2f6; font-size: 12px;'></i>` = "Leaves not moving",
+                                                     `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 16px;'></i>` = "Leaves moving slightly", 
+                                                     `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 20px;'></i>` = "Leaves moving much"),
+                                         justified = TRUE, status = "accent_blue", size = "lg", width = "50%")),
+                
+                column(6,
+                       sliderInput("temp_pollinators", i18n$t("What was the temperature outside during the survey? (°C)"),
+                                   5, 40, 5, ticks = T))),
+              
+              radioButtons("weather_pollinators", i18n$t("What was the weather like during the survey? (Single choice)"),
+                           choiceNames =
+                             list(icon("sun"), icon("cloud-sun"), icon("cloud"), icon("cloud-rain")),
+                           choiceValues = list("Sunny", "Sunny and cloudy", "Cloudy", "Rainy")),
+              
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
+              
+              h3(i18n$t("Enter the area (m2) of the following habitat in your 5x5 survey plot:")),
               HTML("<br/>","<br/>"),
               
               fluidRow(
-                column(6, align="center",
-                       numericInput("area_5x5_planted", label = i18n$t("Plant beds or flowerpots"), value = 0, width = "50%")),
+                column(3),
+                column(3, align="center",
+                       numericInput("area_5x5_planted", label = h4(i18n$t("Plant beds or flowerpots")), value = 0, width = "75%")),
                 
                 
-                column(6,
-                       numericInput("area_5x5_damp", label = i18n$t("Damp places"), value = 0, width = "50%"))
+                column(3,
+                       numericInput("area_5x5_damp", label = h4(i18n$t("Damp places")), value = 0, width = "75%"))
               ),
               
               fluidRow(
-                column(6, align="center",
-                       numericInput("area_5x5_woody", label = i18n$t("Trees and bushes"), value = 0, width = "50%")),
+                column(3),
+                column(3, align="center",
+                       numericInput("area_5x5_woody", label = h4(i18n$t("Trees and bushes")), value = 0, width = "75%")),
                 
                 
-                column(6,
-                       numericInput("area_5x5_shortGrass", label = i18n$t("Short grass"), value = 0, width = "50%"))
+                column(3,
+                       numericInput("area_5x5_shortGrass", label = h4(i18n$t("Short grass")), value = 0, width = "75%"))
               ),
               
               
               fluidRow(
-                column(6, align="center",
-                       numericInput("area_5x5_ground", label = i18n$t("Bare ground"), value = 0, width = "50%")),
+                column(3),
+                column(3, align="center",
+                       numericInput("area_5x5_ground", label = h4(i18n$t("Bare ground")), value = 0, width = "75%")),
                 
                 
-                column(6,
-                       numericInput("area_5x5_walls", label = i18n$t("Bare walls or fences"), value = 0, width = "50%"))
+                column(3,
+                       numericInput("area_5x5_walls", label = h4(i18n$t("Bare walls or fences")), value = 0, width = "75%"))
               ),
               
               fluidRow(
-                column(6, align="center",
-                       numericInput("area_5x5_anthro", label = i18n$t("Man-made homes"), value = 0, width = "50%")),
+                column(3),
+                column(3, align="center",
+                       numericInput("area_5x5_anthro", label = h4(i18n$t("Man-made homes")), value = 0, width = "75%")),
                 
                 
-                column(6,
-                       numericInput("area_5x5_hardSurface", label = i18n$t("Concrete or tarmac"), value = 0, width = "50%"))
+                column(3,
+                       numericInput("area_5x5_hardSurface", label = h4(i18n$t("Concrete or tarmac")), value = 0, width = "75%"))
               ),
               #PUT IN A CALCULATOR TO CHECK THAT IT EQUALS 25!
               
@@ -1160,146 +1206,152 @@ ui <- dashboardPage(
               HTML("<br/>","<br/>"), #whitespace
               
               # Entry of pollinators
-              strong(i18n$t("Enter the total number of individuals and species you saw for each pollinator group:")),
+              h3(i18n$t("Enter the total number of individuals and species you saw for each pollinator group:")),
               HTML("<br/>","<br/>"),
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Bumblebees"))),
+                column(1),
+                column(2, align="left", HTML("<br/>", "<br/>"), h4(i18n$t("Bumblebees"))),
                 
-                column(4, align="center",
-                       numericInput("bombus_tot_individ_5x5", label = i18n$t("Individuals:"), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("bombus_tot_individ_5x5", label = h4(i18n$t("Individuals:")), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("bombus_tot_species_5x5", label = i18n$t("Species:"), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("bombus_tot_species_5x5", label = h4(i18n$t("Species:")), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Honeybees"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Honeybees"))),
                 
-                column(4, align="center",
-                       numericInput("mellifera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("mellifera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("mellifera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("mellifera_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Solitary bees"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Solitary bees"))),
                 
-                column(4, align="center",
-                       numericInput("apis_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("apis_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("apis_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("apis_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Wasps"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Wasps"))),
                 
-                column(4, align="center",
-                       numericInput("vespid_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("vespid_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("vespid_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("vespid_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Beetles"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Beetles"))),
                 
-                column(4, align="center",
-                       numericInput("coleoptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("coleoptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("coleoptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("coleoptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("True bugs"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("True bugs"))),
                 
-                column(4, align="center",
-                       numericInput("hemiptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("hemiptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("hemiptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("hemiptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Butterflies"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Butterflies"))),
                 
-                column(4, align="center",
-                       numericInput("lepidoptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("lepidoptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("lepidoptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("lepidoptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Moths"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Moths"))),
                 
-                column(4, align="center",
-                       numericInput("moth_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("moth_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("moth_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("moth_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Hoverflies"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Hoverflies"))),
                 
-                column(4, align="center",
-                       numericInput("syrphidae_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("syrphidae_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("syrphidae_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("syrphidae_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Other flies and mosquitos"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Other flies and mosquitos"))),
                 
-                column(4, align="center",
-                       numericInput("other_diptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("other_diptera_tot_individ_5x5", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("other_diptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("other_diptera_tot_species_5x5", label = i18n$t(""), value = 0, width = "75%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
-              actionButton("showPollinators", i18n$t("Show pollinator data")), #map button
+              actionButton("showPollinators", i18n$t("Show pollinator data")), #button
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               plotlyOutput("pollinators_1", width = 780, height = 420),
               
               HTML("<br/>", "<br/>"), #whitespace
               
               #floweriness
-              sliderInput(inputId = "floweriness_5x5", label = i18n$t("Rate your 5x5m survey plot on the floweriness-scale:"),
+              h3(i18n$t("Enter the data for the plants:")),
+              
+              HTML("<br/>", "<br/>"), #whitespace
+              
+              sliderInput(inputId = "floweriness_5x5", label = h4(i18n$t("Rate your 5x5m survey plot on the floweriness-scale:")),
                           1, 3, 1, ticks = F),       
               
               
-              HTML("<br/>","<br/>"), #whitespace
+              HTML("<br/>","<br/>", "<br/>"), #whitespace
               
               #flower species
               fluidRow(
-                column(6, align="center", 
-                       numericInput("flowers_tot_species_5x5", label = i18n$t("How many different species of flowering plants did you find?"), 
-                                    value = 0, width = "100%")),
+                column(2),
+                column(4, align="center", 
+                       numericInput("flowers_tot_species_5x5", label = h4(i18n$t("How many different species of flowering plants did you find?")), 
+                                    value = 0, width = "80%")),
                 
-                column(6, align="center", textInput("flower_species_freeText_5x5", i18n$t("(Optional) If you identified the species, write the three most common below"), 
-                                                    value = "E.g.: daisy, lavender, orchid", width = "100%"))),
+                column(4, align="center", textInput("flower_species_freeText_5x5", label = i18n$t("(Optional) If you identified the species, write the three most common below"), 
+                                                    placeholder = "E.g.: daisy, lavender, orchid", width = "80%"))),
               
-              HTML("<br/>", "<br/>"), #whitespace
-              sliderInput(inputId = "feedback_pollinators", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
+              sliderInput(inputId = "feedback_pollinators", label = h4(i18n$t("How do you rate your experience with using this survey? (Use slider below)")),
                           1, 5, 3, ticks = F),
-              
-              tags$head(tags$style(
-                type="text/css",
-                "#plants_footer img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right:  0px;
-                            margin-bottom: -410px;
-                          }"
-              )),
               
               imageOutput("plants_footer"),
       ),
@@ -1308,155 +1360,199 @@ ui <- dashboardPage(
       ##########################################
       tabItem(tabName = "minibeasts",  align = "center",
               
-              tags$head(tags$style(
-                type="text/css",
-                "#minibeast_header img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-top: -30px;
-                          }"
-              )),
-              
               imageOutput("minibeast_header"),
               
               ## title text
               fluidRow(
                 column(1, align="right",
-                       h1(id="S4", strong("S4")),
-                       tags$style(HTML("#S4{color: #ffffff; margin-top: -320px; font-size: 70px;
-                                       text-shadow: 0.5px 0.5px 0.5px #aaa;}"))),
-                
+                       h1(i18n$t("S4"))),
                 column(6, align="left",
-                       h2(id="minibeast-heading", i18n$t("Minibeasts and Leaves Survey")),
-                       tags$style(HTML("#minibeast-heading{color: #ffffff; margin-top: -320px; font-size: 50px;
-                              text-shadow: 0.3px 0.3px 0.3px #aaa;}")), #ID call for custom colour
-                )),
+                       h2(i18n$t("Minibeasts and Leaves Survey")))),
               
-              h2(id="minibeast-subhead", i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):"), align = "left"),
-              tags$style(HTML("#minibeast-subhead{font-size: 22px; margin-top: -100px}")), #ID call for custom colour
+              h5(id="minibeast-subhead", i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):"), align = "left"),
+              
+              HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
+              
+              # Entry of age and number
+              h3(i18n$t("Participants and time:")),
+              
+              HTML("<br/>"), #whitespace
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       numericInput("no_partic_minibeast", label = i18n$t("How many participants are in your survey group?"), 
+                                    value = 0, width = "75%")),
+                
+                column(5, align="center",
+                       numericInput("age_partic_minibeast", label = i18n$t("What is the average age of the participants?"),
+                                    value = 0, width = "75%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
+              ## Date and time
+              fluidRow(
+                column(1),
+                column(5, align="center",
+                       dateInput("date_minibeast", i18n$t("Select the date when the surveying took place:"), width = "75%")),
+                
+                column(5, align="center",
+                       timeInput("time_minibeast", i18n$t("Enter the time when the surveying started (use the dials or enter the time directly):"),
+                                 value = Sys.time(), seconds = FALSE))),
+              
+              HTML("<br/>","<br/>"), #whitespace
+              
+              h3(i18n$t("Weather and temperature:")),
+              
+              HTML("<br/>"), #whitespace
+              
+              fluidRow(
+                column(6, align="center",
+                       radioGroupButtons(inputId = "windLevel_minibeast", label = i18n$t("How windy was it during the survey? (From leaves not moving to moving much)"),
+                                         choices = c(`<i class='fa fa-wind' style='color:#ecf2f6; font-size: 12px;'></i>` = "Leaves not moving",
+                                                     `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 16px;'></i>` = "Leaves moving slightly", 
+                                                     `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 20px;'></i>` = "Leaves moving much"),
+                                         justified = TRUE, status = "accent_blue", size = "lg", width = "50%")),
+                
+                column(6,
+                       sliderInput("temp_minibeast", i18n$t("What was the temperature outside during the survey? (°C)"),
+                                   5, 40, 5, ticks = T))),
+              
+              radioButtons("weather_minibeast", i18n$t("What was the weather like during the survey? (Single choice)"),
+                           choiceNames =
+                             list(icon("sun"), icon("cloud-sun"), icon("cloud"), icon("cloud-rain")),
+                           choiceValues = list("Sunny", "Sunny and cloudy", "Cloudy", "Rainy")),
+              
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               numericInput("no_1x1_squares", label = i18n$t("How many 1x1m squares did you survey?"), 
-                           value = 1, width = "30%"),
+                           value = 1, width = "25%"),
               
               HTML("<br/>","<br/>"), #whitespace
               
               #Free-text entry of 1x1 habitats
               textInput("habitat_1x1_freeText", i18n$t("What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:"), 
-                        value = "E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)", width = "80%"),
+                        placeholder = "E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)", width = "60%"),
               
               HTML("<br/>","<br/>"), #whitespace
               
               # Entry of pollinators
-              strong(i18n$t("Enter the total number of individuals and species you saw for each minibeast group:")),
+              h3(i18n$t("Enter the total number of individuals and species you saw for each minibeast group:")),
               HTML("<br/>","<br/>"),
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Earthworms"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Earthworms"))),
                 
-                column(4, align="center",
-                       numericInput("annelida_tot_indiv_1x1", label = i18n$t("Individuals:"), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("annelida_tot_indiv_1x1", label = i18n$t("Individuals:"), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("annelida_tot_species_1x1", label = i18n$t("Species:"), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("annelida_tot_species_1x1", label = i18n$t("Species:"), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Ants"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Ants"))),
                 
-                column(4, align="center",
-                       numericInput("hymenoptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("hymenoptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("hymenoptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("hymenoptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Centipedes and millipedes"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Centipedes and millipedes"))),
                 
-                column(4, align="center",
-                       numericInput("myriapoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("myriapoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("myriapoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("myriapoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Woodlice"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Woodlice"))),
                 
-                column(4, align="center",
-                       numericInput("isopoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("isopoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("isopoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("isopoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Spiders and harvestmen"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Spiders and harvestmen"))),
                 
-                column(4, align="center",
-                       numericInput("arachnid_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("arachnid_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("arachnid_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("arachnid_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Beetles"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Beetles"))),
                 
-                column(4, align="center",
-                       numericInput("coleoptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("coleoptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("coleoptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("coleoptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("True bugs"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("True bugs"))),
                 
-                column(4, align="center",
-                       numericInput("hemioptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("hemioptera_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("hemiptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("hemiptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Insect larvae"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Insect larvae"))),
                 
-                column(4, align="center",
-                       numericInput("caterpillar_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("caterpillar_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("caterpillar_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("caterpillar_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Snails and slugs"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Snails and slugs"))),
                 
-                column(4, align="center",
-                       numericInput("gastropoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("gastropoda_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("gastropoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("gastropoda_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               
               fluidRow(
-                column(3, align="left", HTML("<br/>"), strong(i18n$t("Other minibeasts"))),
+                column(1),
+                column(2, align="left", HTML("<br/>"), h4(i18n$t("Other minibeasts"))),
                 
-                column(4, align="center",
-                       numericInput("other_tot_individ_1x1", label = i18n$t(""), value = 0, width = "50%")),
+                column(3, align="center",
+                       numericInput("other_tot_individ_1x1", label = i18n$t(""), value = 0, width = "75%")),
                 
-                column(4, align="center",
-                       numericInput("other_diptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "50%"))),
+                column(3, align="center",
+                       numericInput("other_diptera_tot_species_1x1", label = i18n$t(""), value = 0, width = "75%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
               
               actionButton("showInvertebrates", i18n$t("Show minibeast data")), #map button
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
               plotOutput("invertebrates_1", width = 780, height = 420),
               
@@ -1471,7 +1567,7 @@ ui <- dashboardPage(
                 
                 column(6, align="center",
                        numericInput("leaf_diversity_1x1", label = i18n$t("How many different types of leaves do you find in all 1x1m squares?"), 
-                                    value = 0, width = "100%"))),
+                                    value = 0, width = "50%"))),
               
               
               HTML("<br/>", "<br/>"), #whitespace
@@ -1479,15 +1575,6 @@ ui <- dashboardPage(
               #feedback 
               sliderInput(inputId = "feedback_minibeasts", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
                           1, 5, 3, ticks = F),
-              
-              tags$head(tags$style(
-                type="text/css",
-                "#minibeast_footer img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-bottom: -410px;
-                          }"
-              )),
               
               imageOutput("minibeast_footer"),
       ),
@@ -1497,11 +1584,14 @@ ui <- dashboardPage(
       
       tabItem(tabName = "submit", align = "center",
               
-              titlePanel(i18n$t("Submit data")),
+              h3(i18n$t("Submit data")),
               
-              HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
+              HTML("<br/>", "<br/>"), # white space
               
-              strong(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.")),
+              fluidRow(
+                column(2),
+                column(8, align = "center",
+              h4(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.")))),
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               #download data button
@@ -1509,15 +1599,6 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
-              
-              tags$head(tags$style(
-                type="text/css",
-                "#LtL_banner_dwn img {max-width: 110%; width: 104%; height: auto;
-                            margin-left: -30px;
-                            margin-right: 0px;
-                            margin-bottom: -465px;
-                          }"
-              )),
               
                 imageOutput("LtL_banner_dwn"),
       ),
@@ -1527,23 +1608,26 @@ ui <- dashboardPage(
        #########################################
        tabItem(tabName = "about", align = "center",
                
-               titlePanel(i18n$t("About us")),
+               h3(i18n$t("About us")),
                
-               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
+               HTML("<br/>", "<br/>"), # white space
                
-               strong(i18n$t("Natural Nations is an international school grounds biodiversity project funded by Erasmus+ and led by Learning through Landscapes in partnership with Naturskolan i Lund, Lund University, Birdlife Malta and Sociedad Espanola de Ornitologia SEO (Birdlife Spain). To help schools improve their school grounds for wildlife, the Natural Nations project has developed survey methodology to record pollinating insects, minibeasts and leaves, bird populations and habitats and vegetation with supporting educational and cultural heritage resources.")),
+               fluidRow(
+                 column(2),
+                 column(8, align = "center",
+               h4(i18n$t("Natural Nations is an international school grounds biodiversity project funded by Erasmus+ and led by Learning through Landscapes in partnership with Naturskolan i Lund, Lund University, Birdlife Malta and Sociedad Espanola de Ornitologia SEO (Birdlife Spain). To help schools improve their school grounds for wildlife, the Natural Nations project has developed survey methodology to record pollinating insects, minibeasts and leaves, bird populations and habitats and vegetation with supporting educational and cultural heritage resources.")))),
                
                
                HTML("<br/>", "<br/>", "<br/>", "<br/>","<br/>", "<br/>", "<br/>", "<br/>"), # white space
                imageOutput("allLogo", height = 100), # banner logo)
                HTML("<br/>", "<br/>", "<br/>", "<br/>", "<br/>"),
-               imageOutput("nbisLogo", height = 100) # banner logo)
+               imageOutput("nbisLogo", height = 100), # banner logo)
+               HTML("<br/>", "<br/>")
        
       ) 
-      
+      #########################################
     ),
     useShinyjs()) #custom layou for navbar
-  
 )
 
 server <- function(input, output, session) {
@@ -1569,25 +1653,19 @@ server <- function(input, output, session) {
                       choices = i18n_r()$t(c("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and bushes", "Bare ground",
                                              "Man-made homes", "Damp places", "Short grass", "Bare walls or fences", "Concrete or tarmac")))
     updateTextInput(session, "plantSpecies_freeText", i18n_r()$t("Enter the three most common species and numbers below:"), 
-              value = i18n_r()$t("E.g.: oak (7), birch (4), Taxus baccata (2)"))
+                    placeholder = i18n_r()$t("E.g.: oak (7), birch (4), Taxus baccata (2)"))
     updateTextInput(session, "birdSpecies_freeText", i18n_r()$t("If you saw any aditional species, enter the three most common species and numbers below:"), 
-                    value = i18n_r()$t("E.g.: hooded crow (3), rook (4), common gull (2)"))
+                    placeholder = i18n_r()$t("E.g.: hooded crow (3), rook (4), common gull (2)"))
     updateTextInput(session, "flower_species_freeText_5x5", i18n_r()$t("(Optional) If you identified the species, write the three most common below"), 
-                    value = i18n_r()$t( "E.g.: daisy, lavender, orchid"))
+                    placeholder = i18n_r()$t( "E.g.: daisy, lavender, orchid"))
     updateTextInput(session, "habitat_1x1_freeText", i18n_r()$t("What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:"), 
-                    value = i18n_r()$t("E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)"))
+                    placeholder = i18n_r()$t("E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)"))
   })
 
   
 
   # When the Submit button is clicked, save the form data BEES
   observeEvent(input$showMap, {
-    saveData(formData())
-  })
-  
-  
-  # When the Submit button is clicked, save the form data WEATHER
-  observeEvent(input$showWeather, {
     saveData(formData())
   })
   
@@ -1618,14 +1696,6 @@ server <- function(input, output, session) {
     saveData(formData())
   })
   
-  
-  # Show the previous responses
-  # (update with current response when Submit is clicked)
-  output$responses <- DT::renderDataTable({
-    input$showWeather
-    loadData()
-    
-  })    
   
   
   # Show the previous responses
@@ -1737,15 +1807,7 @@ server <- function(input, output, session) {
     
   }, bg="transparent")
   
-  # render barplot of temperature
-  output$temp <- renderPlot({
-    
-    input$showWeather
-    loadData()
-    plot_func6_temperature()
-    
-    
-  }, bg="transparent")
+
   # Download button
   
   output$downloadData <- downloadHandler(
