@@ -6,8 +6,8 @@
 
     {"United Kingdom": "Select", "Sverige (Sweden)": "Välj"},
 
-    {"United Kingdom": "Welcome to the data entry prototype!",
-    "Sverige (Sweden)": "Välkommen till datainmatnings-prototypen!"},
+    {"United Kingdom": "Welcome to the data entry website!",
+    "Sverige (Sweden)": "Välkommen till hemsidan för datarapportering!"},
 
     {"United Kingdom": "Enter the name of your school:",
     "Sverige (Sweden)": "Ange er skolas namn:"},
@@ -28,10 +28,10 @@
     "Sverige (Sweden)": "Resultat:"},
 
     {"United Kingdom":
-    "Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!",
+    "On this website you can enter the data from the Natural Nation school survey. You will instantly be able to see how your results compare to other schools and the data will be used in a research project by Lund University, Sweden. If you plan to do more than one survey protocol (S1, S2, S3 and S4) within a year, please complete all surveys before you enter the data, so that it can be entered in one go. Note that while the data will be temporarily stored on the webpage, you need to complete the data entry within one day and press the 'Download data' button (see instructions on the page Submit data) for the data to be permanently saved. You can go back and correct values until you press this button. Thank you for contributing to science!",
 
     "Sverige (Sweden)":
-    "Här kan du lägga in data från er undersökning med hjälp av de interaktiva kontrollerna nedan. Du kommer direkt kunna se     hur era resultat ser ut i jämförelse med andra skolor. Var noggrann med att lägga in all data korrekt innan ni trycker      'Ladda ner' - skicka sedan filen till anna.persson [at] cec.lu.se. Du kan sedan utforska sidans funktioner genom att testa ändra värden och     se vad som händer. Tack för att ni bidrar till forskning!"},
+    "Här kan du rapportera vad ni har hittat under Natural Nations skolgårdsinventeringar. Ni kommer direkt kunna jämföra era fynd med andra skolor och data kommer att användas i ett forskningsprojekt från Lunds universitet. Om ni planerar att genomföra mer än ett protokoll (P1, P2, P3 och P4) inom ett år, vänligen slutför samtliga protokoll innan ni börjar mata in data, så att allt kan rapporteras vid ett och samma tillfälle. Notera att även om siffrorna sparas tillfälligt på hemsidan så behöver ni rapportera klart alla uppgifter inom en dag och sedan trycka på ’Ladda ner’-knappen (se instruktioner på sidan Ladda upp data) för att er data ska sparas permanent. Ni kan gå tillbaka och ändra uppgifter och siffror ända tills ni trycker på Ladda ner-knappen. Tack för att ni bidrar till forskningen!"},
 
      {"United Kingdom": "What was the temperature outside during the survey? (°C)",
     "Sverige (Sweden)": "Vilken temperatur var det utomhus under undersökningen?(°C)"},
@@ -436,7 +436,33 @@
 "Sverige (Sweden)": "Lägg in data för växterna:"},
 
 {"United Kingdom": "Participants and time:",
-"Sverige (Sweden)": "Deltagare och tid:"}
+"Sverige (Sweden)": "Deltagare och tid:"},
+
+{"United Kingdom": "The map is interactive. Try zooming in on your country to see which other schools have participated. Hover with the mouse to display names. Did you enter the wrong coordinates? Just re-enter the correct ones and press the Show map-button again!",
+"Sverige (Sweden)": "Kartan är interaktiv. Test zooma in på ert land för att se vilka skolor som har deltagit. Använd muspekaren för att visa namn. Skrev ni in fel koordinater? Skriv bara in de korrekta och tryck på Visa karta-knappen igen!"},
+
+{"United Kingdom": "Tip!",
+"Sverige (Sweden)": "Tips!"},
+
+{"United Kingdom": "About the graph",
+"Sverige (Sweden)": "Om grafen"},
+
+{"United Kingdom": "This graph shows the most common habitat on school grounds across all participating schools. Question: Was this what you were expecting? Why do you think school grounds look the way they do today? \n About the graph: This type of graph is called a barplot. The higher the bars, the more schools have selected this answer.",
+"Sverige (Sweden)": "Grafen visar det vanligaste habitatet på skolgårdar för alla skolor som deltagit. Fråga: Var det här vad ni väntade er? Varför ser skolgårdar ut som de gör idag? \n Om grafen: Den här grafen kallas för ett stapeldiagram. Höga staplar betyder att många har valt det här svaret."},
+
+{"United Kingdom": "This graph shows the number of different tree and shrub species recorded by each school and how large the school grounds are. Question: Do you see any pattern? Do you need a large school ground to have many species of plants? About the graph: This type of graph is called a scatter plot. A dot high up shows that this school has a lot of species. A dot far to the right shows the school grounds are large.",
+"Sverige (Sweden)": "Grafen visar antalet träd- och buskarter för varje skola och hur stor skolgårdarna är. Fråga: Ser ni något mönster? Måste man ha en stor skolgård för att kunna ha många växtarter? Om grafen: Den här grafen kallas för ett punkt- eller spridningsdiagram. En punkt som är högt upp visar att skolan har många arter. En punkt långt till höger visar att skolgården är stor."},
+
+{"United Kingdom": "This graph shows the number of birds seen by each school and how many trees and shrubs that have been recorded. Question: Is there any pattern? Would you have seen more birds if you had more trees? About the graph: This type of graph is called a scatter plot. A dot high up shows that this school has a lot of birds. A dot far to the right shows the school grounds have many trees and shrubs.",
+"Sverige (Sweden)": "Grafen visar antalet fåglar varje skola har sett och hur många träd och buskar arter som finns på skolgården. Fråga: Finns det något mönster? Hade ni sett fler fåglar om ni hade haft mer träd? Om grafen: Den här grafen kallas för ett punkt- eller spridningsdiagram. En punkt som är högt upp visar att skolan har många fåglar. En punkt långt till höger visar att skolgården har många träd och buskar."},
+
+{"United Kingdom": "This graph shows which pollinator group was the most common at your school. Question: Which was the most common pollinator at your school? Were there any groups you did not see and if so, is there anything you can do to help them? About the graph: This type of graph is called a pie-chart. It show the proportion of pollinators recorded in percent. Hover with the mouse to see the absolute values (number of individuals).",
+"Sverige (Sweden)": "Grafen visar vilken pollinatörsgrupp som var vanligast på er skola. Fråga: Vilken grupp var vanligast hos er? Finns det någon grupp ni inte såg, och i så fall, finns det något ni kan göra för att hjälpa dem? Om grafen: Den här grafen kallas för ett pajdiagram. Den visar proportionen av pollinatörer i procent. Håll muspekaren över grafen för att visa de absoluta värdena (antal individer)."},
+
+{"United Kingdom": "This graph shows the number of minibeasts per square meter for each school. Question: What does it mean to have a lot of minibeast per square meter? Which school has seen the most minibeasts in total? About the graph: This type of graph is called a bar plot. The higher the bars, the more minibeasts have been recorded per square meter.",
+"Sverige (Sweden)": "Grafen visar antalet småkryp per kvadratmeter för varje skola. Fråga: Vad betyder det att ha många småkryp per kvadratmeter? Vilken skola har sett flest småkryp totalt. Om grafen: Den här grafen kallas för ett stapeldiagram. Höga staplar betyder att många småkryp per kvadratmeter."}
+
+
 
     ]
 }

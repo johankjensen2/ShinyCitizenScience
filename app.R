@@ -13,9 +13,10 @@ library(shinyTime)
 library(shinyWidgets)
 library(leaflet)
 library(plotly)
-library(shinydashboard) #added
-library(shinyjs) #added
-library(extrafont) #added
+library(shinydashboard)
+library(shinyjs)
+library(extrafont) 
+library(ggrepel) #NEW
 
 ####################################################
 
@@ -88,9 +89,9 @@ plot_func1_habitat <- function() {
       geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) + theme_classic() + 
       scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
-      scale_y_continuous(limits = c(0,5), expand = c(0,0)) + labs(y="Antal skolor", x="", title = "") +
+      scale_y_continuous(limits = c(0, as.numeric(max(plotDataHabitat$n)+2)), expand = c(0,0)) + labs(y="Antal skolor", x="", title = "") +
       theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
-            text = element_text(size=20, family= "Times"), axis.text.x = element_text(size = 20, angle = 45, 
+            text = element_text(size=20), axis.text.x = element_text(size = 20, angle = 45, 
                                                                                       hjust = 1, color = "grey1")) + 
       theme(axis.ticks.length=unit(.25, "cm"))  +
               theme(
@@ -108,9 +109,9 @@ plot_func1_habitat <- function() {
         geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) + theme_classic() + 
         scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
         scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitat$dominant_habitat), type = "continuous")) +
-        scale_y_continuous(limits = c(0,5), expand = c(0,0)) + labs(y="Number of schools", x="", title = "") +
+        scale_y_continuous(limits = c(0, as.numeric(max(plotDataHabitat$n)+2)), expand = c(0,0)) + labs(y="Number of schools", x="", title = "") +
         theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
-              text = element_text(size=20, family= "Times"), axis.text.x = element_text(size = 20, angle = 45, 
+              text = element_text(size=20), axis.text.x = element_text(size = 20, angle = 45, 
                                                                                         hjust = 1, color = "grey1")) + 
         theme(axis.ticks.length=unit(.25, "cm"))  +
         theme(
@@ -130,23 +131,25 @@ plot_func2_yard <- function() {
     School <- as.character(responses$School)
     yard <- as.numeric(responses$yard_size)
     WoodySpecies <- as.numeric(responses$trees_tot_species) + as.numeric(responses$shrubs_tot_species)
+    number <- 1:length(responses$School)
     
-    plotDataHabitatTrees <- data.frame(School,yard,WoodySpecies)
+    plotDataHabitatTrees <- data.frame(School,yard,WoodySpecies, number)
     
     if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
       ggplot(plotDataHabitatTrees, aes(x = as.numeric(yard), y=as.numeric(WoodySpecies), 
                                        fill = School, color = School)) +
-        geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+        geom_point(aes(fill=School), colour="black", size=6, alpha = 0.9, pch=21) +
         theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
         scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
-        scale_y_continuous(limits = c(0,25), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
+        scale_y_continuous(breaks=seq(0,1000,2), limits = c(0, as.numeric(max(plotDataHabitatTrees$WoodySpecies)+5)), expand = c(0,0)) +  
+        scale_x_continuous(breaks=seq(0,100000,200), limits = c(0,as.numeric(max(plotDataHabitatTrees$yard)+100)), expand = c(0,0)) +
+        geom_label_repel(aes(label=ifelse(plotDataHabitatTrees$number == length(plotDataHabitatTrees$School),
+                                          as.character(plotDataHabitatTrees$School),'')), box.padding = 2, point.padding = 1.5,
+                                          color = "black", segment.color = 'black', alpha = 0.6, size = 6)+
         labs(y="Artrikedom\n(antal träd- och buskarter) \n", x="Skolgårdens storlek (m2)", title = "") +
-        geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
         theme(legend.position = "none",
               plot.title = element_text(hjust = 0.5),
-              text = element_text(size=20, family= "Times"), 
-              axis.text.x = element_text(size = 20, angle = 45,
-                                         hjust = 1, color = "grey1")) +
+              text = element_text(size=20)) +
         theme(axis.ticks.length=unit(.25, "cm")) +
         theme(
           panel.background = element_rect(fill = "transparent"), # bg of the panel
@@ -160,17 +163,18 @@ plot_func2_yard <- function() {
     else{
       ggplot(plotDataHabitatTrees, aes(x = as.numeric(yard), y=as.numeric(WoodySpecies), 
                                        fill = School, color = School)) +
-        geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+        geom_point(aes(fill=School), colour="black", size=6, alpha = 0.9, pch=21) +
         theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
         scale_color_manual(values=wes_palette("Moonrise3", length(plotDataHabitatTrees$School), type = "continuous")) +
-        scale_y_continuous(limits = c(0,25), expand = c(0,0)) +  scale_x_continuous(limits = c(0,2000), expand = c(0,0)) +
+        scale_y_continuous(breaks=seq(0,1000,2), limits = c(0, as.numeric(max(plotDataHabitatTrees$WoodySpecies)+5)), expand = c(0,0)) +  
+        scale_x_continuous(breaks=seq(0,100000,200), limits = c(0,as.numeric(max(plotDataHabitatTrees$yard)+100)), expand = c(0,0)) +
+        geom_label_repel(aes(label=ifelse(plotDataHabitatTrees$number == length(plotDataHabitatTrees$School),
+                                          as.character(plotDataHabitatTrees$School),'')), box.padding = 2, point.padding = 1.5,
+                                          color = "black", segment.color = 'black', alpha = 0.6, size = 6) +
         labs(y="Species richness\n(number of woody species) \n", x="School grounds size (m2)", title = "") +
-        geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
         theme(legend.position = "none",
               plot.title = element_text(hjust = 0.5),
-              text = element_text(size=20, family= "Times"), 
-              axis.text.x = element_text(size = 20, angle = 45,
-                                         hjust = 1, color = "grey1")) +
+              text = element_text(size=20)) +
         theme(axis.ticks.length=unit(.25, "cm")) +
         theme(
           panel.background = element_rect(fill = "transparent"), # bg of the panel
@@ -204,21 +208,23 @@ plot_func3_birds <- function() {
     
     plotDataBirds$School <- as.character(responses$School)
     plotDataBirds$WoodySpecies <- as.numeric(responses$trees_tot_species) + as.numeric(responses$shrubs_tot_species)
-    colnames(plotDataBirds) <- c("BirdSum", "School", "WoodySpecies")
+    plotDataBirds$number <- 1:length(responses$School)
+    colnames(plotDataBirds) <- c("BirdSum", "School", "WoodySpecies", "number")
     
     if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
       ggplot(plotDataBirds, aes(x = WoodySpecies, y=BirdSum, fill = School, color = School)) +
-        geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+        geom_point(aes(fill=School), colour="black", size=6, alpha = 0.9, pch=21) +
         theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), 
                                                                type = "continuous")) +
         scale_color_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), type = "continuous")) +
-        scale_y_continuous(limits = c(0,80), expand = c(0,0)) +  scale_x_continuous(limits = c(0,25), expand = c(0,0)) +
+        scale_y_continuous(breaks=seq(0,1000,5), limits = c(0, as.numeric(max(plotDataBirds$BirdSum)+10)), expand = c(0,0)) +  
+        scale_x_continuous(breaks=seq(0,1000,2), limits = c(0, as.numeric(max(plotDataBirds$WoodySpecies)+5)), expand = c(0,0)) +
         labs(y="Totalt antal observerade fåglar \n", x="Antal träd- och buskarter", title = "") +
-        geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
+        geom_label_repel(aes(label=ifelse(plotDataBirds$number == length(plotDataBirds$School),
+                                          as.character(plotDataBirds$School),'')), box.padding = 2, point.padding = 1.5,
+                                          color = "black", segment.color = 'black', alpha = 0.6, size = 6)+
         theme(legend.position = "none", plot.title = element_text(hjust = 0.5), 
-              text = element_text(size=20, family= "Times"), 
-              axis.text.x = element_text(size = 16, angle = 45,
-                                         hjust = 1, color = "grey1")) + theme(axis.ticks.length=unit(.25, "cm")) +
+              text = element_text(size=20)) + theme(axis.ticks.length=unit(.25, "cm")) +
         theme(
           panel.background = element_rect(fill = "transparent"), # bg of the panel
           plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
@@ -230,17 +236,18 @@ plot_func3_birds <- function() {
     }
     else{
     ggplot(plotDataBirds, aes(x = WoodySpecies, y=BirdSum, fill = School, color = School)) +
-      geom_point(aes(fill=School), colour="black", size=5, alpha = 0.9, pch=21) +
+      geom_point(aes(fill=School), colour="black", size=6, alpha = 0.9, pch=21) +
       theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), 
                                                              type = "continuous")) +
       scale_color_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), type = "continuous")) +
-      scale_y_continuous(limits = c(0,80), expand = c(0,0)) +  scale_x_continuous(limits = c(0,25), expand = c(0,0)) +
+      scale_y_continuous(breaks=seq(0,1000,5), limits = c(0, as.numeric(max(plotDataBirds$BirdSum)+10)), expand = c(0,0)) +  
+      scale_x_continuous(breaks=seq(0,1000,2), limits = c(0, as.numeric(max(plotDataBirds$WoodySpecies)+5)), expand = c(0,0)) +
+        geom_label_repel(aes(label=ifelse(plotDataBirds$number == length(plotDataBirds$School),
+                                          as.character(plotDataBirds$School),'')), box.padding = 2, point.padding = 1.5,
+                                          color = "black", segment.color = 'black', alpha = 0.6, size = 6)+
       labs(y="Total number of birds observed \n", x="Number of tree and shrub species", title = "") +
-      geom_smooth(method='lm', se=F, size = 1.5, colour ="Black") +
       theme(legend.position = "none", plot.title = element_text(hjust = 0.5), 
-            text = element_text(size=20, family= "Times"), 
-            axis.text.x = element_text(size = 16, angle = 45,
-                                       hjust = 1, color = "grey1")) + theme(axis.ticks.length=unit(.25, "cm")) +
+            text = element_text(size=20)) + theme(axis.ticks.length=unit(.25, "cm")) +
                                                                               theme(
                                                                                 panel.background = element_rect(fill = "transparent"), # bg of the panel
                                                                                 plot.background = element_rect(fill = "transparent", color = NA), # bg of the plot
@@ -353,10 +360,10 @@ plot_func5_invertebrates <- function() {
                                              type = "continuous")) +
         scale_color_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
                                               type = "continuous")) +
-        scale_y_continuous(limits = c(0,15), expand = c(0,0)) + theme_classic() +
+        scale_y_continuous(breaks=seq(0,1000,1), limits = c(0, as.numeric(max(plotDataInvertebrates$invertebrateMeanPerSquare)+2)), expand = c(0,0)) + theme_classic() +
         labs(y="Antal småkryp \n per kvadratmeter \n", x="", title = "") +
         theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
-              text = element_text(size=20, family= "Times"), 
+              text = element_text(size=20), 
               axis.text.x = element_text(size = 20, angle = 45,
                                          hjust = 1, color = "grey1")) +
         theme(axis.ticks.length=unit(.25, "cm")) +
@@ -378,10 +385,10 @@ plot_func5_invertebrates <- function() {
                                              type = "continuous")) +
         scale_color_manual(values=wes_palette("Moonrise3", length(plotDataInvertebrates$School), 
                                               type = "continuous")) +
-        scale_y_continuous(limits = c(0,15), expand = c(0,0)) + theme_classic() +
+        scale_y_continuous(breaks=seq(0,1000,1), limits = c(0, as.numeric(max(plotDataInvertebrates$invertebrateMeanPerSquare)+2)), expand = c(0,0)) + theme_classic() +
         labs(y="Mean number of minibeasts \n per 1x1 square \n", x="", title = "") +
         theme(legend.position = "none", plot.title = element_text(hjust = 0.5),
-              text = element_text(size=20, family= "Times"), 
+              text = element_text(size=20), 
               axis.text.x = element_text(size = 20, angle = 45,
                                          hjust = 1, color = "grey1")) +
         theme(axis.ticks.length=unit(.25, "cm")) +
@@ -525,9 +532,17 @@ ui <- dashboardPage(
                 .fa-cloud-sun {color:#CECECE; font-size:24px;}"), #change colour and size of weather icons
     #tags$style(HTML(".fa{font-size: 24px;}")),
     tags$style("
+      .buttonagency .bttn-primary{background-color: #3c6986;}
+      
+      .btn {background-color: #4c85a9; color: #ffffff; border-color: #447798;}
+      .btn:hover {background-color: #447798; color: #ffffff; border-color: #447798;}
+      .btn:focus {background-color: #4c85a9; color: #ffffff; border-color: #447798;}
+      .btn:active {background-color: #3c6986 !important; color: #ffffff !important; border-color: #447798 !important;}
+      
       .btn-accent_blue {background-color: #4c85a9;}
       .btn-accent_blue:hover {background-color: #447798;}
       .btn-accent_blue.active {background-color: #3c6986;}
+      
       
       .checkbox {
         line-height: 30px;
@@ -574,13 +589,13 @@ ui <- dashboardPage(
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               
               ## title text
-              h3(i18n$t("Welcome to the data entry prototype!")),
+              h3(i18n$t("Welcome to the data entry website!")),
               
               #spaghetti line of instructions
               fluidRow(
               column(2),
               column(8, align = "center",
-                     h4(i18n$t("Here you can enter the data from your survey by using the interactive controls below. You will instantly be able to see how your results compare to other schools. Make sure to carefully enter all the correct data before pressing 'Download' - send this file to anna.persson [at] cec.lu.se. You can then play around with the data if you would like to explore the functions of the website. Thank you for contributing to science!")))),
+                     h4(i18n$t("On this website you can enter the data from the Natural Nation school survey. You will instantly be able to see how your results compare to other schools and the data will be used in a research project by Lund University, Sweden. If you plan to do more than one survey protocol (S1, S2, S3 and S4) within a year, please complete all surveys before you enter the data, so that it can be entered in one go. Note that while the data will be temporarily stored on the webpage, you need to complete the data entry within one day and press the 'Download data' button (see instructions on the page Submit data) for the data to be permanently saved. You can go back and correct values until you press this button. Thank you for contributing to science!")))),
               HTML("<br/>","<br/>","<br/>","<br/>","<br/>"), #whitespace
               
               ## school name
@@ -611,7 +626,10 @@ ui <- dashboardPage(
               leafletOutput("mymap", width = 920, height = 480),
               
               HTML("<br/>", "<br/>", "<br/>"), # white space
-
+              
+              #actionButton("info_map", i18n$t("Tip!")), #button
+              div(class = "buttonagency",
+              actionBttn("info_map", i18n$t("Tip!"), style = "jelly", color = "primary")),
               
               HTML("<br/>", "<br/>") #whitespace
               
@@ -698,9 +716,14 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>"), #whitespace
               
-              plotOutput("habitat_1", width = 780, height = 420),
+              plotOutput("habitat_1", width = 780, height = 540),
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>"), # white space
+              
+              div(class = "buttonagency",
+                  actionBttn("info_habitat_graph_1", i18n$t("Tip!"), style = "jelly", color = "primary")),
+              
+              HTML("<br/>", "<br/>"), # white space
               
               # Entry of trees and bushes
               fluidRow(
@@ -764,7 +787,12 @@ ui <- dashboardPage(
               
               plotOutput("yard_1", width = 780, height = 420), #graph 2 - species depending on yard size
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>"), # white space
+              
+              div(class = "buttonagency",
+                  actionBttn("info_habitat_graph_2", i18n$t("Tip!"), style = "jelly", color = "primary")),
+              
+              HTML("<br/>", "<br/>"), # white space
               
               sliderInput(inputId = "feedback_habitat", label = i18n$t("How do you rate your experience with using this survey? (Use slider below)"),
                           1, 5, 3, ticks = F),
@@ -1080,7 +1108,13 @@ ui <- dashboardPage(
               
               plotOutput("birds_1", width = 780, height = 420),
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>"), # white space
+              
+              div(class = "buttonagency",
+                  actionBttn("info_bird_graph", i18n$t("Tip!"), style = "jelly", color = "primary")),
+              
+              HTML("<br/>", "<br/>"), # white space
+              
               sliderInput(inputId = "feedback_birds", label = h4(i18n$t("How do you rate your experience with using this survey? (Use slider below)")),
                           1, 5, 3, ticks = F),
               
@@ -1326,7 +1360,12 @@ ui <- dashboardPage(
               
               plotlyOutput("pollinators_1", width = 780, height = 420),
               
-              HTML("<br/>", "<br/>"), #whitespace
+              HTML("<br/>", "<br/>"), # white space
+              
+              div(class = "buttonagency",
+                  actionBttn("info_pollinator_graph", i18n$t("Tip!"), style = "jelly", color = "primary")),
+              
+              HTML("<br/>", "<br/>"), # white space
               
               #floweriness
               h3(i18n$t("Enter the data for the plants:")),
@@ -1554,7 +1593,13 @@ ui <- dashboardPage(
               
               HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
-              plotOutput("invertebrates_1", width = 780, height = 420),
+              plotOutput("invertebrates_1", width = 780, height = 540),
+              
+              HTML("<br/>", "<br/>"), # white space
+              
+              div(class = "buttonagency",
+                  actionBttn("info_minibeast_graph", i18n$t("Tip!"), style = "jelly", color = "primary")),
+              
               
               HTML("<br/>","<br/>","<br/>","<br/>"), #whitespace
               
@@ -1627,7 +1672,9 @@ ui <- dashboardPage(
       ) 
       #########################################
     ),
+    useSweetAlert(), 
     useShinyjs()) #custom layou for navbar
+  
 )
 
 server <- function(input, output, session) {
@@ -1696,6 +1743,59 @@ server <- function(input, output, session) {
     saveData(formData())
   })
   
+  observeEvent(input$info_map, {
+    sendSweetAlert(
+      session = session,
+      title = "Information",
+      text = i18n$t("The map is interactive. Try zooming in on your country to see which other schools have participated. Hover with the mouse to display names. Did you enter the wrong coordinates? Just re-enter the correct ones and press the Show map-button again!"),
+      type = "info"
+    )
+  })
+  
+  observeEvent(input$info_habitat_graph_1, {
+    sendSweetAlert(
+      session = session,
+      title = i18n$t("About the graph"),
+      text = i18n$t("This graph shows the most common habitat on school grounds across all participating schools. Question: Was this what you were expecting? Why do you think school grounds look the way they do today? \n About the graph: This type of graph is called a barplot. The higher the bars, the more schools have selected this answer."),
+      type = "info"
+    )
+  })
+  
+  observeEvent(input$info_habitat_graph_2, {
+    sendSweetAlert(
+      session = session,
+      title = i18n$t("About the graph"),
+      text = i18n$t("This graph shows the number of different tree and shrub species recorded by each school and how large the school grounds are. Question: Do you see any pattern? Do you need a large school ground to have many species of plants? About the graph: This type of graph is called a scatter plot. A dot high up shows that this school has a lot of species. A dot far to the right shows the school grounds are large."),
+      type = "info"
+    )
+  })
+  
+  observeEvent(input$info_bird_graph, {
+    sendSweetAlert(
+      session = session,
+      title = i18n$t("About the graph"),
+      text = i18n$t("This graph shows the number of birds seen by each school and how many trees and shrubs that have been recorded. Question: Is there any pattern? Would you have seen more birds if you had more trees? About the graph: This type of graph is called a scatter plot. A dot high up shows that this school has a lot of birds. A dot far to the right shows the school grounds have many trees and shrubs."),
+      type = "info"
+    )
+  })
+  
+  observeEvent(input$info_pollinator_graph, {
+    sendSweetAlert(
+      session = session,
+      title = i18n$t("About the graph"),
+      text = i18n$t("This graph shows which pollinator group was the most common at your school. Question: Which was the most common pollinator at your school? Were there any groups you did not see and if so, is there anything you can do to help them? About the graph: This type of graph is called a pie-chart. It show the proportion of pollinators recorded in percent. Hover with the mouse to see the absolute values (number of individuals)."),
+      type = "info"
+    )
+  })
+  
+  observeEvent(input$info_minibeast_graph, {
+    sendSweetAlert(
+      session = session,
+      title = i18n$t("About the graph"),
+      text = i18n$t("This graph shows the number of minibeasts per square meter for each school. Question: What does it mean to have a lot of minibeast per square meter? Which school has seen the most minibeasts in total? About the graph: This type of graph is called a bar plot. The higher the bars, the more minibeasts have been recorded per square meter."),
+      type = "info"
+    )
+  })
   
   
   # Show the previous responses
