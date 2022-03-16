@@ -50,11 +50,11 @@ loadData <- function() {
 
 plot_func1_habitat <- function() {
   if (length(responses$School) > length(previousResponses$School)) {
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sweden (Svenska)') {
       #manually translate swedish responses from selectInput 
       responses$dominant_habitat[responses$dominant_habitat == "Blomsterbäddar och krukor"] <- 'Plant beds or flowerpots'
       responses$dominant_habitat[responses$dominant_habitat == "Högt gräs, vildblomster"] <-  'Tall grass, wildflowers'
-      responses$dominant_habitat[responses$dominant_habitat == "Träd och buskar"] <- 'Trees and bushes'
+      responses$dominant_habitat[responses$dominant_habitat == "Träd och buskar"] <- 'Trees and shrubs'
       responses$dominant_habitat[responses$dominant_habitat == "Barmark (jord, sand, grus, etc.)"] <- 'Bare ground (soil, sand, gravel, etc.)'
       responses$dominant_habitat[responses$dominant_habitat == "Fuktiga platser"] <- 'Damp places'
       responses$dominant_habitat[responses$dominant_habitat == "Kort gräs"] <-'Short grass'
@@ -70,13 +70,13 @@ plot_func1_habitat <- function() {
       count(dominant_habitat)
     }
     
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sweden (Svenska)') {
      
        plotDataHabitatSwe <- plotDataHabitat #create a new df for translation of data names for plot
       
       plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Plant beds or flowerpots'] <- "Blomsterbäddar och krukor"
       plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Tall grass, wildflowers'] <- "Högt gräs, vildblomster"
-      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Trees and bushes'] <- "Träd och buskar"
+      plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Trees and shrubs'] <- "Träd och buskar"
       plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Bare ground (soil, sand, gravel, etc.)'] <- "Barmark (jord, sand, grus, etc.)"
       plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Damp places'] <- "Fuktiga platser"
       plotDataHabitatSwe$dominant_habitat[plotDataHabitatSwe$dominant_habitat == 'Short grass'] <- "Kort gräs"
@@ -135,7 +135,7 @@ plot_func2_yard <- function() {
     
     plotDataHabitatTrees <- data.frame(School,yard,WoodySpecies, number)
     
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sweden (Svenska)') {
       ggplot(plotDataHabitatTrees, aes(x = as.numeric(yard), y=as.numeric(WoodySpecies), 
                                        fill = School, color = School)) +
         geom_point(aes(fill=School), colour="black", size=6, alpha = 0.9, pch=21) +
@@ -211,7 +211,7 @@ plot_func3_birds <- function() {
     plotDataBirds$number <- 1:length(responses$School)
     colnames(plotDataBirds) <- c("BirdSum", "School", "WoodySpecies", "number")
     
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sweden (Svenska)') {
       ggplot(plotDataBirds, aes(x = WoodySpecies, y=BirdSum, fill = School, color = School)) +
         geom_point(aes(fill=School), colour="black", size=6, alpha = 0.9, pch=21) +
         theme_classic() + scale_fill_manual(values=wes_palette("Moonrise3", length(plotDataBirds$School), 
@@ -282,7 +282,7 @@ plot_func4_pollinators <- function() {
     colnames(plotDataPollinators) <- c("Number", "ShowName")
     plotDataPollinators$Number <- as.numeric(plotDataPollinators$Number)
     
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sweden (Svenska)') {
       
       plotDataPollinatorsSwe <- plotDataPollinators #create a new df for translation of data names for plot
       
@@ -352,7 +352,7 @@ plot_func5_invertebrates <- function() {
     plotDataInvertebrates$plotNo <- as.numeric(responses$no_1x1_squares)
     plotDataInvertebrates$invertebrateMeanPerSquare <- plotDataInvertebrates$InvertebrateSum/plotDataInvertebrates$plotNo
     
-    if (responses$selected_language[length(responses$selected_language)] == 'Sverige (Sweden)') {
+    if (responses$selected_language[length(responses$selected_language)] == 'Sweden (Svenska)') {
       ggplot(plotDataInvertebrates, aes(x = reorder(School,-invertebrateMeanPerSquare), y=invertebrateMeanPerSquare, 
                                         fill = School, color = School)) +
         geom_bar(width = 0.75, stat = "identity", position ="dodge", alpha = 0.8) +
@@ -429,7 +429,7 @@ names(r_colors) <- colors()
 
 #Set up the translation by selecting the language file
 i18n <- Translator$new(translation_json_path="./test.JSON") 
-i18n$set_translation_language('United Kingdom') #chose initial language to load
+i18n$set_translation_language('United Kingdom (English)') #chose initial language to load
 
 # Define the fields we want to save from the form
 fields <- c("School", "selected_language", "lat", "long",
@@ -489,7 +489,7 @@ ui <- dashboardPage(
         /*FONT SIZE AND TEXT*/
         h1{color: #ffffff; margin-top: -320px; font-size: 70px; text-shadow: 0.5px 0.5px 0.5px #aaa; font-weight: 700}
         h2{color: #ffffff; margin-top: -320px; font-size: 50px; text-shadow: 0.3px 0.3px 0.3px #aaa;}
-        h5{font-size: 24px; margin-top: -100px}
+        h5{font-size: 24px; margin-top: -100px; text-shadow: 0.7px 0.7px 0.7px #edf0f5;}
         h3{font-size: 22px;}
         h4{font-size: 16px; font-weight: 700;}
         
@@ -577,8 +577,8 @@ ui <- dashboardPage(
               tags$div(
                 selectInput(
                   inputId='selected_language',
-                  label=i18n$t('Select language and region:'),
-                  choices = list("","España (Spain)", "Malta", "Sverige (Sweden)", "United Kingdom")
+                  label=i18n$t('Select region and language:'),
+                  choices = list("","Spain (Español)", "Malta (English)", "Sweden (Svenska)", "United Kingdom (English)")
                 )
               ),
               
@@ -586,7 +586,7 @@ ui <- dashboardPage(
               actionButton("countrySelect", i18n$t("Select")), # confirm region
               
               
-              HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
+              HTML("<br/>", "<br/>", "<br/>"), # white space
               
               ## title text
               h3(i18n$t("Welcome to the data entry website!")),
@@ -594,9 +594,16 @@ ui <- dashboardPage(
               #spaghetti line of instructions
               fluidRow(
               column(2),
-              column(8, align = "center",
-                     h4(i18n$t("On this website you can enter the data from the Natural Nation school survey. You will instantly be able to see how your results compare to other schools and the data will be used in a research project by Lund University, Sweden. If you plan to do more than one survey protocol (S1, S2, S3 and S4) within a year, please complete all surveys before you enter the data, so that it can be entered in one go. Note that while the data will be temporarily stored on the webpage, you need to complete the data entry within one day and press the 'Download data' button (see instructions on the page Submit data) for the data to be permanently saved. You can go back and correct values until you press this button. Thank you for contributing to science!")))),
-              HTML("<br/>","<br/>","<br/>","<br/>","<br/>"), #whitespace
+              column(8, align = "left",
+                     h4(i18n$t("On this interactive website, you will be able to enter your collected data from each of the Natural Nations suite of four surveys:")),
+                     h4(i18n$t("• S1 School Grounds and Habitat")),
+                     h4(i18n$t("• S2 Birds")),
+                     h4(i18n$t("• S3 Pollinator and Flowering Plants")),
+                     h4(i18n$t("• S4 Minibeast and leaves")),
+                     h4(i18n$t("You will instantly see how your results compare to other UK schools and those in participating European countries. The valuable data will be used to inform a research project by Lund University in Sweden.")),
+                     h4(i18n$t("*Note* If you plan to do more than one of the survey protocols (S1, S2, S3 and S4),  please retain all the data and enter it altogether in one session.  While the data will be temporarily stored on the webpage, you will need to complete the data entry within 24 hours and click on the ‘Download data’ button (see instructions on the ‘Submit data’ page via left pane navigation) to allow the data to be permanently saved.  You can go back and correct values before clicking the download button.")),
+                     h4(i18n$t("Thank you for contributing to science!")))),
+              HTML("<br/>","<br/>","<br/>","<br/>"), #whitespace
               
               ## school name
               textInput("School", i18n$t("Enter the name of your school:")),
@@ -691,10 +698,10 @@ ui <- dashboardPage(
               fluidRow(
                 column(2),
                 column(4, align="center", tags$div(align = 'left', 
-                                                   checkboxGroupInput("habitat_comp", i18n$t("What of the following habitats did you find on your school grounds? (Multiple choice)"),
+                                                   checkboxGroupInput("habitat_comp", i18n$t("Which of the following habitats did you find in your school grounds? (Click any that apply)"),
                                                                       choiceNames =
                                                                         list(i18n$t("Plant beds or flowerpots"), i18n$t("Tall grass, wildflowers"), 
-                                                                             i18n$t("Trees and bushes"), i18n$t("Bare ground (soil, sand, gravel, etc.)"), 
+                                                                             i18n$t("Trees and shrubs"), i18n$t("Bare ground (soil, sand, gravel, etc.)"), 
                                                                              i18n$t("Man-made homes: Bird homes"), i18n$t("Man-made homes: Wild Bee homes"), 
                                                                              i18n$t("Man-made homes: Honeybee homes"), i18n$t("Man-made homes: Minibeast homes"), 
                                                                              i18n$t("Man-made homes: Other"), i18n$t("Damp places"), i18n$t("Short grass"), 
@@ -706,7 +713,7 @@ ui <- dashboardPage(
                 
                 column(4, align="center",    
                        tags$div(selectInput(inputId='dominant_habitat', label=i18n$t('What is the dominant habitat in your school grounds (select one):'),
-                                            choices = list("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and bushes", "Bare ground",
+                                            choices = list("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and shrubs", "Bare ground",
                                                            "Man-made homes", "Damp places", "Short grass", "Bare walls or fences", "Concrete or tarmac"))))),
               
               
@@ -817,7 +824,7 @@ ui <- dashboardPage(
                 column(6, align="left",
                        h2(i18n$t("Bird Survey")))),
               
-              h5(i18n$t("Below you can enter the data from the survey of birds (S2)."), align = "left"),
+              h5(i18n$t("Below you can enter the data from the bird survey (S2)."), align = "left"),
 
               HTML("<br/>", "<br/>", "<br/>"), #whitespace
               
@@ -855,7 +862,7 @@ ui <- dashboardPage(
               
               fluidRow(
                 column(6, align="center",
-                       radioGroupButtons(inputId = "windLevel_bird", label = i18n$t("How windy was it during the survey? (From leaves not moving to moving much)"),
+                       radioGroupButtons(inputId = "windLevel_bird", label = i18n$t("How windy was it during the survey? (From leaves being still to moving a lot)"),
                          choices = c(`<i class='fa fa-wind' style='color:#ecf2f6; font-size: 12px;'></i>` = "Leaves not moving",
                                      `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 16px;'></i>` = "Leaves moving slightly", 
                                      `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 20px;'></i>` = "Leaves moving much"),
@@ -876,7 +883,7 @@ ui <- dashboardPage(
               fluidPage(
                 column(2),
                 column(8, align = "center",
-              h3(i18n$t("Enter the birds you saw. If you know how many individuals you saw of a species, enter the number below. If you do not have the numbers, but know you saw a species, you can tick the box:")))),
+              h3(i18n$t("Enter your bird data. If you know how many individual birds of a species you saw, please enter the number. If you do not have numbers but know the species, please tick present:")))),
              
                HTML("<br/>"),
               
@@ -1094,7 +1101,7 @@ ui <- dashboardPage(
               fluidRow(
                 column(2),
                 column(8, align="center",
-              textInput("birdSpecies_freeText", h4(i18n$t("If you saw any aditional species, enter the three most common species and numbers below:")), 
+              textInput("birdSpecies_freeText", h4(i18n$t("Any additional species (3 most common and numbers) can be added below:")), 
                         placeholder = "E.g.: hooded crow (3), rook (4), common gull (2)", width = "100%"))),
               
               HTML("<br/>", "<br/>"), #whitespace
@@ -1135,7 +1142,7 @@ ui <- dashboardPage(
                 column(6, align="left",
                        h2(i18n$t("Pollinators and Flowering Plants Survey")))),
               
-              h5(i18n$t("Below you can enter the data from the survey of pollinators and flowers in the 5x5m survey site (S3):"), align = "left"),
+              h5(i18n$t("Below you can enter the data from the Pollinators and Flowers survey in the 5x5m survey site (S3):"), align = "left"),
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
               
@@ -1173,7 +1180,7 @@ ui <- dashboardPage(
               
               fluidRow(
                 column(6, align="center",
-                       radioGroupButtons(inputId = "windLevel_pollinators", label = i18n$t("How windy was it during the survey? (From leaves not moving to moving much)"),
+                       radioGroupButtons(inputId = "windLevel_pollinators", label = i18n$t("How windy was it during the survey? (From leaves being still to moving a lot)"),
                                          choices = c(`<i class='fa fa-wind' style='color:#ecf2f6; font-size: 12px;'></i>` = "Leaves not moving",
                                                      `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 16px;'></i>` = "Leaves moving slightly", 
                                                      `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 20px;'></i>` = "Leaves moving much"),
@@ -1206,7 +1213,7 @@ ui <- dashboardPage(
               fluidRow(
                 column(3),
                 column(3, align="center",
-                       numericInput("area_5x5_woody", label = h4(i18n$t("Trees and bushes")), value = 0, width = "75%")),
+                       numericInput("area_5x5_woody", label = h4(i18n$t("Trees and shrubs")), value = 0, width = "75%")),
                 
                 
                 column(3,
@@ -1408,7 +1415,7 @@ ui <- dashboardPage(
                 column(6, align="left",
                        h2(i18n$t("Minibeasts and Leaves Survey")))),
               
-              h5(id="minibeast-subhead", i18n$t("Below you can enter the data from the survey of minibeasts and leaves in the 1x1m squares (S4):"), align = "left"),
+              h5(id="minibeast-subhead", i18n$t("Below you can enter the data from the Minibeasts and Leaves survey in the 1x1m squares (S4):"), align = "left"),
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), #whitespace
               
@@ -1446,7 +1453,7 @@ ui <- dashboardPage(
               
               fluidRow(
                 column(6, align="center",
-                       radioGroupButtons(inputId = "windLevel_minibeast", label = i18n$t("How windy was it during the survey? (From leaves not moving to moving much)"),
+                       radioGroupButtons(inputId = "windLevel_minibeast", label = i18n$t("How windy was it during the survey? (From leaves being still to moving a lot)"),
                                          choices = c(`<i class='fa fa-wind' style='color:#ecf2f6; font-size: 12px;'></i>` = "Leaves not moving",
                                                      `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 16px;'></i>` = "Leaves moving slightly", 
                                                      `<i class='fa fa-wind' style='color:#ecf2f6; font-size: 20px;'></i>` = "Leaves moving much"),
@@ -1469,7 +1476,7 @@ ui <- dashboardPage(
               HTML("<br/>","<br/>"), #whitespace
               
               #Free-text entry of 1x1 habitats
-              textInput("habitat_1x1_freeText", i18n$t("What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:"), 
+              textInput("habitat_1x1_freeText", i18n$t("What was the dominant habitat for each square? For each dominant habitat, write the numbers of squares with this habitat in brackets:"), 
                         placeholder = "E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)", width = "60%"),
               
               HTML("<br/>","<br/>"), #whitespace
@@ -1636,7 +1643,7 @@ ui <- dashboardPage(
               fluidRow(
                 column(2),
                 column(8, align = "center",
-              h4(i18n$t("Thank you for completing the data entry! Please control that all answers are correct before downloading the data. Kindly send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.")))),
+              h4(i18n$t("Thank you for completing the data entry! Please ensure that all answers are correct. You will then need to download the data and email it to our team at Lund University. Please send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.")))),
               
               HTML("<br/>", "<br/>", "<br/>", "<br/>"), # white space
               #download data button
@@ -1697,15 +1704,15 @@ server <- function(input, output, session) {
   observe({
     updateSelectInput(session, "dominant_habitat", 
                       label = i18n_r()$t('What is the dominant habitat in your school grounds (select one):'),
-                      choices = i18n_r()$t(c("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and bushes", "Bare ground",
+                      choices = i18n_r()$t(c("","Plant beds or flowerpots", "Tall grass, wildflowers", "Trees and shrubs", "Bare ground",
                                              "Man-made homes", "Damp places", "Short grass", "Bare walls or fences", "Concrete or tarmac")))
     updateTextInput(session, "plantSpecies_freeText", i18n_r()$t("Enter the three most common species and numbers below:"), 
                     placeholder = i18n_r()$t("E.g.: oak (7), birch (4), Taxus baccata (2)"))
-    updateTextInput(session, "birdSpecies_freeText", i18n_r()$t("If you saw any aditional species, enter the three most common species and numbers below:"), 
+    updateTextInput(session, "birdSpecies_freeText", i18n_r()$t("Any additional species (3 most common and numbers) can be added below:"), 
                     placeholder = i18n_r()$t("E.g.: hooded crow (3), rook (4), common gull (2)"))
     updateTextInput(session, "flower_species_freeText_5x5", i18n_r()$t("(Optional) If you identified the species, write the three most common below"), 
                     placeholder = i18n_r()$t( "E.g.: daisy, lavender, orchid"))
-    updateTextInput(session, "habitat_1x1_freeText", i18n_r()$t("What was the dominant habitat for each square? Denote the number of squares with this habitat as the dominant type in parentheses:"), 
+    updateTextInput(session, "habitat_1x1_freeText", i18n_r()$t("What was the dominant habitat for each square? For each dominant habitat, write the numbers of squares with this habitat in brackets:"), 
                     placeholder = i18n_r()$t("E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)"))
   })
 
@@ -1792,7 +1799,7 @@ server <- function(input, output, session) {
     sendSweetAlert(
       session = session,
       title = i18n$t("About the graph"),
-      text = i18n$t("This graph shows the number of minibeasts per square meter for each school. Question: What does it mean to have a lot of minibeast per square meter? Which school has seen the most minibeasts in total? About the graph: This type of graph is called a bar plot. The higher the bars, the more minibeasts have been recorded per square meter."),
+      text = i18n$t("This graph shows the number of minibeasts per square metre for each school. Question: What does it mean to have a lot of minibeast per square meter? Which school has seen the most minibeasts in total? About the graph: This type of graph is called a bar plot. The higher the bars, the more minibeasts have been recorded per square meter."),
       type = "info"
     )
   })
