@@ -487,9 +487,9 @@ ui <- dashboardPage(
         .main-header .logo {width: 187px; font-size:22.5px}
         
         /*FONT SIZE AND TEXT*/
-        h1{color: #ffffff; margin-top: -320px; font-size: 70px; text-shadow: 0.5px 0.5px 0.5px #aaa; font-weight: 700}
-        h2{color: #ffffff; margin-top: -320px; font-size: 50px; text-shadow: 0.3px 0.3px 0.3px #aaa;}
-        h5{font-size: 24px; margin-top: -100px; text-shadow: 0.7px 0.7px 0.7px #edf0f5;}
+        h1{color: #ffffff; margin-top: -320px; font-size: 4vw; text-shadow: 0.5px 0.5px 0.5px #aaa; font-weight: 700}
+        h2{color: #ffffff; margin-top: -320px; font-size: 3vw; text-shadow: 0.3px 0.3px 0.3px #aaa;}
+        h5{color: #6a6a6a; font-size: 24px; margin-top: -100px; text-shadow: 0.7px 0.7px 0.7px #edf0f5;}
         h3{font-size: 22px;}
         h4{font-size: 16px; font-weight: 700;}
         
