@@ -1,0 +1,671 @@
+
+{
+  "languages": ["United Kingdom (English)", "Sweden (Svenska), Spain (Español)"],
+  "translation": [
+    {"United Kingdom (English)": "Select region and language:",
+      "Sweden (Svenska)": "Välj region och språk:",
+      "Spain (Español)":"Seleccionar región e idioma"},
+
+    {"United Kingdom (English)": "Select",
+      "Sweden (Svenska)": "Välj",
+      "Spain (Español)":"Seleccionar"},
+
+    {"United Kingdom (English)": "Welcome to the data entry website!",
+    "Sweden (Svenska)": "Välkommen till hemsidan för datarapportering!",
+    "Spain (Español)":"Bienvenida a la pagina web de entrada de datos!"},
+
+    {"United Kingdom (English)": "Enter the name of your school:",
+    "Sweden (Svenska)": "Ange er skolas namn:",
+    "Spain (Español)":"Escribir el nombre de tu escuela"},
+
+    {"United Kingdom (English)": "No. of bees",
+    "Sweden (Svenska)": "Antal bin",
+    "Spain (Español)":"Nº de abejas"},
+
+    {"United Kingdom (English)": "School yard size (m2)",
+    "Sweden (Svenska)": "Storlek av skolgård (m2)",
+    "Spain (Español)":" Tamaño del patio escolar (m2)"},
+
+    {"United Kingdom (English)": "Percent greenspace",
+    "Sweden (Svenska)": "Procent grönområde",
+    "Spain (Español)":" Porcentaje de espacios verdes "},
+
+    {"United Kingdom (English)": "Submit",
+    "Sweden (Svenska)": "Skicka",
+    "Spain (Español)":"Enviar"},
+
+    {"United Kingdom (English)": "Results:",
+      "Sweden (Svenska)": "Resultat:",
+      "Spain (Español)":"Resultados:"},
+
+    {"United Kingdom (English)": "On this interactive website, you will be able to enter your collected data from each of the Natural Nations suite of four surveys:",
+      "Sweden (Svenska)": "Här kan ni rapportera er data från de fyra olika Natural Nations skolgårdsinventeringarna:",
+      "Spain (Español)":"En este sitio web interactivo, podrás introducir los datos recopilados de cada uno de los cuatro censos de Natural Nations."},
+
+    {"United Kingdom (English)": "• S1 School Grounds and Habitat",
+        "Sweden (Svenska)": "• P1 Skolgård och habitat",
+        "Spain (Español)":"• S1 Descripción del patio escolar y sus habitats"},
+
+     {"United Kingdom (English)": "• S2 Birds",
+          "Sweden (Svenska)": "• P2 Fåglar",
+          "Spain (Español)":"• S2 Censo de Aves"},
+
+     {"United Kingdom (English)": "• S3 Pollinator and Flowering Plants",
+      "Sweden (Svenska)": "• P3 Pollinatörer och blommande växter",
+      "Spain (Español)":"• S3 Censo de polinizadores y plantas con flor"},
+
+    {"United Kingdom (English)": "• S4 Minibeast and leaves",
+     "Sweden (Svenska)": "• P4 Småkryp och blad",
+     "Spain (Español)":"• S4 Censo de bichos y hojas"},
+
+    {"United Kingdom (English)": "You will instantly see how your results compare to other UK schools and those in participating European countries. The valuable data will be used to inform a research project by Lund University in Sweden.",
+      "Sweden (Svenska)": "Ni kommer direkt att kunna jämföra era fynd med andra skolor i Sverige och Europa. Er data kommer att användas i ett forskningsprojekt från Lunds universitet.",
+      "Spain (Español)":" Podrás ver instantáneamente tus resultados, comparados con otras escuelas de los países europeos participantes (Reino Unido, Malta y Suecia). Estos valiosos datos se utilizarán para un proyecto de investigación de la Universidad de Lund en Suecia."},
+
+    {"United Kingdom (English)": "*Note* If you plan to do more than one of the survey protocols (S1, S2, S3 and S4),  please retain all the data and enter it altogether in one session.  While the data will be temporarily stored on the webpage, you will need to complete the data entry within 24 hours and click on the ‘Download data’ button (see instructions on the ‘Submit data’ page via left pane navigation) to allow the data to be permanently saved.  You can go back and correct values before clicking the download button.",
+    "Sweden (Svenska)": "*OBS* Om ni planerar att genomföra mer än ett protokoll (P1, P2, P3 och P4) inom ett år, vänligen slutför samtliga protokoll innan ni börjar mata in data, så att allt kan rapporteras vid ett och samma tillfälle. Notera att även om siffrorna sparas tillfälligt på hemsidan så behöver ni rapportera klart alla uppgifter inom en dag och sedan trycka på ’Ladda ner’-knappen (se instruktioner på sidan Ladda upp data via panelen till vänster) för att er data ska sparas permanent. Ni kan gå tillbaka och ändra uppgifter och siffror ända tills ni trycker på Ladda ner-knappen.",
+    "Spain (Español)":"*Nota* Si planea realizar más de uno de los censos (S1, S2, S3 y S4), conservar todos los datos e introducirlos en la web en una sola sesión! Si bien los datos se almacenarán temporalmente en la página web, deberá completar la entrada de datos dentro de las 24 horas y hacer clic en el botón 'Descargar datos' (consulte las instrucciones en la página 'Enviar datos' a través del panel de navegación izquierdo) para permitir que los datos se guarden de forma permanente. Puede regresar y corregir valores antes de hacer clic en el botón de descarga."},
+
+    {"United Kingdom (English)": "Thank you for contributing to science!",
+    "Sweden (Svenska)": "Tack för att ni bidrar till forskningen!",
+    "Spain (Español)":"Gracias por contribuir a la ciencia!"},
+
+     {"United Kingdom (English)": "What was the temperature outside during the survey? (°C)",
+    "Sweden (Svenska)": "Vilken temperatur var det utomhus under undersökningen?(°C)",
+    "Spain (Español)":"¿Cuál era la temperatura exterior durante el censo?"},
+
+     {"United Kingdom (English)": "What was the weather like during the survey? (Single choice)",
+    "Sweden (Svenska)": "Hur var vädret under undersökningen? (Envalsfråga)",
+    "Spain (Español)":"¿Cuáles eran las condiciones meteorológicas durante el censo?"},
+
+    {"United Kingdom (English)": "Weather and temperature:",
+    "Sweden (Svenska)": "Väder och temperatur:",
+    "Spain (Español)":"Tiempo meteorológico y temperatura"},
+
+    {"United Kingdom (English)": "Show weather data",
+    "Sweden (Svenska)": "Visa väderdata",
+    "Spain (Español)":"Mostrar datos meteorológicos"},
+
+    {"United Kingdom (English)": "Select the date when the surveying took place:",
+    "Sweden (Svenska)": "Ange datum för när undersökningen genomfördes:",
+    "Spain (Español)":"Seleccionar la fecha en que se realizó el censo:"},
+
+
+     {"United Kingdom (English)": "Enter the sum of all mini-beast you saw per catergory:",
+    "Sweden (Svenska)": "Skriv in det totala antalet småkryp ni såg för varje kategori:",
+    "Spain (Español)":"Introducir la suma de todos los bichos observados por categoría:"},
+
+
+    {"United Kingdom (English)": "Pollinators and Flowering Plants Survey",
+    "Sweden (Svenska)": "Pollinatörer och blommor i 5x5m undersökningsytan",
+    "Spain (Español)":"Censo de polinizadores y plantas con flor"},
+
+    {"United Kingdom (English)": "Describe your 5x5m survey plot in terms of floweriness:",
+    "Sweden (Svenska)": "Beskriv 5x5m undersökningsytan i blommighet:",
+    "Spain (Español)":"Describir su parcela de censo de5x5m en términos de cantidad de flores:"},
+
+    {"United Kingdom (English)": "Enter the time when the surveying started (use the dials or enter the time directly):",
+    "Sweden (Svenska)": "Ange tiden då inventeringen påbörjades (använd knapparna eller skriv in tiden direkt):",
+    "Spain (Español)":"Introducir la hora de inicio del canso (usar los indicadores o escribir la hora directamente):"},
+
+    {"United Kingdom (English)": "Enter the sum of all pollinators you saw per catergory:",
+    "Sweden (Svenska)": "Ange det totala antalet pollinatörer ni såg per kategori:",
+    "Spain (Español)":"Introducir la suma de todos los polinizadores vistos, por categoría:"},
+
+    {"United Kingdom (English)": "Show pollinator data",
+    "Sweden (Svenska)": "Visa pollinatör-data",
+    "Spain (Español)":"Mostrar datos sobre polinizadores"},
+
+    {"United Kingdom (English)": "Enter the longitude and latitude of your school. You can find these by right-clicking on Google Maps.",
+    "Sweden (Svenska)": "Ange longitud och latitud för er skola. Du hittar dessa genom att höger-klicka i Google Maps.",
+    "Spain (Español)":"Introducir la localización (longitud y latitud) de la escuela. Puedes usar Google Maps, haciendo clic en el botón derecho del ratón."},
+
+     {"United Kingdom (English)": "Latitude:",
+    "Sweden (Svenska)": "Latitud:",
+    "Spain (Español)":"Latitud"},
+
+    {"United Kingdom (English)": "Longitude:",
+    "Sweden (Svenska)": "Longitud:",
+    "Spain (Español)":"Longitud"},
+
+     {"United Kingdom (English)": "Show map",
+    "Sweden (Svenska)": "Visa karta",
+    "Spain (Español)":"Mostrar mapa"},
+
+    {"United Kingdom (English)": "What of the following was present in your 5x5m survey plot? (Multiple choice)",
+    "Sweden (Svenska)": "Vad av följande fanns i er 5x5m undersökningsruta? (Flervalsfråga)",
+    "Spain (Español)":"¿Cuál de los siguiente estaba presente en vuestra parcela de 5x5m? (Opción multiple)"},
+
+    {"United Kingdom (English)": "Managed grass",
+    "Sweden (Svenska)": "Skött gräsmark",
+    "Spain (Español)":"Césped"},
+
+    {"United Kingdom (English)": "Hard surfaces (e.g. asphalt, concrete)",
+    "Sweden (Svenska)": "Hårda ytor (t.ex. asfalt, betong)",
+    "Spain (Español)":" Hormigón o asfalto"},
+
+    {"United Kingdom (English)": "Exposed soil",
+    "Sweden (Svenska)": "Bar jord",
+    "Spain (Español)":" Terreno/suelo desnudo "},
+
+    {"United Kingdom (English)": "Sand",
+    "Sweden (Svenska)": "Sand",
+    "Spain (Español)":"Arena"},
+
+    {"United Kingdom (English)": "Wild growing 'weeds'",
+    "Sweden (Svenska)": "Vildväxande 'ogräs'",
+    "Spain (Español)":"Plantas silvestres"},
+
+
+    {"United Kingdom (English)": "Planted flowers",
+    "Sweden (Svenska)": "Planterade blommor",
+    "Spain (Español)":"Flores plantadas"},
+
+    {"United Kingdom (English)": "Bushes",
+    "Sweden (Svenska)": "Buskar",
+    "Spain (Español)":"Arbustos"},
+
+    {"United Kingdom (English)": "Trees",
+    "Sweden (Svenska)": "Träd",
+    "Spain (Español)":"Árboles"},
+
+     {"United Kingdom (English)": "Few flowers",
+    "Sweden (Svenska)": "Få blommor",
+    "Spain (Español)":"Pocas flores"},
+
+     {"United Kingdom (English)": "Some flowers",
+    "Sweden (Svenska)": "Några blommor",
+    "Spain (Español)":"Algunas flores"},
+
+     {"United Kingdom (English)": "Many flowers",
+    "Sweden (Svenska)": "Många blommor",
+    "Spain (Español)":"Muchas flores"},
+
+    {"United Kingdom (English)": "Bumblebees",
+    "Sweden (Svenska)": "Humlor",
+    "Spain (Español)":"Abejorros"},
+
+{"United Kingdom (English)": "Habitat (S1)",
+"Sweden (Svenska)": "Habitat (P1)",
+"Spain (Español)":"Hábitat (S1)"},
+
+{"United Kingdom (English)": "School information",
+"Sweden (Svenska)": "Information om skolan",
+"Spain (Español)":"Información de la escuela"},
+
+{"United Kingdom (English)": "How windy was it during the survey? (From leaves being still to moving a lot)",
+"Sweden (Svenska)": "Hur mycket blåste det under inventeringen? (Från stilla löv till löv rör sig mycket)",
+"Spain (Español)":" ¿Cuánto viento hizo durante el censo? (desde que las hojas estén quietas hasta que se muevan mucho)"},
+
+{"United Kingdom (English)": "School Grounds and Habitat Survey",
+"Sweden (Svenska)": "Habitat-inventeringen",
+"Spain (Español)":"Descripción del patio escolar y sus habitats"},
+
+{"United Kingdom (English)": "Below you can enter the data from the habitat survey (S1):",
+"Sweden (Svenska)": "Nedan kan du lägga in data från habitat-inventeringen (P1)",
+"Spain (Español)":"A continuación puede introducir los datos del censo de hábitat (S1)"},
+
+{"United Kingdom (English)": "How many participants are in your survey group?",
+"Sweden (Svenska)": "Hur många deltagare samlade in data?",
+"Spain (Español)":" ¿Cuántos participantes hay en el grupo que hs realizado el censo?"},
+
+{"United Kingdom (English)": "What is the average age of the participants?",
+"Sweden (Svenska)": "Vad är genomsnittsåldern på deltagarna?",
+"Spain (Español)":" ¿Cuál es la edad promedio de los participantes?"},
+
+{"United Kingdom (English)": "How large is your school grounds (m2)?",
+"Sweden (Svenska)": "Hur stor är er skolgård (m2)?",
+"Spain (Español)":" ¿Qué tamaño tiene el patio de vuestra escuela (m2)?"},
+
+{"United Kingdom (English)": "What is the dominant habitat in your school grounds (select one):",
+"Sweden (Svenska)": "Vad är det dominanta habitatet på er skolgård (välj en):",
+"Spain (Español)":" ¿Cuál es el hábitat dominante en patio de vuestra escuela (seleccionar uno):"},
+
+{"United Kingdom (English)": "Which of the following habitats did you find in your school grounds? (Click any that apply)",
+"Sweden (Svenska)": "Vilka av följande habitat hittade ni på er skolgård? (Välj alla som stämmer)",
+"Spain (Español)":"¿Cuál de los siguientes hábitats se han encontrado en patio de vuestra escuela? (clicar en cualquiera que corresponda)"},
+
+{"United Kingdom (English)": "Plant beds or flowerpots",
+"Sweden (Svenska)": "Blomsterbäddar och krukor",
+"Spain (Español)":"Parterres de flores o tiestos y jardineras"},
+
+{"United Kingdom (English)": "Tall grass, wildflowers",
+"Sweden (Svenska)": "Högt gräs, vildblomster",
+"Spain (Español)":"Hierba alta y flores silvestres"},
+
+{"United Kingdom (English)": "Trees and shrubs",
+"Sweden (Svenska)": "Träd och buskar",
+"Spain (Español)":"Árboles y arbustos"},
+
+{"United Kingdom (English)": "Bare ground (soil, sand, gravel, etc.)",
+"Sweden (Svenska)": "Barmark (jord, sand, grus, etc.)",
+"Spain (Español)":"Terreno/suelo desnudo (tierra, arena, grava, etc.)"},
+
+{"United Kingdom (English)": "Man-made homes",
+"Sweden (Svenska)": "Konstgjorda hem",
+"Spain (Español)":"Estructuras/refugios hechos por las personas"},
+
+{"United Kingdom (English)": "Man-made homes: Bird homes",
+"Sweden (Svenska)": "Konstgjorda hem: Fåglar",
+"Spain (Español)":"Estructuras para las aves (ej.: cajas nido)"},
+
+{"United Kingdom (English)": "Man-made homes: Wild Bee homes",
+"Sweden (Svenska)": "Konstgjorda hem: Vildbin",
+"Spain (Español)":"Estructuras para abejas salvajes (ej.: hotel de insectos)"},
+
+{"United Kingdom (English)": "Man-made homes: Honeybee homes",
+"Sweden (Svenska)": "Konstgjorda hem: Honungsbin",
+"Spain (Español)":"Estructuras para abejas de la miel (ej.: colmenas de abejas)"},
+
+{"United Kingdom (English)": "Man-made homes: Minibeast homes",
+"Sweden (Svenska)": "Konstgjorda hem: Småkryp",
+"Spain (Español)":"Estructuras para otros bichos (ej.: hoteles para mariquitas)"},
+
+{"United Kingdom (English)": "Man-made homes: Other",
+"Sweden (Svenska)": "Konstgjorda hem: Annat",
+"Spain (Español)":"Otras estructuras humanas (ej.: paredes o montones de piedras)"},
+
+{"United Kingdom (English)": "Damp places",
+"Sweden (Svenska)": "Fuktiga platser",
+"Spain (Español)":"Zonas húmedas"},
+
+{"United Kingdom (English)": "Short grass",
+"Sweden (Svenska)": "Kort gräs",
+"Spain (Español)":"Hierba corta (césped o pasto)"},
+
+{"United Kingdom (English)": "Bare walls or fences",
+"Sweden (Svenska)": "Bara väggar eller staket",
+"Spain (Español)":"Paredes y cercas sin vegetación"},
+
+{"United Kingdom (English)": "Concrete or tarmac",
+"Sweden (Svenska)": "Asfalt eller betong",
+"Spain (Español)":"Hormigón o asfalto"},
+
+{"United Kingdom (English)": "Show habitat data",
+"Sweden (Svenska)": "Visa habitat-data",
+"Spain (Español)":"Mostrar datos de hábitat"},
+
+{"United Kingdom (English)": "Trees:",
+"Sweden (Svenska)": "Träd:",
+"Spain (Español)":"Árboles"},
+
+{"United Kingdom (English)": "Shrubs:",
+"Sweden (Svenska)": "Buskar:",
+"Spain (Español)":"Arbustos"},
+
+{"United Kingdom (English)": "Total number of tree and shrub individuals:",
+"Sweden (Svenska)": "Totalt antal träd och buskar (individer):",
+"Spain (Español)":"Número total de individuos de árboles y arbustos:"},
+
+{"United Kingdom (English)": "Total number of different tree and shrub species:",
+"Sweden (Svenska)": "Totalt antal olika träd- och buskarter",
+"Spain (Español)":"Número total de especies diferentes de árboles y arbustos:"},
+
+{"United Kingdom (English)": "Number of flowering species:",
+"Sweden (Svenska)": "Antal blommande arter",
+"Spain (Español)":"Número de especies con flor"},
+
+{"United Kingdom (English)": "Number of fruit bearing species:",
+"Sweden (Svenska)": "Antal fruktbärande arter",
+"Spain (Español)":"Número de especies de plantas con fruto "},
+
+{"United Kingdom (English)": "Enter the three most common species and numbers below:",
+"Sweden (Svenska)": "Ange de tre vanligaste arterna och antal nedan:",
+"Spain (Español)":"Introducir las tres especies y cantidades más comunes a continuación:"},
+
+{"United Kingdom (English)": "E.g.: oak (7), birch (4), Taxus baccata (2)",
+"Sweden (Svenska)": "T.ex.: ek (7), björk (4), idegran (2)",
+"Spain (Español)":"Ej.: roble (7), abedul (4), Taxus baccata (2)"},
+
+{"United Kingdom (English)": "Show tree and shrub data",
+"Sweden (Svenska)": "Visa träd- och buskdata",
+"Spain (Español)":"Mostrar datos de árboles y arbustos "},
+
+{"United Kingdom (English)": "How do you rate your experience with using this survey? (Use slider below)",
+"Sweden (Svenska)": "Hur skulle ni betygsätta er upplevelse av den här inventeringen? (Använd skjutreglaget nedan)",
+"Spain (Español)":"¿Cómo calificarias vuestra experiencia en cuanto a la realización de este censo?"},
+
+{"United Kingdom (English)": "Bird Survey",
+"Sweden (Svenska)": "Fågelinventering",
+"Spain (Español)":"Censo de aves"},
+
+{"United Kingdom (English)": "Below you can enter the data from the bird survey (S2).",
+"Sweden (Svenska)": "Nedan kan du lägga in data från fågelinventeringen (P2).",
+"Spain (Español)":"A continuación se puede introducir los datos del censo de aves (S2)."},
+
+{"United Kingdom (English)": "Enter your bird data. If you know how many individual birds of a species you saw, please enter the number. If you do not have numbers but know the species, please tick present:",
+"Sweden (Svenska)": "Ange fåglarna ni såg. Om ni räknade antalet individer ni såg per art, ange antalet nedan. Om ni inte har antalet, men vet att ni såg en art, kryssa i rutan:",
+"Spain (Español)":"Introducir los datos del censo de aves. Si se saben cuántos individuos de aves de una especie concreta se han visto, introducir el número exacto. Si no tienen números exactos pero se conoce la especie, marcar como especie presente:"},
+
+{"United Kingdom (English)": "Number:",
+"Sweden (Svenska)": "Antal:",
+"Spain (Español)":"Número"},
+
+{"United Kingdom (English)": "Present:",
+"Sweden (Svenska)": "Närvarande",
+"Spain (Español)":"Especie presente"},
+
+{"United Kingdom (English)": "Eurasian blackbird (Turdus merula)",
+"Sweden (Svenska)": "Koltrast (Turdus merula)",
+"Spain (Español)":"Mirlo común - Merla - Merlo - Zozo arrunta (Turdus merula)"},
+
+{"United Kingdom (English)": "Common chaffinch (Fringilla coelebs)",
+"Sweden (Svenska)": "Bofink (Fringilla coelebs)",
+"Spain (Español)":"Pinzón vulgar - Pinsà comú - Pimpín - Txonda arrunta (Fringilla coelebs)"},
+
+{"United Kingdom (English)": "Great tit (Parus major)",
+"Sweden (Svenska)": "Talgoxe (Parus major)",
+"Spain (Español)":"Carbonero común - Mallerenga carbonera - Ferreiriño real - Kaskabeltz handia (Parus major) "},
+
+{"United Kingdom (English)": "Blue tit (Cyanistes caeruleus)",
+"Sweden (Svenska)": "Blåmes (Cyanistes caeruleus)",
+"Spain (Español)":"Herrerillo común - Mallerenga blava - Ferreiriño azul - Amilotx urdina (Cyanistes caeruleus)"},
+
+{"United Kingdom (English)": "House sparrow (Passer domesticus)",
+"Sweden (Svenska)": "Gråsparv (Passer domesticus)",
+"Spain (Español)":"Gorrión común - Pardal comú - Pardal - Etxe-txolarrea (Passer domesticus)"},
+
+{"United Kingdom (English)": "Tree sparrow (Passer montanus)",
+"Sweden (Svenska)": "Pilfink (Passer montanus)",
+"Spain (Español)":"Gorrión molinero - Pardal xarrec - Pardal montés - Landa-txolarrea (Passer montanus)"},
+
+{"United Kingdom (English)": "White wagtail (Motacilla alba)",
+"Sweden (Svenska)": "Sädesärla (Motacilla alba)",
+"Spain (Español)":"Lavandera blanca - Cuereta blanca - Lavandeira branca - Buztanikara zuria (Motacilla alba)"},
+
+{"United Kingdom (English)": "Common starling (Sturnus vulgaris)",
+"Sweden (Svenska)": "Stare (Sturnus vulgaris)",
+"Spain (Español)":"Estornino pinto - Estornell vulgar - Estorniño pinto - Araba zozo pikarta (Sturnus vulgaris)"},
+
+{"United Kingdom (English)": "Swift (Apus apus)",
+"Sweden (Svenska)": "Tornseglare (Apus apus)",
+"Spain (Español)":"Vencejo común - Falciot negre - Cirrio - Sorbeltz arrunta (Apus apus)"},
+
+{"United Kingdom (English)": "Collared dove (Streptopelia decaocto)",
+"Sweden (Svenska)": "Turkduva (Streptopelia decaocto)",
+"Spain (Español)":"Tórtola turca - Tórtora turca - Rula turca - Usapal turkiarra (Streptopelia decaocto)"},
+
+{"United Kingdom (English)": "European robin (Erithacus rubecula)",
+"Sweden (Svenska)": "Rödhake (Erithacus rubecula)",
+"Spain (Español)":"Petirrojo europeo - Pit-roig - Paporrubio - Txantxangorria (Erithacus rubecula)"},
+
+{"United Kingdom (English)": "Wood pigeon (Columba palumbus)",
+"Sweden (Svenska)": "Ringduva (Columba palumbus)",
+"Spain (Español)":"Paloma torcaz - Tudó - Pombo torcaz - Pagausoa (Columba palumbus)"},
+
+{"United Kingdom (English)": "Redstart (Phoenicurus phoenicurus)",
+"Sweden (Svenska)": "Rödstjärt (Phoenicurus phoenicurus)",
+"Spain (Español)":"Colirrojo real - Cotxa cua-roja - Rabirrubio de testa branca - Buztangorri argia (Phoenicurus phoenicurus)"},
+
+{"United Kingdom (English)": "Magpie (Pica pica)",
+"Sweden (Svenska)": "Skata (Pica pica)",
+"Spain (Español)":"Urraca - Garsa - Pega - Mika (Pica pica)"},
+
+{"United Kingdom (English)": "Eurasian blackcap (Sylvia articapilla)",
+"Sweden (Svenska)": "Svarthätta (Sylvia articapilla)",
+"Spain (Español)":"Curruca capirotada - Tallarol de casquet - Papuxa das amoras - Txinbo kaskabeltza (Sylvia articapilla)"},
+
+{"United Kingdom (English)": "Sardinian warbler (Sylvia melanocephala)",
+"Sweden (Svenska)": "Sammetshätta (Sylvia melanocephala)",
+"Spain (Español)":"Curruca cabecinegra - Tallarol capnegre - Papuxa cabecinegra - Txinbo burubeltza (Sylvia melanocephala)"},
+
+{"United Kingdom (English)": "Any additional species (3 most common and numbers) can be added below:",
+"Sweden (Svenska)": "Om ni såg några ytterligare arter, skriv de tre vanligaste arterna och deras antal nedan:",
+"Spain (Español)":"Cualquier especie adicional (las 3 más comunes y las cantidades) se pueden añadir a continuación:"},
+
+{"United Kingdom (English)": "E.g.: hooded crow (3), rook (4), common gull (2)",
+"Sweden (Svenska)": "T.ex.: Kråka (3), råka (4), fiskmås (2)",
+"Spain (Español)":"Ej.: gaviota patiamarilla (3), golondrina (4), abubilla (2)"},
+
+{"United Kingdom (English)": "Show bird data",
+"Sweden (Svenska)": "Visa fågel-data",
+"Spain (Español)":"Mostrar datos de aves"},
+
+{"United Kingdom (English)": "Below you can enter the data from the Pollinators and Flowers survey in the 5x5m survey site (S3):",
+"Sweden (Svenska)": "Nedan kan ni lägga in data från inventeringen av pollinatörer och blommor i 5x5m undersökningsytan (P3):",
+"Spain (Español)":"A continuación se pueden introducir los datos del censo de Polinizadores y plantas con flor de la parcela de 5x5m (S3)"},
+
+{"United Kingdom (English)": "Enter the area (m2) of the following habitat in your 5x5 survey plot:",
+"Sweden (Svenska)": "Ange arean (m2) av följande habitat i er 5x5m ruta:",
+"Spain (Español)":"Introducir el área (m2) del siguiente hábitat en su parcela de estudio de 5x5:"},
+
+{"United Kingdom (English)": "Enter the total number of individuals and species you saw for each pollinator group:",
+"Sweden (Svenska)": "Ange det totala antalet individer och arter ni såg per pollinatörgrupp",
+"Spain (Español)":"Introducir el número total de individuos y especies que se observaron de cada grupo de polinizadores:"},
+
+{"United Kingdom (English)": "Individuals:",
+"Sweden (Svenska)": "Individer:",
+"Spain (Español)":"Individuos"},
+
+{"United Kingdom (English)": "Species:",
+"Sweden (Svenska)": "Arter",
+"Spain (Español)":"Especies"},
+
+{"United Kingdom (English)": "Honeybees",
+"Sweden (Svenska)": "Honungsbin",
+"Spain (Español)":"Abejas de la miel"},
+
+{"United Kingdom (English)": "Solitary bees",
+"Sweden (Svenska)": "Solitärbin",
+"Spain (Español)":"Abejas solitarias"},
+
+{"United Kingdom (English)": "Wasps",
+"Sweden (Svenska)": "Getingar",
+"Spain (Español)":"Avispas"},
+
+{"United Kingdom (English)": "Beetles",
+"Sweden (Svenska)": "Skalbaggar",
+"Spain (Español)":"Escarabajos"},
+
+{"United Kingdom (English)": "True bugs",
+"Sweden (Svenska)": "Skinnbaggar",
+"Spain (Español)":"Chinches"},
+
+{"United Kingdom (English)": "Butterflies",
+"Sweden (Svenska)": "Fjärilar",
+"Spain (Español)":"Mariposas"},
+
+{"United Kingdom (English)": "Moths",
+"Sweden (Svenska)": "Nattfjärilar",
+"Spain (Español)":"Mariposas nocturnas"},
+
+{"United Kingdom (English)": "Hoverflies",
+"Sweden (Svenska)": "Blomflugor",
+"Spain (Español)":"Moscas de las flores"},
+
+{"United Kingdom (English)": "Other flies and mosquitos",
+"Sweden (Svenska)": "Andra flugor och mygg",
+"Spain (Español)":"Otras moscas y mosquitos"},
+
+{"United Kingdom (English)": "Rate your 5x5m survey plot on the floweriness-scale:",
+"Sweden (Svenska)": "Betygsätt er 5x5m ruta på blommighetsskalan",
+"Spain (Español)":"Calificar la parcela de 5x5m en la escala de cantidaddes de plantas en flor:"},
+
+{"United Kingdom (English)": "How many different species of flowering plants did you find?",
+"Sweden (Svenska)": "Hur många olika arter av blommande växter hittade ni?",
+"Spain (Español)":"¿Cuántas especies diferentes de plantas con flor encontraste?"},
+
+{"United Kingdom (English)": "(Optional) If you identified the species, write the three most common below",
+"Sweden (Svenska)": "(Frivilligt) Om ni identified arterna, skriv ner de tre vanligaste nedan",
+"Spain (Español)":"(Opcional) Si se han identificado las especies, escribir las tres más comunes a continuación"},
+
+{"United Kingdom (English)": "E.g.: daisy, lavender, orchid",
+"Sweden (Svenska)": "T.ex.: prästkrage, lavendel, orkidé",
+"Spain (Español)":"Ej.: margarita, lavanda, orquídea"},
+
+{"United Kingdom (English)": "Minibeasts and Leaves Survey",
+"Sweden (Svenska)": "Småkryp- och bladinventering",
+"Spain (Español)":"Censo de bichos y hojas "},
+
+{"United Kingdom (English)": "Below you can enter the data from the Minibeasts and Leaves survey in the 1x1m squares (S4):",
+"Sweden (Svenska)": "Nedan kan ni lägga in data från inventeringen av småkryp och blad i kvadratmeter-rutorna (P4):",
+"Spain (Español)":"A continuación, se pueden introducir los datos del Censo de bichos y hojas en los cuadrados de 1x1m (S4)"},
+
+{"United Kingdom (English)": "How many 1x1m squares did you survey?",
+"Sweden (Svenska)": "Hur många kvadratmeter-rutor inventerade ni?",
+"Spain (Español)":"¿Cuántos cuadrados de 1x1m se han censado?"},
+
+{"United Kingdom (English)": "What was the dominant habitat for each square? For each dominant habitat, write the numbers of squares with this habitat in brackets:",
+"Sweden (Svenska)": "Vilket var det dominanta habitatet för varje ruta? För varje dominanta habitat, skriv antalet rutor med det är habitatet i parantes:",
+"Spain (Español)":" ¿Cuál era el hábitat dominante de cada cuadrado? Para cada hábitat dominante, escribir el número de cuadrados con este hábitat entre paréntesis:"},
+
+{"United Kingdom (English)": "E.g.: Flower beds or pots (1), tall grass and wildflowers (2), short grass (1)",
+"Sweden (Svenska)": "T.ex.: Blombäddar eller krukor (1), högt gräss och vildblomster (2), kort gräs (1)",
+"Spain (Español)":"Parterres de flores o tiestos y jardineras (1) Hierba alta y flores silvestres (2) Hierba corta como césped o pasto (1)"},
+
+{"United Kingdom (English)": "Enter the total number of individuals and species you saw for each minibeast group:",
+"Sweden (Svenska)": "Ange det totala antalet individer och arter ni såg per småkrypsgrupp:",
+"Spain (Español)":"Introducir el número total de individuos y especies que se observaron para cada grupo de bichos:"},
+
+{"United Kingdom (English)": "Earthworms",
+"Sweden (Svenska)": "Daggmaskar",
+"Spain (Español)":"Lombrices de tierra"},
+
+{"United Kingdom (English)": "Ants",
+"Sweden (Svenska)": "Myror",
+"Spain (Español)":"Hormigas"},
+
+{"United Kingdom (English)": "Centipedes and millipedes",
+"Sweden (Svenska)": "Mångfotingar",
+"Spain (Español)":"Ciempiés y milpiés"},
+
+
+{"United Kingdom (English)": "Woodlice",
+"Sweden (Svenska)": "Gråsuggor",
+"Spain (Español)":"Cochinillas de humedad"},
+
+{"United Kingdom (English)": "Spiders and harvestmen",
+"Sweden (Svenska)": "Spindlar och lockespindlar",
+"Spain (Español)":"Arañas y opiliones"},
+
+{"United Kingdom (English)": "Insect larvae",
+"Sweden (Svenska)": "Insektslarver",
+"Spain (Español)":"Larvas de insectos"},
+
+{"United Kingdom (English)": "Snails and slugs",
+"Sweden (Svenska)": "Sniglar och snäckor",
+"Spain (Español)":"Caracoles y babosas"},
+
+
+{"United Kingdom (English)": "Other minibeasts",
+"Sweden (Svenska)": "Övriga småkryp",
+"Spain (Español)":"Otros bichos"},
+
+{"United Kingdom (English)": "Show minibeast data",
+"Sweden (Svenska)": "Visa småkryps-data",
+"Spain (Español)":"Mostrar datos de bichos"},
+
+{"United Kingdom (English)": "Rate the mean of your 1x1m survey plot on the vegetation cover-scale:",
+"Sweden (Svenska)": "Uppskatta den genomsnittliga vegetationstäckningen i era kvadratmeter-rutor:",
+"Spain (Español)":"Calificar la media del cuadrado 1x1m de estudio en cuanto a la escala de cobertura vegetal:"},
+
+{"United Kingdom (English)": "How many different types of leaves do you find in all 1x1m squares?",
+"Sweden (Svenska)": "Hur många olika typer av blad hittade ni totalt i alla kvadratmeter-rutorna?",
+"Spain (Español)":"¿Cuántos tipos diferentes de hojas se han encontrado entre todos los cuadrados de 1x1m?"},
+
+{"United Kingdom (English)": "Thank you for completing the data entry! Please ensure that all answers are correct. You will then need to download the data and email it to our team at Lund University. Please send this file to anna.persson [at] cec.lu.se so your data can be included in the research project and added to the website. Thank you for your participation.",
+"Sweden (Svenska)": "Tack för att ha lagt in all data! Vänligen kontrollera att svaren är korrekta innan ni laddar ner datafilen. Skicka sedan filen till anna.persson [at] cec.lu.se så er data can inkluderas i forskningsprojektet och laddas upp så andra skolor kan se det. Tack för ert deltagande!",
+"Spain (Español)":"¡Gracias por completar la entrada de datos! Por favor, asegurarse de que todas las respuestas sean correctas. A continuación, deberá descargar los datos y enviarlos por correo electrónico a nuestro equipo de la Universidad de Lund. Envíe este archivo a anna.persson [at] cec.lu.se para que sus datos puedan incluirse en el proyecto de investigación y agregarse al sitio web. Gracias por su participación"},
+
+{"United Kingdom (English)": "Download",
+"Sweden (Svenska)": "Ladda ner",
+"Spain (Español)":"Descargar"},
+
+{"United Kingdom (English)": "Birds (S2)",
+"Sweden (Svenska)": "Fåglar (P2)",
+"Spain (Español)":"Aves (S2)"},
+
+{"United Kingdom (English)": "Pollinators (S3)",
+"Sweden (Svenska)": "Pollinatörer (P3)",
+"Spain (Español)":"Polinizadores (S3)"},
+
+{"United Kingdom (English)": "Minibeasts (S4)",
+"Sweden (Svenska)": "Småkryp (P4)",
+"Spain (Español)":"Bichos (S4)"},
+
+{"United Kingdom (English)": "Submit data",
+"Sweden (Svenska)": "Ladda upp data",
+"Spain (Español)":"Enviar datos"},
+
+{"United Kingdom (English)": "About us",
+"Sweden (Svenska)": "Om oss",
+"Spain (Español)":"Sobre nosotros"},
+
+{"United Kingdom (English)": "Natural Nations is an international school grounds biodiversity project funded by Erasmus+ and led by Learning through Landscapes in partnership with Naturskolan i Lund, Lund University, Birdlife Malta and Sociedad Espanola de Ornitologia SEO (Birdlife Spain). To help schools improve their school grounds for wildlife, the Natural Nations project has developed survey methodology to record pollinating insects, minibeasts and leaves, bird populations and habitats and vegetation with supporting educational and cultural heritage resources.",
+"Sweden (Svenska)": "Natural Nations är ett internationellt projekt om skolgårdars biodiversitet, finansierat av Erasmus+. Projektet leds av Learning through Landscapes tillsammans med Naturskolan i Lund, Lunds universitet, Birdlife Malta och Birdlife Spain. Natural Nationsprojektet har utvecklat inventeringsprotokoll och metodik för att undersöka pollinerande insekter, småkryp, löv, fågelpopulationer och habitat samt vegetation tillsammans med pedagogiskt material och kulturarvsresurser.",
+"Spain (Español)":"Natural Nations es un proyecto internacional sobre biodiversidad en patios escolares financiado por Erasmus+ y liderado por Learning through Landscapes en colaboración con Naturskolan (Lund), la Universidad de Lund, Birdlife Malta y SEO/BidLife. Para ayudar a las escuelas a mejorar sus terrenos escolares para la biodiversidad, el proyecto Natural Nations ha desarrollado una metodología de estudio (censos) para registrar esa biodiversidad ya presente (insectos polinizadores, bichos y hojas, poblaciones y hábitats de aves y vegetación) con el apoyo de recursos educativos y de patrimonio cultural."},
+
+{"United Kingdom (English)": "S1",
+"Sweden (Svenska)": "P1",
+"Spain (Español)":"S1"},
+
+{"United Kingdom (English)": "Enter the data for the plants:",
+"Sweden (Svenska)": "Lägg in data för växterna:",
+"Spain (Español)":"Introducir los datos de las plantas:"},
+
+{"United Kingdom (English)": "Participants and time:",
+"Sweden (Svenska)": "Deltagare och tid:",
+"Spain (Español)":"Participantes y tiempo:"},
+
+{"United Kingdom (English)": "The map is interactive. Try zooming in on your country to see which other schools have participated. Hover with the mouse to display names. Did you enter the wrong coordinates? Just re-enter the correct ones and press the Show map-button again!",
+"Sweden (Svenska)": "Kartan är interaktiv. Test zooma in på ert land för att se vilka skolor som har deltagit. Använd muspekaren för att visa namn. Skrev ni in fel koordinater? Skriv bara in de korrekta och tryck på Visa karta-knappen igen!",
+"Spain (Español)":"El mapa es interactivo. Podeis acercaros a cada país para ver qué otras escuelas han participado. Pasa el ratón por encima para mostrar los nombres. ¿Habeis introducido las coordenadas incorrectas? ¡Simplemente introducir de nuevo los datos correctos y presionar el botón Mostrar mapa nuevamente!"},
+
+{"United Kingdom (English)": "Tip!",
+"Sweden (Svenska)": "Tips!",
+"Spain (Español)":"Consejo!"},
+
+{"United Kingdom (English)": "About the graph",
+"Sweden (Svenska)": "Om grafen",
+"Spain (Español)":" Sobre el gráfico "},
+
+{"United Kingdom (English)": "Number of schools",
+"Sweden (Svenska)": "Antal skolor",
+"Spain (Español)":"Número de escuelas"},
+
+{"United Kingdom (English)": "School grounds size (m2)",
+"Sweden (Svenska)": "Skolgårdens storlek (m2)",
+"Spain (Español)":"Tamaño del patio escolar (m2)"},
+
+{"United Kingdom (English)": "Species richness (number of woody species)",
+"Sweden (Svenska)": "Artrikedom (antal träd- och buskarter)",
+"Spain (Español)":"Riqueza de especies (número de especies leñosas)"},
+
+{"United Kingdom (English)": "Total number of birds observed",
+"Sweden (Svenska)": "Totalt antal observerade fåglar",
+"Spain (Español)":"Número total de aves observadas"},
+
+{"United Kingdom (English)": "individuals observed",
+"Sweden (Svenska)": "observerade individer",
+"Spain (Español)":"Individuos observados"},
+
+{"United Kingdom (English)": "The most common pollinators by occurence on your school:",
+"Sweden (Svenska)": "De vanligast förekommande pollinatörerna på er skolgård:",
+"Spain (Español)":"Los polinizadores más comunes en vuestra escuela:"},
+
+{"United Kingdom (English)": "Mean number of minibeasts per 1x1 square",
+"Sweden (Svenska)": "Antal småkryp per kvadratmeter",
+"Spain (Español)":"Número promedio de bichos por cuadrado 1x1m"},
+
+{"United Kingdom (English)": "This graph shows the most common habitat on school grounds across all participating schools. Question: Was this what you were expecting? Why do you think school grounds look the way they do today? \n About the graph: This type of graph is called a barplot. The higher the bars, the more schools have selected this answer.",
+"Sweden (Svenska)": "Grafen visar det vanligaste habitatet på skolgårdar för alla skolor som deltagit. Fråga: Var det här vad ni väntade er? Varför ser skolgårdar ut som de gör idag? \n Om grafen: Den här grafen kallas för ett stapeldiagram. Höga staplar betyder att många har valt det här svaret.",
+"Spain (Español)":"Este gráfico muestra el hábitat más común en el patio escolar en todas las escuelas participantes. Pregunta: ¿Era esto lo que esperabas? ¿Por qué crees que los patios escolares son como son hoy en día? \n Acerca del gráfico: este tipo de gráfico se denomina diagrama de barras. Cuanto más altas son las barras, más escuelas han seleccionado esta respuesta."},
+
+{"United Kingdom (English)": "This graph shows the number of different tree and shrub species recorded by each school and how large the school grounds are. Question: Do you see any pattern? Do you need a large school ground to have many species of plants? About the graph: This type of graph is called a scatter plot. A dot high up shows that this school has a lot of species. A dot far to the right shows the school grounds are large.",
+"Sweden (Svenska)": "Grafen visar antalet träd- och buskarter för varje skola och hur stor skolgårdarna är. Fråga: Ser ni något mönster? Måste man ha en stor skolgård för att kunna ha många växtarter? Om grafen: Den här grafen kallas för ett punkt- eller spridningsdiagram. En punkt som är högt upp visar att skolan har många arter. En punkt långt till höger visar att skolgården är stor.",
+"Spain (Español)":"Este gráfico muestra el número de diferentes especies de árboles y arbustos registrados por cada escuela y el tamaño de los patios de las escuelas. Pregunta: ¿Ves algún patrón? ¿Necesitas un escolar grande para tener muchas especies de plantas? Acerca del gráfico: este tipo de gráfico se llama diagrama de dispersión. Un punto en lo alto muestra que esta escuela tiene muchas especies. Un punto a la derecha muestra que el patio de la escuela es grande."},
+
+{"United Kingdom (English)": "This graph shows the number of birds seen by each school and how many trees and shrubs that have been recorded. Question: Is there any pattern? Would you have seen more birds if you had more trees? About the graph: This type of graph is called a scatter plot. A dot high up shows that this school has a lot of birds. A dot far to the right shows the school grounds have many trees and shrubs.",
+"Sweden (Svenska)": "Grafen visar antalet fåglar varje skola har sett och hur många träd och buskar arter som finns på skolgården. Fråga: Finns det något mönster? Hade ni sett fler fåglar om ni hade haft mer träd? Om grafen: Den här grafen kallas för ett punkt- eller spridningsdiagram. En punkt som är högt upp visar att skolan har många fåglar. En punkt långt till höger visar att skolgården har många träd och buskar.",
+"Spain (Español)":"Este gráfico muestra el número de aves vistas por cada escuela y cuántos árboles y arbustos se han registrado. Pregunta: ¿Hay algún patrón? ¿Se habría observado más pájaros si hubiera más árboles o arbustos? Acerca del gráfico: este tipo de gráfico se llama diagrama de dispersión. Un punto en lo alto muestra que esta escuela tiene muchas aves. Un punto a la derecha muestra que el patio de la escuela tiene muchos árboles y arbustos."},
+
+{"United Kingdom (English)": "This graph shows which pollinator group was the most common at your school. Question: Which was the most common pollinator at your school? Were there any groups you did not see and if so, is there anything you can do to help them? About the graph: This type of graph is called a pie-chart. It show the proportion of pollinators recorded in percent. Hover with the mouse to see the absolute values (number of individuals).",
+"Sweden (Svenska)": "Grafen visar vilken pollinatörsgrupp som var vanligast på er skola. Fråga: Vilken grupp var vanligast hos er? Finns det någon grupp ni inte såg, och i så fall, finns det något ni kan göra för att hjälpa dem? Om grafen: Den här grafen kallas för ett pajdiagram. Den visar proportionen av pollinatörer i procent. Håll muspekaren över grafen för att visa de absoluta värdena (antal individer).",
+"Spain (Español)":"Este gráfico muestra qué grupo de polinizadores fue el más común en tu escuela. Pregunta: ¿Cuál era el polinizador más común en tu escuela? ¿Hubo algún grupo que no se viera y, de ser así, hay algo que se pueda hacer para ayudarlos? Acerca del gráfico: este tipo de gráfico se llama gráfico circular. Muestra la proporción de polinizadores registrada en porcentaje. Pase el mouse para ver los valores absolutos (número de individuos)."},
+
+{"United Kingdom (English)": "This graph shows the number of minibeasts per square metre for each school. Question: What does it mean to have a lot of minibeast per square meter? Which school has seen the most minibeasts in total? About the graph: This type of graph is called a bar plot. The higher the bars, the more minibeasts have been recorded per square meter.",
+"Sweden (Svenska)": "Grafen visar antalet småkryp per kvadratmeter för varje skola. Fråga: Vad betyder det att ha många småkryp per kvadratmeter? Vilken skola har sett flest småkryp totalt? Om grafen: Den här grafen kallas för ett stapeldiagram. Höga staplar betyder att många småkryp per kvadratmeter.",
+"Spain (Español)":"Este gráfico muestra el número de bichos por metro cuadrado para cada escuela. Pregunta: ¿Qué significa tener muchos bichos por metro cuadrado? ¿Qué escuela ha visto la mayor cantidad de bichos en total? Acerca del gráfico: este tipo de gráfico se llama diagrama de barras. Cuanto más altas son las barras, más bichos se han registrado por metro cuadrado."}
+
+    ]
+}
